@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio de Proyectos - Ciencia de Datos & Toma de decisiones | UPTC</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@600;700;800&family=Fira+Code:wght@400;500&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #1e3a8a;
+            --primary-dark: #0f172a;
+            --primary-light: #2563eb;
+            --accent: #0284c7;
+            --accent-soft: #e0f2fe;
+            --accent-green: #10b981;
+            --bg-body: #f8fafc;
+            --bg-card: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 10px 20px -3px rgba(0, 0, 0, 0.08);
+            --radius-sm: 8px;
+            --radius-md: 14px;
+            --radius-lg: 20px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            font-size: 15px;
+            padding: 24px 20px 80px;
+        }
+
+        .wrapper {
+            max-width: 96%;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        /* Hero Header */
+        header.hero-header {
+            background: linear-gradient(135deg, #0b1329 0%, #1e3a8a 55%, #0369a1 100%);
+            color: #ffffff;
+            padding: 44px 40px;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 32px;
+        }
+
+        header.hero-header::after {
+            content: "";
+            position: absolute;
+            top: -40%;
+            right: -10%;
+            width: 360px;
+            height: 360px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .institution-badge {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.92rem;
+            text-transform: uppercase;
+            letter-spacing: 1.6px;
+            color: #93c5fd;
+            font-weight: 700;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        header.hero-header h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.25rem;
+            font-weight: 800;
+            line-height: 1.25;
+            letter-spacing: -0.5px;
+            margin-bottom: 12px;
+        }
+
+        header.hero-header .subtitle {
+            font-size: 1.1rem;
+            color: #e2e8f0;
+            font-weight: 400;
+            max-width: 880px;
+            margin-bottom: 24px;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 12px;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(8px);
+            padding: 14px 20px;
+            border-radius: var(--radius-md);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .meta-item {
+            font-size: 0.9rem;
+            color: #f1f5f9;
+        }
+
+        .meta-item strong {
+            color: #93c5fd;
+            font-weight: 600;
+            margin-right: 4px;
+        }
+
+        /* Sección de Proyectos */
+        .section-header {
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .section-header h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.6rem;
+            color: var(--primary);
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-header .tag-count {
+            background-color: var(--accent-soft);
+            color: var(--primary);
+            font-size: 0.85rem;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 20px;
+        }
+
+        /* Grid de Proyectos */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 26px;
+            margin-bottom: 40px;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 28px;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.25s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: #cbd5e1;
+        }
+
+        .project-badge {
+            display: inline-block;
+            align-self: flex-start;
+            font-size: 0.76rem;
+            font-weight: 700;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 6px;
+            margin-bottom: 14px;
+        }
+
+        .badge-r {
+            background-color: #eff6ff;
+            color: #1d4ed8;
+            border: 1px solid #bfdbfe;
+        }
+
+        .badge-py {
+            background-color: #fefce8;
+            color: #a16207;
+            border: 1px solid #fef08a;
+        }
+
+        .project-card h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.32rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+
+        .project-card p.desc {
+            color: var(--text-muted);
+            font-size: 0.92rem;
+            margin-bottom: 18px;
+            flex-grow: 1;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 22px;
+        }
+
+        .project-tags span {
+            background-color: #f1f5f9;
+            color: #475569;
+            font-size: 0.78rem;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        /* Botonera de Acciones */
+        .card-actions {
+            display: flex;
+            padding-top: 16px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 10px 18px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border-radius: var(--radius-sm);
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: none;
+            text-align: center;
+            width: 100%;
+        }
+
+        .btn-view {
+            background-color: var(--primary);
+            color: #ffffff;
+        }
+
+        .btn-view:hover {
+            background-color: var(--primary-light);
+            color: #ffffff;
+        }
+
+        /* Toast de Notificación */
+        #toast {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background-color: #0f172a;
+            color: #ffffff;
+            padding: 14px 22px;
+            border-radius: var(--radius-sm);
+            box-shadow: var(--shadow-lg);
+            font-size: 0.9rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 10000;
+        }
+
+        #toast.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        /* Iframe invisible para imprimir/convertir a PDF nativamente sin distorsión */
+        #print-iframe {
+            position: fixed;
+            top: -9999px;
+            left: -9999px;
+            width: 1024px;
+            height: 1000px;
+            border: none;
+            visibility: hidden;
+        }
+
+        /* Footer */
+        footer.repo-footer {
+            text-align: center;
+            padding: 30px 0 10px;
+            color: var(--text-muted);
+            font-size: 0.88rem;
+            border-top: 1px solid var(--border-color);
+            margin-top: 40px;
+        }
+
+        @media (max-width: 768px) {
+            header.hero-header {
+                padding: 30px 24px;
+            }
+
+            header.hero-header h1 {
+                font-size: 1.7rem;
+            }
+
+            .card-actions {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="wrapper">
+
+        <!-- Banner Ejecutivo / Header Principal -->
+        <header class="hero-header">
+            <div class="institution-badge">
+                <span>🎓</span> Universidad Pedagógica y Tecnológica de Colombia (UPTC)
+            </div>
+            <h1>Repositorio de Ciencia de Datos & Toma de decisiones</h1>
+            <p class="subtitle">
+                Portafolio interactivo de proyectos, protocolos y análisis exploratorios desarrollados durante la
+                Especialización en Inteligencia Artificial.
+            </p>
+
+            <div class="meta-grid">
+                <div class="meta-item"><strong>Estudiante:</strong> José Daniel Rojas Verbel</div>
+                <div class="meta-item"><strong>Código:</strong> 202624475</div>
+                <div class="meta-item"><strong>Cohorte:</strong> 2026-2</div>
+                <div class="meta-item"><strong>Módulo:</strong> Ciencia de Datos y Toma de decisiones</div>
+            </div>
+        </header>
+
+        <!-- Cabecera de la lista de proyectos -->
+        <div class="section-header">
+            <h2><span>📁</span> Proyectos y Talleres Publicados</h2>
+            <span class="tag-count">4 Proyectos Disponibles</span>
+        </div>
+
+        <!-- Grid de Proyectos -->
+        <div class="projects-grid">
+
+            <!-- PROYECTO 1: CLASE_1 -->
+            <article class="project-card">
+                <div>
+                    <span class="project-badge badge-r">R Markdown &bull; Bioestadística</span>
+                    <h3>CLASE 1: Análisis de Mortalidad por Causas Evitables</h3>
+                    <p class="desc">
+                        Exploración demográfica y epidemiológica sobre microdatos del DANE orientada al estudio de
+                        muertes por causas evitables en Colombia, estructuración de bases de datos y medidas
+                        cuantitativas iniciales.
+                    </p>
+                    <div class="project-tags">
+                        <span>R</span>
+                        <span>Rmd</span>
+                        <span>DANE</span>
+                        <span>Mortalidad</span>
+                        <span>Estadística</span>
+                    </div>
+                </div>
+
+                <div class="card-actions">
+                    <a href="CLASE_1/PROTOCOLO/PROYECTO1.html" target="_blank" class="btn btn-view">
+                        <span>🌐</span> Ver Proyecto (HTML)
+                    </a>
+                </div>
+            </article>
+
+            <!-- PROYECTO 2: TAREA_1_EDA -->
+            <article class="project-card">
+                <div>
+                    <span class="project-badge badge-r">RHTML &bull; Análisis Exploratorio</span>
+                    <h3>TAREA 1: Análisis Exploratorio de Datos (EDA)</h3>
+                    <p class="desc">
+                        Protocolo completo de EDA aplicado a base de datos DANE. Estructura modular con menú lateral,
+                        evaluación de datos atípicos, tratamiento de valores nulos y visualizaciones descriptivas
+                        avanzadas.
+                    </p>
+                    <div class="project-tags">
+                        <span>Rhtml</span>
+                        <span>EDA</span>
+                        <span>DANE</span>
+                        <span>Limpieza de Datos</span>
+                        <span>Knitr</span>
+                    </div>
+                </div>
+
+                <div class="card-actions">
+                    <a href="TAREA_1_EDA/PROTOCOLO/TAREA_1_EDA.html" target="_blank" class="btn btn-view">
+                        <span>🌐</span> Ver Proyecto (HTML)
+                    </a>
+                </div>
+            </article>
+
+            <!-- PROYECTO 3: TAREA_2_EDA -->
+            <article class="project-card">
+                <div>
+                    <span class="project-badge badge-py">Python &bull; Machine Learning</span>
+                    <h3>TAREA 2: Taller Práctico II - Consumo Energético</h3>
+                    <p class="desc">
+                        Preparación de datos y modelos predictivos para la optimización del consumo energético
+                        institucional en la UPTC (dataset <code>consumos_uptc.csv</code>). Incluye análisis temporal,
+                        correlaciones multivariadas y modelado.
+                    </p>
+                    <div class="project-tags">
+                        <span>Python</span>
+                        <span>Jupyter</span>
+                        <span>Pandas</span>
+                        <span>EDA</span>
+                        <span>Machine Learning</span>
+                    </div>
+                </div>
+
+                <div class="card-actions">
+                    <a href="TAREA_2_EDA/PROTOCOLO/Taller_Practico_II.html" target="_blank" class="btn btn-view">
+                        <span>🌐</span> Ver Proyecto (HTML)
+                    </a>
+                </div>
+            </article>
+
+            <!-- PROYECTO 4: TAREA_3_SQL -->
+            <article class="project-card">
+                <div>
+                    <span class="project-badge badge-py"
+                        style="background-color: #ecfdf5; color: #047857; border-color: #a7f3d0;">SQL &bull; Text-to-SQL
+                        &bull; IA</span>
+                    <h3>TAREA 3: Analítica Académica con SQL & Agentes IA</h3>
+                    <p class="desc">
+                        Extracción relacional, manipulación y agregación sobre <code>university.db</code>. Batería
+                        completa de consultas (Bloques A-E), resolución de retos analíticos avanzados y auditoría
+                        crítica de consultas Text-to-SQL generadas por IA.
+                    </p>
+                    <div class="project-tags">
+                        <span>SQLite</span>
+                        <span>SQL</span>
+                        <span>Text-to-SQL</span>
+                        <span>Pandas</span>
+                        <span>Auditoría IA</span>
+                    </div>
+                </div>
+
+                <div class="card-actions">
+                    <a href="TAREA_3_SQL/PROTOCOLO/Taller_SQL_IA_Antigravity.html" target="_blank" class="btn btn-view">
+                        <span>🌐</span> Ver Proyecto (HTML)
+                    </a>
+                </div>
+            </article>
+
+        </div>
+
+        <!-- Footer -->
+        <footer class="repo-footer">
+            <p>&copy; 2026 Universidad Pedagógica y Tecnológica de Colombia (UPTC) &bull; Especialización en
+                Inteligencia Artificial</p>
+            <p style="margin-top: 6px; font-size: 0.8rem;">Desarrollado por José Daniel Rojas Verbel &bull; Ciencia de
+                Datos y Machine Learning</p>
+        </footer>
+
+    </div>
+
+</body>
+
+</html>

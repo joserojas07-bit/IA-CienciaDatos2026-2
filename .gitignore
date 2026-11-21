@@ -1,0 +1,6 @@
+# Archivos temporales de R y RStudio
+.Rhistory
+.RData
+.Ruserdata
+*.Rproj.user
+
