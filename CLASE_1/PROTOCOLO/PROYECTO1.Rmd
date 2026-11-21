@@ -1,0 +1,911 @@
+---
+title: "PROYECTO 1: LIMPIEZA Y PREPROCESAMIENTO DE DATOS"
+subtitle: "Especialización en Inteligencia Artificial y Ciencia de Datos — UPTC"
+author: "Daniel Rojas"
+date: "14 de noviembre de 2026"
+output:
+  html_document:
+    theme: flatly
+    highlight: tango
+    toc: true
+    toc_float:
+      collapsed: false
+      smooth_scroll: true
+    toc_depth: 3
+    number_sections: true
+    code_folding: show
+    code_download: true
+    df_print: paged
+---
+
+```{css, echo=FALSE}
+/* ===== ESTILOS PERSONALIZADOS PARA INFORME EJECUTIVO ===== */
+
+/* Tipografía general */
+body {
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.68;
+  color: #2c3e50;
+  background-color: #fbfcfd;
+}
+
+/* Encabezados */
+h1.title {
+  font-size: 2.1rem;
+  font-weight: 700;
+  color: #1a365d;
+  margin-top: 25px;
+  margin-bottom: 8px;
+}
+
+h3.subtitle {
+  font-size: 1.15rem;
+  color: #4a5568;
+  font-weight: 400;
+  margin-bottom: 15px;
+}
+
+h4.author, h4.date {
+  font-size: 0.95rem;
+  color: #718096;
+  font-weight: 500;
+  margin-top: 5px;
+}
+
+h1 {
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: #1a365d;
+  border-bottom: 2px solid #3182ce;
+  padding-bottom: 8px;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: #2b6cb0;
+  margin-top: 28px;
+  margin-bottom: 14px;
+}
+
+h3 {
+  font-size: 1.12rem;
+  font-weight: 600;
+  color: #2d3748;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+/* Tarjetas y Callouts */
+.callout {
+  padding: 16px 20px;
+  margin: 18px 0;
+  border-radius: 8px;
+  border-left: 5px solid;
+  font-size: 0.96rem;
+}
+
+.callout-info {
+  background-color: #ebf8fa;
+  border-left-color: #319795;
+  color: #234e52;
+}
+
+.callout-warning {
+  background-color: #fffaf0;
+  border-left-color: #dd6b20;
+  color: #7b341e;
+}
+
+.callout-danger {
+  background-color: #fff5f5;
+  border-left-color: #e53e3e;
+  color: #742a2a;
+}
+
+.callout-success {
+  background-color: #f0fff4;
+  border-left-color: #38a169;
+  color: #22543d;
+}
+
+.callout-title {
+  font-weight: 700;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Tablas estilizadas */
+table {
+  width: 100% !important;
+  margin: 16px 0 24px 0 !important;
+  border-collapse: collapse !important;
+  font-size: 0.93rem !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
+}
+
+table thead tr th {
+  background-color: #2b6cb0 !important;
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  padding: 10px 14px !important;
+  text-align: left !important;
+  border: none !important;
+}
+
+table tbody tr td {
+  padding: 8px 14px !important;
+  border-top: 1px solid #e2e8f0 !important;
+  color: #2d3748 !important;
+}
+
+table tbody tr:nth-of-type(even) {
+  background-color: #f7fafc !important;
+}
+
+table tbody tr:hover {
+  background-color: #edf2f7 !important;
+}
+
+/* Bloques de código */
+pre {
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  background-color: #f8fafc;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+}
+
+/* Gráficos */
+img {
+  border-radius: 8px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+  margin-top: 10px;
+  margin-bottom: 16px;
+}
+
+/* Tarjetas KPI de resumen inicial */
+.kpi-container {
+  display: flex;
+  gap: 15px;
+  margin: 20px 0;
+  flex-wrap: wrap;
+}
+
+.kpi-card {
+  flex: 1;
+  min-width: 180px;
+  background: white;
+  border-radius: 8px;
+  padding: 16px 20px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.06);
+  border-top: 4px solid #3182ce;
+}
+
+.kpi-title {
+  font-size: 0.82rem;
+  color: #718096;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.kpi-value {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #1a365d;
+  margin-top: 4px;
+}
+```
+
+```{r setup, include=FALSE}
+# Configuración global de chunks
+knitr::opts_chunk$set(
+  echo = TRUE,
+  warning = FALSE,
+  message = FALSE,
+  fig.align = 'center',
+  fig.width = 9.5,
+  fig.height = 4.6,
+  dpi = 300
+)
+
+# Paleta institucional de colores para gráficos
+col_primary   <- "#2b6cb0"
+col_secondary <- "#63b3ed"
+col_accent    <- "#dd6b20"
+col_dark      <- "#1a365d"
+col_light_bg  <- "#ebf8fa"
+```
+
+# Carga e Inspección Inicial del Conjunto de Datos
+
+En esta etapa inicial se procede a verificar el entorno de archivos de trabajo, cargar el conjunto de datos de estudio y realizar un reconocimiento estructural preliminar de variables y dimensiones.
+
+## Verificación de archivos en el entorno
+
+Se listan los archivos contenidos en el directorio `DATOS` para confirmar la disponibilidad del archivo fuente:
+
+```{r}
+list.files("../DATOS")    # Lectura de archivos en la carpeta DATOS
+```
+
+## Carga del conjunto de datos
+
+Se importa el archivo `dataset_clase_1.csv` en la sesión de trabajo asignándolo al data frame `data`:
+
+```{r}
+data <- read.csv("../DATOS/dataset_clase_1.csv", stringsAsFactors = FALSE)
+```
+
+## Vista previa de la estructura de datos
+
+A continuación se visualizan las dimensiones, los nombres de columnas y los tipos de datos:
+
+```{r}
+# Dimensión del dataset (filas x columnas)
+dim(data)
+```
+
+> **Interpretación:** El conjunto de datos original cuenta con **`r nrow(data)` filas** (observaciones) y **`r ncol(data)` columnas** (variables).
+
+```{r}
+# Nombres de las columnas
+knitr::kable(colnames(data), caption = "Variables del dataset original")
+
+```
+
+```{r}
+# Estructura y tipos de datos por columna
+str(data)
+```
+
+### Primeras y últimas observaciones
+
+```{r}
+knitr::kable(head(data, 5), caption = "Primeras 5 observaciones del conjunto de datos original")
+```
+
+```{r}
+knitr::kable(tail(data, 5), caption = "Últimas 5 observaciones del conjunto de datos original")
+```
+
+---
+
+# Diagnóstico Univariado: Variables Cualitativas
+
+El análisis de variables cualitativas o categóricas permite evaluar la cardinalidad, balance de clases y detectar anomalías en la captura de texto (inconsistencias tipográficas, fragmentación de niveles y faltas ortográficas).
+
+## Variable: `Profesion`
+
+```{r}
+tabla_profesion <- data.frame(sort(table(data$Profesion), decreasing = TRUE))
+colnames(tabla_profesion) <- c("Profesion", "Frecuencia")
+knitr::kable(tabla_profesion, align = c("l", "c"), caption = "Distribución de frecuencias: Profesión")
+```
+
+<div class="callout callout-info">
+<div class="callout-title">💡 Hallazgos Principales</div>
+<ul>
+  <li><strong>Moda dominante:</strong> <em>Ingeniero</em> representa la categoría dominante con más de una cuarta parte de la muestra (8 casos), triplicando a las subsiguientes (Docente y Estudiante con 3 casos cada una).</li>
+  <li><strong>Alta dispersión y cardinalidad:</strong> Fuera de la moda, la muestra se reparte en múltiples micro-categorías (de 1 a 3 casos), indicando alta fragmentación para una muestra reducida de solo 30 registros.</li>
+  <li><strong>Empates frecuentes:</strong> Siete categorías empatan con 2 observaciones, por lo que su ordenamiento es puramente alfabético.</li>
+</ul>
+</div>
+
+<div class="callout callout-warning">
+<div class="callout-title">⚠️ Problemas de Calidad de Datos Identificados</div>
+<ul>
+  <li><strong>Inconsistencia de género gramatical:</strong> Se registran formas femeninas como <em>“Abogada”</em>, <em>“Diseñadora”</em>, <em>“Psicologa”</em> y <em>“Ingeniera”</em> coexistiendo con formas masculinas (<em>“Ingeniero”</em>, <em>“Administrador”</em>, <em>“Contador”</em>). Esto fragmenta artificialmente la categoría <em>Ingeniería</em> en dos niveles.</li>
+  <li><strong>Ausencia de tildes:</strong> <em>“Psicologa”</em> carece de tilde ortográfica frente al estándar formal.</li>
+  <li><strong>Variabilidad en digitación:</strong> Riesgo de discrepancias de mayúsculas/minúsculas al igual que en las demás variables de texto.</li>
+</ul>
+</div>
+
+## Variable: `Genero`
+
+```{r}
+tabla_genero <- data.frame(sort(table(data$Genero), decreasing = TRUE))
+colnames(tabla_genero) <- c("Genero", "Frecuencia")
+knitr::kable(tabla_genero, align = c("l", "c"), caption = "Distribución de frecuencias: Género (Sin Depurar)")
+```
+
+<div class="callout callout-danger">
+<div class="callout-title">🚨 Problema Crítico: Fragmentación por Mayúsculas y Minúsculas</div>
+La variable conceptualmente es binaria (2 niveles), pero se encuentra fragmentada en <strong>4 niveles distintos</strong> debido a digitación no estandarizada: <code>MASCULINO</code>, <code>Masculino</code>, <code>FEMENINO</code> y <code>Femenino</code>.
+</div>
+
+<div class="callout callout-info">
+<div class="callout-title">💡 Diagnóstico Estadístico</div>
+<ul>
+  <li><strong>Moda unificada estimada:</strong> Masculino acumula 17 de los 30 casos (56.7%).</li>
+  <li><strong>Balance de clases:</strong> Desbalance moderado (17 Masculino vs. 13 Femenino), adecuado para comparaciones estadísticas básicas.</li>
+  <li><strong>Completitud:</strong> 100% de los 30 registros poseen valor asignado (sin valores <code>NA</code>).</li>
+</ul>
+</div>
+
+## Variable: `Ciudad`
+
+```{r}
+tabla_ciudad <- data.frame(sort(table(data$Ciudad), decreasing = TRUE))
+colnames(tabla_ciudad) <- c("Ciudad", "Frecuencia")
+knitr::kable(tabla_ciudad, align = c("l", "c"), caption = "Distribución de frecuencias: Ciudad (Sin Depurar)")
+```
+
+<div class="callout callout-danger">
+<div class="callout-title">🚨 Problema Crítico: Fragmentación de la Capital (Bogotá)</div>
+La ciudad de Bogotá aparece registrada bajo tres etiquetas disímiles: <strong>“Bogotá”</strong> (mayúscula inicial con tilde), <strong>“bogotá”</strong> (minúscula con tilde) y <strong>“bogota”</strong> (minúscula sin tilde).
+</div>
+
+<div class="callout callout-info">
+<div class="callout-title">💡 Diagnóstico Estadístico</div>
+<ul>
+  <li><strong>Moda real consolidada:</strong> Bogotá suma en realidad **13 casos**, convirtiéndose en la ciudad preponderante frente a Medellín (9) y Cali (8).</li>
+  <li><strong>Distribución territorial:</strong> Cali y Medellín conjuntamente representan el 56.7% de la muestra.</li>
+  <li><strong>Completitud:</strong> Variable íntegra sin presencia de valores faltantes.</li>
+</ul>
+</div>
+
+## Variable: `Nivel_Educativo`
+
+```{r}
+tabla_educacion <- data.frame(sort(table(data$Nivel_Educativo), decreasing = TRUE))
+colnames(tabla_educacion) <- c("Nivel Educativo", "Frecuencia")
+knitr::kable(tabla_educacion, align = c("l", "c"), caption = "Distribución de frecuencias: Nivel Educativo")
+```
+
+<div class="callout callout-info">
+<div class="callout-title">💡 Diagnóstico Estadístico</div>
+<ul>
+  <li><strong>Moda y Mediana:</strong> <em>Universitario</em> representa el 60% de la muestra (18 casos). La mediana acumulada se sitúa también en este nivel.</li>
+  <li><strong>Alto perfil de formación:</strong> El <strong>93.3%</strong> de las observaciones posee al menos educación universitaria completa, y un <strong>33.3%</strong> (10 personas) cuenta con formación de posgrado (Especialización o Maestría).</li>
+  <li><strong>Categoría minoritaria:</strong> <em>Bachiller</em> concentra únicamente 2 observaciones.</li>
+  <li><strong>Calidad del dato:</strong> No presenta anomalías tipográficas ni valores perdidos.</li>
+</ul>
+</div>
+
+## Variable: `Estado_Civil`
+
+```{r}
+tabla_civil <- data.frame(sort(table(data$Estado_Civil), decreasing = TRUE))
+colnames(tabla_civil) <- c("Estado Civil", "Frecuencia")
+knitr::kable(tabla_civil, align = c("l", "c"), caption = "Distribución de frecuencias: Estado Civil (Sin Depurar)")
+```
+
+<div class="callout callout-danger">
+<div class="callout-title">🚨 Problema Crítico: 8 Niveles Observados vs. 3 Reales</div>
+La variable sufre fragmentación por dos causas concurrentes:
+<ol>
+  <li><strong>Mayúsculas y minúsculas:</strong> <code>SOLTERO</code> frente a <code>Soltero</code>; <code>UNION LIBRE</code> frente a <code>Union libre</code>.</li>
+  <li><strong>Concordancia de género gramatical:</strong> Registro segregado en <code>Soltero/Soltera</code> y <code>Casado/Casada</code>.</li>
+</ol>
+</div>
+
+<div class="callout callout-info">
+<div class="callout-title">💡 Diagnóstico Estadístico</div>
+<ul>
+  <li><strong>Moda consolidada:</strong> Personas solteras (16 observaciones, 53.3%), seguidas por personas casadas (12 observaciones, 40.0%).</li>
+  <li><strong>Unión libre:</strong> Representa únicamente 2 casos (6.7%).</li>
+  <li><strong>Completitud:</strong> Sin datos faltantes.</li>
+</ul>
+</div>
+
+---
+
+# Diagnóstico Univariado: Variables Cuantitativas
+
+Las variables numéricas requieren un diagnóstico detallado de medidas de tendencia central, dispersión, asimetría y la detección rigurosa de errores de captura o valores atípicos (*outliers*).
+
+## Variable: `Ingreso`
+
+```{r,echo=FALSE}
+summary(data$Ingreso)
+```
+
+### Tabla de Estadísticos Descriptivos
+
+| Medida Estadística | Valor Observado | Diagnóstico e Interpretación Analítica |
+| :--- | :---: | :--- |
+| **Mínimo** | **-2,000** | 🚨 **Error crítico de captura:** Valor negativo imposible para una variable de ingresos brutos. |
+| **Primer Cuartil ($Q_1$)** | 1,200 | El 25% de la muestra percibe ingresos iguales o inferiores a 1,200. |
+| **Mediana ($Q_2$)** | **1,325** | Valor central robusto: 50% de las observaciones gana menos de 1,325 y 50% más. |
+| **Media Aritmética** | **3,200** | ⚠️ **Distorsión severa:** La media duplica la mediana debido a la influencia de un valor extremo. |
+| **Tercer Cuartil ($Q_3$)** | 1,625 | El 75% percibe ingresos iguales o menores a 1,625. |
+| **Máximo** | **50,000** | 🚨 **Valor extremo (Outlier severo):** Extremadamente distante del cuerpo central de datos. |
+| **Valores Nulos ($NA$)** | 2 | Dos registros con información no diligenciada. |
+
+<div class="callout callout-warning">
+<div class="callout-title">⚠️ Diagnóstico de Distribución: La media ($3,200) no representa al grupo</div>
+La marcada brecha entre la media ($3,200) y la mediana ($1,325) evidencia un <strong>fuerte sesgo positivo (hacia la derecha)</strong>. Un solo registro anómalo de 50,000 distorsiona la media global en aproximadamente $+1,786$ unidades ($\frac{50000}{28} \approx 1786$). En distribuciones con esta asimetría, la mediana constituye el indicador adecuado de tendencia central.
+</div>
+
+### Detección Formal de Outliers (Regla de Tukey)
+
+Aplicando el criterio de $1.5 \times \text{IQR}$:
+$$\text{IQR} = Q_3 - Q_1 = 1625 - 1200 = 425$$
+$$\text{Límite Inferior} = 1200 - (1.5 \times 425) = 562.5$$
+$$\text{Límite Superior} = 1625 + (1.5 \times 425) = 2262.5$$
+
+* **$-2,000$:** Inconsistencia por debajo del límite inferior (error de captura).
+* **$50,000$:** Atípico extremo por encima del límite superior.
+
+### Comportamiento Gráfico
+
+```{r, fig.width=10, fig.height=4.4}
+# Gráficos integrados lado a lado: Diagrama de Caja e Histograma
+par(mfrow = c(1, 2), mar = c(4.5, 4.5, 3, 1.5))
+
+# 1. Diagrama de caja
+boxplot(data$Ingreso,
+        horizontal = TRUE,
+        col = col_secondary,
+        border = col_dark,
+        main = "Diagrama de Caja: Ingreso",
+        xlab = "Ingreso ($)")
+grid(col = "gray85", lty = "dotted")
+
+# 2. Histograma
+hist(data$Ingreso,
+     col = col_primary,
+     border = "white",
+     main = "Histograma: Ingreso",
+     xlab = "Ingreso ($)",
+     ylab = "Frecuencia",
+     breaks = 15)
+abline(v = mean(data$Ingreso, na.rm = TRUE), col = "red", lwd = 2, lty = 2)
+abline(v = median(data$Ingreso, na.rm = TRUE), col = "gold", lwd = 2, lty = 1)
+legend("topright", legend = c("Media", "Mediana"), col = c("red", "gold"), lty = c(2, 1), lwd = 2, bty = "n")
+
+par(mfrow = c(1, 1))
+```
+
+---
+
+## Variable: `Edad`
+
+```{r,echo=FALSE}
+summary(data$Edad)
+```
+
+### Tabla de Estadísticos Descriptivos
+
+| Medida Estadística | Valor Observado | Diagnóstico e Interpretación Analítica |
+| :--- | :---: | :--- |
+| **Mínimo** | 22.00 | Observación más joven; valor biológicamente consistente. |
+| **Primer Cuartil ($Q_1$)** | 25.75 | El 25% de los individuos tiene 25.75 años o menos. |
+| **Mediana ($Q_2$)** | **29.50** | Mediana central del grupo de estudio. |
+| **Media Aritmética** | **38.29** | Distorsionada al alza por la presencia de un outlier biológicamente imposible. |
+| **Tercer Cuartil ($Q_3$)** | 37.25 | El 75% tiene 37.25 años o menos. |
+| **Máximo** | **200.00** | 🚨 **Error biológico inadmisible:** Error flagrante de captura de datos. |
+| **Valores Nulos ($NA$)** | 2 | Dos registros sin registro de edad. |
+
+<div class="callout callout-danger">
+<div class="callout-title">🚨 Diagnóstico: El valor atípico 200 infla artificialmente la media</div>
+El registro de 200 años incrementa el promedio muestral en más de 6 años ($\approx 38.3$ vs $\approx 32.3$ años al removerlo). Siguiendo la regla de Tukey, el límite superior teórico se fija en $54.5$ años ($37.25 + 1.5 \times 11.5$). Todo valor superior a $100$ debe ser catalogado como error de digitación.
+</div>
+
+### Comportamiento Gráfico
+
+```{r, fig.width=10, fig.height=4.4}
+par(mfrow = c(1, 2), mar = c(4.5, 4.5, 3, 1.5))
+
+boxplot(data$Edad,
+        horizontal = TRUE,
+        col = col_secondary,
+        border = col_dark,
+        main = "Diagrama de Caja: Edad",
+        xlab = "Edad (Años)")
+grid(col = "gray85", lty = "dotted")
+
+hist(data$Edad,
+     col = col_primary,
+     border = "white",
+     main = "Histograma: Edad",
+     xlab = "Edad (Años)",
+     ylab = "Frecuencia",
+     breaks = 12)
+abline(v = mean(data$Edad, na.rm = TRUE), col = "red", lwd = 2, lty = 2)
+abline(v = median(data$Edad, na.rm = TRUE), col = "gold", lwd = 2, lty = 1)
+legend("topright", legend = c("Media", "Mediana"), col = c("red", "gold"), lty = c(2, 1), lwd = 2, bty = "n")
+
+par(mfrow = c(1, 1))
+```
+
+---
+
+## Variable: `Hijos`
+
+```{r,echo=FALSE}
+summary(data$Hijos)
+```
+
+### Tabla de Estadísticos Descriptivos
+
+| Medida Estadística | Valor Observado | Diagnóstico e Interpretación Analítica |
+| :--- | :---: | :--- |
+| **Mínimo** | 0.00 | Presencia de individuos sin hijos. |
+| **Primer Cuartil ($Q_1$)** | 0.00 | Al menos el 25% no tiene hijos. |
+| **Mediana ($Q_2$)** | **0.00** | Moda y valor central: más del 50% de la muestra no tiene descendencia. |
+| **Media Aritmética** | 0.97 | Promedio aproximado de 1 hijo por individuo en la muestra total. |
+| **Tercer Cuartil ($Q_3$)** | 2.00 | El 75% tiene 2 hijos o menos. |
+| **Máximo** | 4.00 | Cifra máxima plausible (4 hijos). |
+| **Valores Nulos ($NA$)** | 0 | Variable completamente diligenciada ($n=30$). |
+
+<div class="callout callout-info">
+<div class="callout-title">💡 Diagnóstico de Distribución: Asimetría Natural sin Outliers</div>
+La asimetría positiva en este caso es un fenómeno demográfico normal (alta proporción de adultos jóvenes solteros sin hijos). El límite de Tukey ($2 + 1.5 \times 2 = 5$) confirma que no existen valores atípicos en esta variable.
+</div>
+
+### Comportamiento Gráfico
+
+```{r, fig.width=10, fig.height=4.4}
+par(mfrow = c(1, 2), mar = c(4.5, 4.5, 3, 1.5))
+
+boxplot(data$Hijos,
+        horizontal = TRUE,
+        col = col_secondary,
+        border = col_dark,
+        main = "Diagrama de Caja: Hijos",
+        xlab = "Número de Hijos")
+grid(col = "gray85", lty = "dotted")
+
+hist(data$Hijos,
+     col = col_primary,
+     border = "white",
+     main = "Histograma: Hijos",
+     xlab = "Número de Hijos",
+     ylab = "Frecuencia",
+     breaks = seq(-0.5, 4.5, by = 1))
+
+par(mfrow = c(1, 1))
+```
+
+---
+
+# Diagnóstico de Integridad: Nulos y Duplicados
+
+## Análisis de Valores Faltantes ($NA$)
+
+```{r,echo=FALSE}
+# Total general de datos faltantes en la matriz de datos
+total_na <- sum(is.na(data))
+print(paste("Total general de celdas vacías (NA):", total_na))
+```
+
+A continuación se discrimina la presencia de valores nulos por columna:
+
+```{r}
+library(dplyr)
+
+na_por_columna <- colSums(is.na(data))
+
+tabla_na <- data.frame(
+  Columna = names(na_por_columna),
+  Datos_Perdidos = na_por_columna
+)
+
+tabla_na_ordenada <- tabla_na %>%
+  filter(Columna != "Total") %>%
+  arrange(desc(Datos_Perdidos)) %>%
+  rbind(data.frame(Columna = "TOTAL GENERAL", Datos_Perdidos = total_na))
+
+knitr::kable(tabla_na_ordenada, align = c("l", "c"), caption = "Conteo de valores faltantes clasificados por variable")
+```
+
+## Análisis de Filas Duplicadas
+
+```{r}
+# Identificación de registros duplicados excluyendo el ID secuencial
+duplicate_por_columna <- sapply(data, function(x) sum(duplicated(data)))
+total_duplicate <- sum(duplicated(data[,-1]))
+```
+
+Visualización de las filas duplicadas identificadas en el dataset original:
+
+```{r}
+filas_repetidas <- data[c(1, 7, 30), ]
+knitr::kable(filas_repetidas, caption = "Observaciones duplicadas identificadas correspondientes al usuario Juan Pérez")
+```
+
+Procedemos a descartar las filas duplicadas conservando la primera ocurrencia:
+
+```{r}
+# Eliminación de duplicados considerando todas las variables salvo ID
+data_sin <- data[!duplicated(data[,-1]), ]
+dim(data_sin)
+```
+
+> **Resultado:** La matriz pasa de 30 a **`r nrow(data_sin)` filas**, eliminando las 2 ocurrencias redundantes.
+
+---
+
+# Pipeline de Limpieza y Estandarización
+
+## Eliminación de Registros con Valores Faltantes ($NA$)
+
+```{r}
+data_limpia <- na.omit(data_sin)
+dim(data_limpia)
+```
+
+> **Resultado:** Tras suprimir observaciones incompletas, el conjunto de datos cuenta con **`r nrow(data_limpia)` observaciones**.
+
+## Estandarización de Variables Cualitativas
+
+Se aplica un proceso de limpieza de texto que homogeniza el formato a **Title Case** (primera letra en mayúscula y restantes en minúsculas) y elimina tildes/caracteres especiales mediante `iconv()`:
+
+```{r}
+vars_cualitativas <- c(
+  "Nombre",
+  "Apellido",
+  "Genero",
+  "Ciudad",
+  "Profesion",
+  "Nivel_Educativo",
+  "Estado_Civil",
+  "Email"
+)
+
+# Remoción de tildes y ajuste de mayúsculas/minúsculas
+data_limpia[vars_cualitativas] <- lapply(
+  data_limpia[vars_cualitativas],
+  function(x) {
+    x <- as.character(x)
+    x <- tolower(x)
+    x <- iconv(x, from = "UTF-8", to = "ASCII//TRANSLIT")
+    paste0(
+      toupper(substr(x, 1, 1)),
+      substr(x, 2, nchar(x))
+    )
+  }
+)
+```
+
+### Verificación de Frecuencias tras Estandarización
+
+```{r}
+tabla_limpia_Nivel_Educativo <- data.frame(sort(table(data_limpia$Nivel_Educativo), decreasing = TRUE))
+colnames(tabla_limpia_Nivel_Educativo) <- c("Nivel Educativo", "Frecuencia")
+knitr::kable(tabla_limpia_Nivel_Educativo, align = c("l", "c"), caption = "Nivel Educativo Estandarizado")
+```
+
+```{r}
+tabla_limpia_Genero <- data.frame(sort(table(data_limpia$Genero), decreasing = TRUE))
+colnames(tabla_limpia_Genero) <- c("Género", "Frecuencia")
+knitr::kable(tabla_limpia_Genero, align = c("l", "c"), caption = "Género Estandarizado (Niveles Unificados)")
+```
+
+```{r}
+tabla_limpia_Ciudad <- data.frame(sort(table(data_limpia$Ciudad), decreasing = TRUE))
+colnames(tabla_limpia_Ciudad) <- c("Ciudad", "Frecuencia")
+knitr::kable(tabla_limpia_Ciudad, align = c("l", "c"), caption = "Ciudad Estandarizada (Bogotá Homologada)")
+```
+
+## Homologación Semántica: `Estado_Civil`
+
+Se unifican las categorías correspondientes al género gramatical (*Casado/Casada* $\rightarrow$ **Casado**; *Soltero/Soltera* $\rightarrow$ **Soltero**):
+
+```{r}
+data_limpia$Estado_Civil_Limpio <- ifelse(
+  tolower(data_limpia$Estado_Civil) %in% c("casado", "casada"),
+  "Casado",
+  ifelse(
+    tolower(data_limpia$Estado_Civil) %in% c("soltero", "soltera"),
+    "Soltero",
+    data_limpia$Estado_Civil
+  )
+)
+
+knitr::kable(as.data.frame(table(data_limpia$Estado_Civil_Limpio)),
+             col.names = c("Estado Civil Homologado", "Frecuencia"),
+             align = c("l", "c"),
+             caption = "Distribución consolidada de Estado Civil")
+```
+
+## Depuración de Inconsistencias y Errores Lógicos
+
+A continuación se auditan y filtran los registros con incongruencias biológicas o económicas:
+
+### 1. Registros con ingresos no válidos ($\le 0$)
+
+```{r}
+knitr::kable(data_limpia[data_limpia$Ingreso <= 0, ], caption = "Inconsistencia de Ingreso detectada (Pedro y Diego)")
+```
+
+### 2. Registros con edades imposibles ($\le 0$ o $\ge 100$)
+
+```{r}
+knitr::kable(data_limpia[data_limpia$Edad <= 0 | data_limpia$Edad >= 100, ], caption = "Inconsistencia de Edad detectada (Ricardo: 200 años)")
+```
+
+### 3. Registros con número implausible de hijos
+
+```{r}
+knitr::kable(data_limpia[data_limpia$Hijos < 0 | data_limpia$Hijos >= 12, ], caption = "Auditoría de Hijos (sin inconsistencias)")
+```
+
+### Creación del dataset sin errores lógicos
+
+Se eliminan las filas con anomalías evidentes:
+
+```{r}
+data_sin_errores <- data_limpia[
+  !(data_limpia$Edad <= 0 | data_limpia$Edad > 100 | data_limpia$Ingreso < 0),
+]
+dim(data_sin_errores)
+```
+
+---
+
+# Detección y Tratamiento Formal de Outliers
+
+## Fundamentación Matemática: Método del Rango Intercuartílico (IQR)
+
+Para la identificación de datos atípicos (*outliers*) se empleó el método del **Rango Intercuartílico (IQR)**, una metodología no paramétrica y robusta frente a distribuciones asimétricas al sustentarse en medidas de posición (cuartiles). 
+
+El procedimiento se fundamenta en establecer la dispersión del 50% central de los datos mediante:
+
+$$\text{IQR} = Q_3 - Q_1$$
+
+A partir de este rango de dispersión, se definen los umbrales de normalidad analítica de Tukey:
+
+$$\text{Límite Inferior} = Q_1 - 1.5 \times \text{IQR}$$
+$$\text{Límite Superior} = Q_3 + 1.5 \times \text{IQR}$$
+
+Cualquier observación $x_i$ que cumpla $x_i < \text{Límite Inferior}$ o $x_i > \text{Límite Superior}$ se cataloga formalmente como un **valor atípico moderado**, mientras que aquellas que sobrepasen $3 \times \text{IQR}$ corresponden a **valores extremos**.
+
+## Detección en la Variable `Ingreso`
+
+```{r}
+# Cálculo de cuartiles y rango intercuartílico
+Q1 <- quantile(data_sin_errores$Ingreso, 0.25) 
+Q3 <- quantile(data_sin_errores$Ingreso, 0.75)
+IQR_valor <- IQR(data_sin_errores$Ingreso)
+
+# Definición de límites de corte
+limite_inferior <- Q1 - 1.5 * IQR_valor
+limite_superior <- Q3 + 1.5 * IQR_valor
+
+# Identificación de observaciones atípicas
+valores_atipicos <- data_sin_errores[
+  data_sin_errores$Ingreso < limite_inferior |
+  data_sin_errores$Ingreso > limite_superior,
+]
+
+knitr::kable(valores_atipicos, caption = "Valores Atípicos identificados en la variable Ingreso")
+```
+
+## Depuración del Outlier Extremo
+
+Se procede a excluir el registro atípico correspondiente al ingreso anómalo de 50,000:
+
+```{r}
+data_sin_errores <- data_sin_errores[
+  data_sin_errores$Ingreso >= limite_inferior &
+  data_sin_errores$Ingreso <= limite_superior,
+]
+
+summary(data_sin_errores$Ingreso)
+dim(data_sin_errores)
+```
+
+<div class="callout callout-success">
+<div class="callout-title">✅ Resultado de la Depuración de Outliers</div>
+Tras remover el valor atípico de 50,000, la media aritmética desciende a <strong>`r round(mean(data_sin_errores$Ingreso), 2)`</strong>, alineándose de forma armoniosa y representativa con la mediana (<strong>`r median(data_sin_errores$Ingreso)`</strong>).
+</div>
+
+---
+
+# Transformación y Escalado de Características
+
+## Estandarización (*Z-Score*)
+
+La **estandarización** o reescalamiento *Z-score* transforma las variables cuantitativas continuas para que compartan una escala común con media $\mu = 0$ y varianza unitaria $\sigma^2 = 1$.
+
+Para cada observación $x_i$, su puntuación estandarizada se define matemáticamente como:
+
+$$z_i = \frac{x_i - \bar{x}}{s}$$
+
+Donde los estimadores muestrales de media ($\bar{x}$) y desviación estándar insesgada ($s$) se definen por:
+
+$$\bar{x} = \frac{1}{n} \sum_{i=1}^{n} x_i \qquad \text{y} \qquad s = \sqrt{\frac{1}{n - 1} \sum_{i=1}^{n} (x_i - \bar{x})^2}$$
+
+<div class="callout callout-info">
+<div class="callout-title">📘 Relevancia en Modelos de Inteligencia Artificial</div>
+Este paso es fundamental antes de entrenar algoritmos sensibles a la magnitud o basados en funciones de distancia euclidiana (como <em>K-Means</em>, <em>PCA</em>, <em>KNN</em>, <em>SVM</em> o Redes Neuronales Artificiales), previniendo que variables con escalas nominales mayores dominen indebidamente el aprendizaje.
+</div>
+
+### Aplicación en R:
+
+```{r}
+# Escalamiento Z-Score
+data_sin_errores$Ingreso_est <- as.vector(scale(data_sin_errores$Ingreso))
+
+summary(data_sin_errores$Ingreso_est)
+```
+
+### Visualización del Ingreso Estandarizado
+
+```{r, fig.width=10, fig.height=4.4}
+par(mfrow = c(1, 2), mar = c(4.5, 4.5, 3, 1.5))
+
+boxplot(data_sin_errores$Ingreso_est,
+        horizontal = TRUE,
+        col = col_secondary,
+        border = col_dark,
+        main = "Boxplot: Ingreso Estandarizado (Z-Score)",
+        xlab = "Puntuación Z (Desviaciones Estándar)")
+grid(col = "gray85", lty = "dotted")
+
+hist(data_sin_errores$Ingreso_est,
+     col = col_primary,
+     border = "white",
+     main = "Histograma: Ingreso Estandarizado",
+     xlab = "Puntuación Z",
+     ylab = "Frecuencia",
+     breaks = 10)
+abline(v = 0, col = "red", lwd = 2, lty = 2)
+legend("topright", legend = c("Media = 0"), col = "red", lty = 2, lwd = 2, bty = "n")
+
+par(mfrow = c(1, 1))
+```
+
+---
+
+## Normalización *Min-Max*
+
+La normalización *Min-Max* es una técnica lineal que proyecta el rango de una variable cuantitativa hacia un intervalo cerrado acotado, típicamente $[0, 1]$:
+
+$$x'_i = \frac{x_i - \min(X)}{\max(X) - \min(X)}$$
+
+Para escalar hacia un rango genérico arbitrario $[a, b]$, la expresión general adopta la forma:
+
+$$x'_i = a + \frac{(x_i - \min(X))(b - a)}{\max(X) - \min(X)}$$
+
+```{r}
+# Normalización Min-Max al rango [0, 1]
+data_sin_errores$Ingreso_norm <- (
+  data_sin_errores$Ingreso - min(data_sin_errores$Ingreso)
+) / (max(data_sin_errores$Ingreso) - min(data_sin_errores$Ingreso))
+
+summary(data_sin_errores$Ingreso_norm)
+```
+
+---
+
+## Transformaciones para Corrección de Asimetría
+
+Cuando una variable presenta un sesgo pronunciado a la derecha (*positive skewness*), se aplican transformaciones no lineales para estabilizar la varianza y aproximar el comportamiento de los residuos a la normalidad:
+
+1. **Transformación Logarítmica:** Comprime valores elevados y expande los inferiores ($x_i > 0$):
+   $$y_i = \ln(x_i) \qquad \text{o bien} \qquad y_i = \ln(x_i + 1)$$
+
+2. **Transformación de Raíz Cuadrada:** Alternativa moderada ideal para variables de conteo ($x_i \ge 0$):
+   $$y_i = \sqrt{x_i}$$
+
+3. **Transformación de Box-Cox:** Familia paramétrica generalizada en función de un parámetro $\lambda$ estimado por máxima verosimilitud ($x_i > 0$):
+   $$y_i(\lambda) = \begin{cases} \dfrac{x_i^\lambda - 1}{\lambda} & \text{si } \lambda \neq 0 \\[10pt] \ln(x_i) & \text{si } \lambda = 0 \end{cases}$$
+
+---
+
+# Exportación del Dataset Depurado
+
+Una vez finalizado el ciclo integral de auditoría, limpieza, homologación y transformación, el conjunto de datos resultante se exporta a formato Excel en el directorio `RESULTADOS`:
+
+```{r}
+library(writexl)
+
+# Exportación a formato Excel
+write_xlsx(data_sin_errores, "../RESULTADOS/datafinal.xlsx")
+```
+
+<div class="callout callout-success">
+<div class="callout-title">🎉 Proceso de Limpieza y Preprocesamiento Culminado Exitosamente</div>
+El archivo depurado final ha sido almacenado en <code>CLASE_1/RESULTADOS/datafinal.xlsx</code> con <strong>`r nrow(data_sin_errores)` observaciones</strong> íntegras, variables estandarizadas, sin duplicados ni inconsistencias de captura.
+</div>
