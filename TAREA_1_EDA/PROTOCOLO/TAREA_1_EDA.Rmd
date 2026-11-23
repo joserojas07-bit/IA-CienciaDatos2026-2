@@ -1,0 +1,857 @@
+---
+title: "Tarea 1: Análisis Exploratorio de Datos (EDA)"
+subtitle: "Especialización en Inteligencia Artificial · Ciencia de Datos y Toma de Decisiones"
+author: "José Daniel Rojas Verbel"
+date: "2026"
+lang: es
+output:
+  html_document:
+    theme: default
+    highlight: tango
+    toc: true
+    toc_depth: 3
+    toc_float:
+      collapsed: false
+      smooth_scroll: true
+    number_sections: true
+    code_folding: show
+    df_print: paged
+    self_contained: true
+  pdf_document:
+    latex_engine: xelatex
+    toc: true
+    toc_depth: 3
+    number_sections: true
+    highlight: tango
+    fig_caption: true
+---
+
+```{css, echo=FALSE, eval=knitr::is_html_output()}
+/* ---------- Estilo general del informe (solo HTML) ---------- */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.65;
+  color: #1e293b;
+  background-color: #f8fafc;
+}
+.main-container { max-width: 1100px; }
+
+h1.title    { color: #1e3a8a; font-weight: 800; letter-spacing: -0.5px; }
+h3.subtitle { color: #475569; font-weight: 400; }
+h4.author, h4.date { color: #64748b; }
+
+h1 {
+  color: #1e3a8a;
+  font-weight: 700;
+  font-size: 1.7em;
+  margin-top: 1.9em;
+  padding-bottom: 0.3em;
+  border-bottom: 2px solid #e0f2fe;
+}
+h2 { color: #0f172a; font-weight: 600; font-size: 1.3em; margin-top: 1.6em; }
+h3 { color: #334155; font-weight: 600; font-size: 1.1em; }
+
+#TOC .list-group-item { font-size: 0.88em; }
+.list-group-item.active,
+.list-group-item.active:hover,
+.list-group-item.active:focus {
+  background-color: #1e3a8a;
+  border-color: #1e3a8a;
+  color: #ffffff;
+}
+
+table {
+  width: auto;
+  max-width: 100%;
+  margin: 1.2em auto;
+  border-collapse: collapse;
+  font-size: 0.9em;
+  background: #ffffff;
+}
+table th {
+  background: #f1f5f9;
+  color: #1e3a8a;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-bottom: 2px solid #e2e8f0;
+}
+table td { padding: 7px 14px; border-bottom: 1px solid #edf2f7; }
+table tbody tr:nth-child(even) { background: #f8fafc; }
+table caption { caption-side: top; text-align: center; font-style: italic; color: #64748b; }
+
+pre.sourceCode { border-radius: 8px; }
+pre:not([class]) {
+  background: #f1f5f9;
+  color: #334155;
+  border: none;
+  border-left: 4px solid #2563eb;
+  border-radius: 0 8px 8px 0;
+}
+code:not(pre code) { color: #0284c7; background: #f1f5f9; }
+
+img { max-width: 100%; }
+p.caption { text-align: center; font-style: italic; color: #64748b; font-size: 0.88em; }
+
+.meta-box {
+  background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 60%, #0369a1 100%);
+  color: #f1f5f9;
+  padding: 18px 24px;
+  border-radius: 14px;
+  margin: 1.5em 0 2em;
+  line-height: 1.9;
+}
+.meta-box strong { color: #93c5fd; }
+.meta-box a { color: #93c5fd; text-decoration: underline; }
+
+.callout {
+  background: #f0fdf4;
+  border-left: 4px solid #22c55e;
+  color: #14532d;
+  padding: 12px 18px;
+  border-radius: 0 8px 8px 0;
+  margin: 1.2em 0;
+}
+
+.interpretacion {
+  background: #eff6ff;
+  border-left: 4px solid #2563eb;
+  color: #1e3a8a;
+  padding: 10px 18px;
+  border-radius: 0 8px 8px 0;
+  margin: 1em 0 1.6em;
+}
+
+.report-footer {
+  text-align: center;
+  color: #64748b;
+  font-size: 0.85em;
+  border-top: 1px solid #e2e8f0;
+  margin-top: 3em;
+  padding-top: 1.2em;
+}
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo       = TRUE,
+  warning    = FALSE,
+  message    = FALSE,
+  comment    = "",
+  fig.align  = "center",
+  fig.width  = 9,
+  fig.height = 5,
+  out.width  = "90%"
+)
+```
+
+::: {.meta-box}
+**Institución:** Universidad Pedagógica y Tecnológica de Colombia (UPTC)\
+**Estudiante:** José Daniel Rojas Verbel · **Código:** 202624475\
+**Fuente de datos:** DANE — Encuesta de Consumo Cultural (ECC)\
+**Dataset analizado:** Niños de 5 a 11 años — Espacios culturales\
+**Repositorio GitHub:** [Repositorio Tarea 1](https://github.com/joserojas07-bit/IA-CienciaDatos2026-2/tree/main/TAREA_1_EDA)\
+**Reporte interactivo:** [Ver reporte HTML en línea](https://joserojas07-bit.github.io/IA-CienciaDatos2026-2/TAREA_2_EDA/PROTOCOLO/TAREA_1_EDA.html)
+:::
+
+# Introducción y contexto
+
+El presente informe técnico aplica metodologías de **Análisis Exploratorio de Datos (EDA)** a información estadística oficial del **DANE (Departamento Administrativo Nacional de Estadística)**, tomada del catálogo de microdatos de la **Encuesta de Consumo Cultural (ECC)**. El propósito es examinar la participación de la niñez colombiana en espacios de formación cultural y artística, detectando patrones, brechas territoriales y diferencias por sexo.
+
+## Planteamiento del problema
+
+El acceso y la apropiación temprana de espacios culturales (bibliotecas, museos, salas de exposición, centros culturales, parques naturales y monumentos) son pilares del desarrollo cognitivo, emocional y social de la infancia. Sin embargo, en Colombia persisten brechas territoriales y socioeconómicas que limitan las oportunidades de interacción cultural de niños y niñas entre 5 y 11 años.
+
+La ECC permite medir esta participación, pero sus microdatos están distribuidos en varios módulos y requieren depuración antes de producir indicadores confiables. Se necesita, por tanto, un diagnóstico cuantitativo que responda: ¿cuántos menores asisten a espacios culturales y a cuántos de ellos?, ¿hay diferencias por sexo y por tipo de espacio?, ¿cómo se distribuye la participación entre las unidades territoriales del país? La ausencia de este diagnóstico dificulta la focalización de políticas públicas orientadas a democratizar la cultura y a garantizar entornos de aprendizaje enriquecidos en la niñez.
+
+**Palabras clave:** consumo cultural infantil, DANE, EDA, espacios culturales, bibliotecas, brechas territoriales.
+
+## Objetivo general
+
+Realizar un análisis exploratorio del módulo *"Niños de 5 a 11 espacios culturales y formación práctica"* de la Encuesta de Consumo Cultural del DANE, caracterizando la asistencia a espacios culturales según edad, sexo y territorio mediante estadística descriptiva y visualización en R.
+
+## Objetivos específicos
+
+1. **Depurar** el conjunto de microdatos: cuantificar y tratar los valores perdidos y eliminar registros duplicados, documentando cuántas filas se ven afectadas en cada paso.
+2. **Calcular medidas descriptivas** (media, mediana, moda, desviación estándar, cuartiles, mínimo y máximo) para la edad y para el total de espacios culturales visitados.
+3. **Describir la asistencia** por sexo y por tipo de espacio mediante tablas de frecuencia y gráficos (histograma, diagrama de caja y barras).
+4. **Elaborar un ranking territorial** de participación cultural infantil por región DANE (el nivel geográfico más desagregado que traen los microdatos), medido como el porcentaje de niños con al menos una visita en los últimos 12 meses.
+
+# Selección y descripción del conjunto de datos
+
+**Fuente.** Los datos provienen del catálogo de microdatos del DANE (<https://microdatos.dane.gov.co/index.php/catalog/central/about>), sector *Sociedad → Cultura*, correspondiente a la Encuesta de Consumo Cultural (ECC 2020). Se eligió este conjunto por su relevancia para la política cultural y educativa y porque permite combinar variables cuantitativas, cualitativas y territoriales.
+
+**Unidad de observación.** Un niño o niña de 5 a 11 años encuestado en un hogar. La información se reparte en tres archivos que se relacionan mediante la clave `DIRECTORIO` y las llaves jerárquicas del DANE (`NRO_ENCUESTA`, `HOGAR_NUMERO`, `PERSONA_NUMERO`):
+
+| Archivo | Contenido utilizado |
+|:--|:--|
+| `Niños de 5 a 11 espacios culturales y formacion practica..csv` | Asistencia del menor a cada tipo de espacio cultural (`P5485` a `P5490`). |
+| `Caracteristicas generales.csv` | Sexo (`P6020`) y edad (`P5785`) del menor. |
+| `Viviendas.csv` | Ubicación geográfica de la vivienda (región DANE). |
+
+## Carga de datos y librerías
+
+Se cargan las librerías necesarias y se importan los tres conjuntos de microdatos (delimitador punto y coma):
+
+```{r librerias}
+library(dplyr)
+library(ggplot2)
+library(knitr)
+```
+
+```{r carga-datos}
+# Rutas de los microdatos (delimitador ';')
+ruta_ninos  <- "../DATOS/Niños de 5 a 11 espacios culturales y formacion practica..csv"
+ruta_caract <- "../DATOS/Caracteristicas generales.csv"
+ruta_viv    <- "../DATOS/Viviendas.csv"
+
+df_ninos_raw  <- read.csv(ruta_ninos,  sep = ";", stringsAsFactors = FALSE)
+df_caract_raw <- read.csv(ruta_caract, sep = ";", stringsAsFactors = FALSE)
+df_viv_raw    <- read.csv(ruta_viv,    sep = ";", stringsAsFactors = FALSE)
+```
+
+Dimensiones iniciales de cada conjunto de datos:
+
+```{r dimensiones}
+dimensiones <- data.frame(
+  `Conjunto de datos` = c("Microdatos Niños 5 a 11 años (df_ninos_raw)",
+                          "Características generales (df_caract_raw)",
+                          "Viviendas y territorio (df_viv_raw)"),
+  Filas    = c(nrow(df_ninos_raw), nrow(df_caract_raw), nrow(df_viv_raw)),
+  Columnas = c(ncol(df_ninos_raw), ncol(df_caract_raw), ncol(df_viv_raw)),
+  check.names = FALSE
+)
+
+kable(dimensiones, format.args = list(big.mark = "."), align = "lrr",
+      caption = "Dimensiones de los conjuntos de datos importados")
+```
+
+## Selección de variables de estudio
+
+Siguiendo la guía de la tarea, se seleccionaron una variable cuantitativa, una cualitativa y un código territorial, junto con variables de apoyo. Los archivos del DANE no incluyen departamento ni municipio (se verifica en la sección 2.3), por lo que el código territorial es la región, el nivel geográfico más desagregado disponible:
+
+| Variable original | Variable en estudio | Tipo de variable | Rol según la guía | Definición / escala |
+|:--|:--|:--|:--|:--|
+| *(derivada de `P5485` a `P5490`)* | `TOTAL_ESPACIOS` | Cuantitativa discreta | **Variable cuantitativa principal** | Número de espacios culturales a los que asistió el menor (0 a 6). |
+| `P5785` | `EDAD` | Cuantitativa discreta | Cuantitativa de apoyo | Años cumplidos del menor (rango esperado: 5 a 11). |
+| `P6020` | `SEXO` | Cualitativa nominal dicotómica | **Variable cualitativa** | 1 = Hombre, 2 = Mujer. |
+| `P5485` a `P5490` | Asistencia por tipo de espacio | Cualitativa nominal dicotómica | Cualitativa de apoyo | 1 = Sí asistió en los últimos 12 meses, 2 = No asistió. |
+| `REGION` | `REGION_NOMBRE` | Cualitativa nominal | **Código territorial** | 1 = Caribe, 2 = Oriental, 3 = Central, 4 = Pacífica, 5 = Bogotá D.C., 6 = Amazonía-Orinoquía. |
+
+## Exploración y descripción del conjunto de datos
+
+Antes de la limpieza se inspecciona la estructura de las variables seleccionadas en cada archivo: su clase en R, la cantidad de valores distintos y los valores perdidos.
+
+### Variables geográficas disponibles
+
+Se busca en el módulo de viviendas la variable de departamento (o municipio) que exige la guía:
+
+```{r exploracion-geo}
+geo_disponibles <- grep("DPTO|DEPTO|DEPARTAMENTO|MPIO|MUNICIPIO|DOMINIO|REGION|AREA|CLASE",
+                        names(df_viv_raw), value = TRUE, ignore.case = TRUE)
+
+col_dpto   <- grep("^(DPTO|DEPTO|DEPARTAMENTO)", names(df_viv_raw),
+                   value = TRUE, ignore.case = TRUE)[1]
+tiene_dpto <- !is.na(col_dpto)
+
+cat("Variables geográficas en Viviendas.csv:", paste(geo_disponibles, collapse = ", "), "\n")
+cat("Variable de departamento detectada:", ifelse(tiene_dpto, col_dpto, "ninguna"), "\n")
+```
+
+Para descartar que el departamento esté en otro archivo descargado, se revisan los encabezados de todos los CSV de la carpeta de datos:
+
+```{r exploracion-geo-archivos}
+archivos_csv <- list.files("../DATOS", pattern = "\\.csv$", full.names = TRUE)
+
+auditoria_geo <- do.call(rbind, lapply(archivos_csv, function(f) {
+  cab <- tryCatch(names(read.csv(f, sep = ";", nrows = 1)), error = function(e) character(0))
+  geo <- grep("DPTO|DEPTO|DEPARTAMENTO|MPIO|MUNICIPIO|DIVIPOLA", cab,
+              value = TRUE, ignore.case = TRUE)
+  data.frame(Archivo = basename(f),
+             Columnas = length(cab),
+             `Departamento / municipio` = ifelse(length(geo) > 0, paste(geo, collapse = ", "), "no incluye"),
+             check.names = FALSE)
+}))
+
+kable(auditoria_geo, align = "lcl",
+      caption = "Búsqueda de variables de departamento o municipio en los archivos descargados")
+```
+
+### Variables y archivos de origen
+
+```{r exploracion-estructura}
+llaves <- c("DIRECTORIO", "NRO_ENCUESTA", "HOGAR_NUMERO", "PERSONA_NUMERO")
+
+# Indicadores de asistencia (P5485 a P5490) y su etiqueta
+cols_espacios <- c("P5485", "P5486", "P5487", "P5488", "P5489", "P5490")
+etiquetas_espacios <- c(
+  P5485 = "Biblioteca",
+  P5486 = "Museo / Galería",
+  P5487 = "Sala de exposición",
+  P5488 = "Centro cultural",
+  P5489 = "Parque natural / Zoológico",
+  P5490 = "Monumento / Patrimonio"
+)
+
+origen <- list(
+  "Niños de 5 a 11"           = list(datos = df_ninos_raw,  vars = c(llaves, cols_espacios)),
+  "Características generales" = list(datos = df_caract_raw, vars = c("P6020", "P5785")),
+  "Viviendas"                 = list(datos = df_viv_raw,
+                                     vars  = c("REGION", if (tiene_dpto) col_dpto))
+)
+
+resumen_vars <- do.call(rbind, lapply(names(origen), function(nombre) {
+  d <- origen[[nombre]]$datos
+  v <- origen[[nombre]]$vars
+  data.frame(
+    Archivo             = nombre,
+    Variable            = v,
+    Clase               = sapply(d[v], function(x) class(x)[1]),
+    `Valores distintos` = sapply(d[v], function(x) length(unique(x))),
+    `Valores perdidos`  = sapply(d[v], function(x) sum(is.na(x))),
+    check.names = FALSE,
+    row.names   = NULL
+  )
+}))
+
+kable(resumen_vars, align = "llcrr",
+      caption = "Estructura de las variables seleccionadas en los archivos de origen")
+```
+
+### Verificación de la codificación de la asistencia
+
+Los seis indicadores de asistencia vienen codificados como 1 = Sí y 2 = No. Se verifica que no existan otros códigos y se cuentan los valores atípicos o vacíos:
+
+```{r exploracion-codificacion}
+codificacion <- t(sapply(cols_espacios, function(v) {
+  x <- df_ninos_raw[[v]]
+  c("1 = Sí"    = sum(x == 1, na.rm = TRUE),
+    "2 = No"    = sum(x == 2, na.rm = TRUE),
+    "Otro / NA" = sum(!(x %in% c(1, 2))))
+}))
+
+tabla_codificacion <- data.frame(
+  Variable = cols_espacios,
+  Espacio  = unname(etiquetas_espacios[cols_espacios]),
+  codificacion,
+  check.names = FALSE,
+  row.names   = NULL
+)
+
+kable(tabla_codificacion, align = "llrrr",
+      format.args = list(big.mark = "."),
+      caption = "Frecuencia de cada código de asistencia por tipo de espacio")
+```
+
+### Vista previa de los microdatos
+
+```{r exploracion-vista-previa}
+kable(head(df_ninos_raw[, c(llaves, cols_espacios)], 6),
+      caption = "Primeras filas del módulo de niños (llaves e indicadores de asistencia)")
+```
+
+Esta exploración confirma la estructura de partida. Los estadísticos descriptivos y las visualizaciones se presentan en la sección **Análisis exploratorio y visualización**, una vez construidas las variables derivadas.
+
+# Limpieza y procesamiento inicial
+
+El procedimiento de limpieza siguió cuatro pasos: (1) integración de los módulos y estandarización de variables, (2) detección y tratamiento de datos perdidos, (3) detección y eliminación de duplicados e inconsistencias, y (4) resumen del número de registros que permanece tras cada paso.
+
+## Integración y estandarización
+
+Se integran las variables demográficas (`P6020`, `P5785`) del módulo de características generales y las variables geográficas del módulo de viviendas con el módulo de niños, usando las llaves del DANE:
+
+```{r integracion-datos}
+n_inicial <- nrow(df_ninos_raw)
+
+cols_viv <- c("DIRECTORIO", "REGION", if (tiene_dpto) col_dpto)
+
+df_merge <- merge(
+  df_ninos_raw,
+  df_caract_raw[, c(llaves, "P6020", "P5785")],
+  by = llaves,
+  all.x = TRUE
+)
+
+df_total <- merge(
+  df_merge,
+  df_viv_raw[, cols_viv],
+  by = "DIRECTORIO",
+  all.x = TRUE
+)
+
+n_integrado <- nrow(df_total)
+```
+
+Se estandarizan los tipos de datos, se nombran las categorías y se construye la variable agregada `TOTAL_ESPACIOS`. Los códigos de asistencia distintos de 1 (Sí) y 2 (No) se convierten en `NA` para no contarlos como "no asistió" por error:
+
+```{r estandarizacion}
+df_total$EDAD <- as.numeric(df_total$P5785)
+df_total$SEXO <- factor(df_total$P6020, levels = c(1, 2), labels = c("Hombre", "Mujer"))
+df_total$REGION_NOMBRE <- factor(
+  df_total$REGION,
+  levels = 1:6,
+  labels = c("Caribe", "Oriental", "Central", "Pacífica", "Bogotá D.C.", "Amazonía-Orinoquía")
+)
+
+# Departamento: códigos DIVIPOLA del DANE
+if (tiene_dpto) {
+  divipola <- data.frame(
+    cod = c(5, 8, 11, 13, 15, 17, 18, 19, 20, 23, 25, 27, 41, 44, 47, 50, 52, 54,
+            63, 66, 68, 70, 73, 76, 81, 85, 86, 88, 91, 94, 95, 97, 99),
+    nombre = c("Antioquia", "Atlántico", "Bogotá D.C.", "Bolívar", "Boyacá", "Caldas",
+               "Caquetá", "Cauca", "Cesar", "Córdoba", "Cundinamarca", "Chocó", "Huila",
+               "La Guajira", "Magdalena", "Meta", "Nariño", "Norte de Santander",
+               "Quindío", "Risaralda", "Santander", "Sucre", "Tolima", "Valle del Cauca",
+               "Arauca", "Casanare", "Putumayo", "San Andrés y Providencia", "Amazonas",
+               "Guainía", "Guaviare", "Vaupés", "Vichada")
+  )
+  idx <- match(suppressWarnings(as.integer(df_total[[col_dpto]])), divipola$cod)
+  df_total$DEPARTAMENTO <- ifelse(is.na(idx), as.character(df_total[[col_dpto]]),
+                                  divipola$nombre[idx])
+}
+
+# Variable cuantitativa agregada: total de espacios culturales visitados
+for (col in cols_espacios) {
+  df_total[[paste0(col, "_asistio")]] <- ifelse(df_total[[col]] == 1, 1,
+                                         ifelse(df_total[[col]] == 2, 0, NA))
+}
+df_total$TOTAL_ESPACIOS <- rowSums(df_total[, paste0(cols_espacios, "_asistio")])
+```
+
+## Datos perdidos
+
+En las encuestas del DANE, los campos con preguntas de filtro o salto condicional quedan vacíos cuando la subpregunta no aplica al encuestado (por ejemplo, la frecuencia `P5485S1` solo se diligencia si el niño asistió a la biblioteca, es decir, `P5485 == 1`). Estos vacíos son **estructurales** y no son errores de captura, por lo que no se imputan.
+
+Primero se cuantifican los valores perdidos en las variables de estudio:
+
+```{r datos-faltantes}
+vars_estudio <- c("EDAD", "SEXO", "REGION_NOMBRE",
+                  if (tiene_dpto) "DEPARTAMENTO", "TOTAL_ESPACIOS")
+
+nulos_estudio <- data.frame(
+  Variable           = vars_estudio,
+  `Valores perdidos` = sapply(df_total[vars_estudio], function(x) sum(is.na(x))),
+  `% del total`      = round(100 * sapply(df_total[vars_estudio], function(x) mean(is.na(x))), 2),
+  check.names = FALSE,
+  row.names   = NULL
+)
+
+kable(nulos_estudio, align = "lcc", caption = "Valores perdidos en las variables de estudio")
+```
+
+Y se identifican las columnas del conjunto integrado con más valores vacíos (en su mayoría, variables de filtro):
+
+```{r perdidos-globales}
+perd_global <- sort(colSums(is.na(df_total)), decreasing = TRUE)
+perd_global <- perd_global[perd_global > 0]
+
+if (length(perd_global) > 0) {
+  kable(data.frame(Variable = names(head(perd_global, 10)),
+                   `Valores perdidos` = as.integer(head(perd_global, 10)),
+                   `% del total` = round(100 * head(perd_global, 10) / nrow(df_total), 1),
+                   check.names = FALSE, row.names = NULL),
+        align = "lcc",
+        caption = "Columnas con más valores perdidos (top 10)")
+} else {
+  cat("Ninguna columna del conjunto integrado presenta valores perdidos.\n")
+}
+```
+
+**Tratamiento aplicado.** Para las variables de estudio se aplica **exclusión** de los registros con algún valor perdido (análisis de casos completos): son variables categóricas o de conteo de una encuesta, y imputarlas introduciría valores que el encuestado no declaró.
+
+```{r exclusion-perdidos}
+n_antes_na <- nrow(df_total)
+df_total   <- df_total[complete.cases(df_total[, vars_estudio]), ]
+n_excluidos_na <- n_antes_na - nrow(df_total)
+```
+
+Registros excluidos por valores perdidos en las variables de estudio: **`r n_excluidos_na`**.
+
+## Datos duplicados e inconsistencias
+
+Se verifica que la clave primaria de persona (`DIRECTORIO`, `NRO_ENCUESTA`, `HOGAR_NUMERO`, `PERSONA_NUMERO`) no se repita tras la integración, que no existan filas completamente idénticas y que las edades estén dentro del rango esperado del módulo (5 a 11 años):
+
+```{r duplicados}
+n_dup_clave  <- sum(duplicated(df_total[, llaves]))
+n_dup_fila   <- sum(duplicated(df_total))
+n_edad_fuera <- sum(!(df_total$EDAD %in% 5:11))
+
+kable(data.frame(
+  Verificación = c("Registros con clave primaria repetida",
+                   "Filas completamente duplicadas",
+                   "Edades fuera del rango 5 a 11 años"),
+  Registros = c(n_dup_clave, n_dup_fila, n_edad_fuera)
+), align = "lc", caption = "Verificación de duplicados e inconsistencias")
+```
+
+Se eliminan los duplicados por clave primaria y los registros con edad fuera del rango del módulo:
+
+```{r eliminar-duplicados}
+n_antes_dup <- nrow(df_total)
+df_total <- df_total[!duplicated(df_total[, llaves]), ]
+n_eliminados_dup <- n_antes_dup - nrow(df_total)
+
+n_antes_edad <- nrow(df_total)
+df_total <- df_total[df_total$EDAD %in% 5:11, ]
+n_eliminados_edad <- n_antes_edad - nrow(df_total)
+
+n_final <- nrow(df_total)
+```
+
+## Resumen del proceso de limpieza
+
+```{r resumen-limpieza}
+kable(data.frame(
+  Etapa = c("Registros del módulo de niños (inicial)",
+            "Tras integrar los tres módulos",
+            "Excluidos por valores perdidos",
+            "Eliminados por clave duplicada",
+            "Eliminados por edad fuera de rango",
+            "Registros finales para el análisis"),
+  Registros = c(n_inicial, n_integrado, n_excluidos_na, n_eliminados_dup,
+                n_eliminados_edad, n_final)
+), align = "lr", format.args = list(big.mark = "."),
+caption = "Registros en cada etapa de la limpieza")
+```
+
+::: {.callout}
+**Hallazgo de integridad:** de `r n_inicial` registros iniciales quedan `r n_final` para el análisis (`r round(100 * n_final / n_inicial, 1)`%). Se excluyeron `r n_excluidos_na` registros por valores perdidos, se eliminaron `r n_eliminados_dup` duplicados y `r n_eliminados_edad` registros con edad fuera de rango.
+:::
+
+# Análisis exploratorio y visualización
+
+## Análisis estadístico descriptivo
+
+Medidas de tendencia central (media, mediana, moda), dispersión (desviación estándar, rango intercuartílico) y posición (mínimo, cuartiles y máximo) para las variables cuantitativas `EDAD` y `TOTAL_ESPACIOS`:
+
+```{r estadisticas-descriptivas}
+moda <- function(x) {
+  ux <- unique(x)
+  ux[which.max(tabulate(match(x, ux)))]
+}
+
+resumir <- function(x) {
+  c(n = length(x),
+    Media = mean(x),
+    Mediana = median(x),
+    Moda = moda(x),
+    `Desv. estándar` = sd(x),
+    Mínimo = min(x),
+    Q1 = unname(quantile(x, 0.25)),
+    Q3 = unname(quantile(x, 0.75)),
+    Máximo = max(x),
+    RIC = IQR(x))
+}
+
+tab_desc <- rbind(
+  `EDAD (años)`    = resumir(df_total$EDAD),
+  `TOTAL_ESPACIOS` = resumir(df_total$TOTAL_ESPACIOS)
+)
+
+kable(round(tab_desc, 2), align = "c",
+      caption = "Estadísticos descriptivos de EDAD y TOTAL_ESPACIOS (RIC = rango intercuartílico)")
+
+# Valores usados en el texto del informe
+edad_mean <- mean(df_total$EDAD)
+edad_med  <- median(df_total$EDAD)
+edad_moda <- moda(df_total$EDAD)
+esp_mean  <- mean(df_total$TOTAL_ESPACIOS)
+esp_med   <- median(df_total$TOTAL_ESPACIOS)
+esp_moda  <- moda(df_total$TOTAL_ESPACIOS)
+esp_max   <- max(df_total$TOTAL_ESPACIOS)
+```
+
+::: {.interpretacion}
+**Interpretación.** La edad promedio es `r round(edad_mean, 2)` años (mediana `r edad_med`, moda `r edad_moda`), dentro del rango esperado de 5 a 11 años. En `TOTAL_ESPACIOS` la media es `r round(esp_mean, 2)` frente a una mediana de `r esp_med` y una moda de `r esp_moda`: `r if (esp_mean > esp_med) "la media supera a la mediana, lo que indica una distribución asimétrica a la derecha, con pocos niños que visitan varios espacios" else "la media no supera a la mediana, por lo que la distribución no presenta asimetría a la derecha"`. El máximo observado es de `r esp_max` espacios.
+:::
+
+Distribución del número de espacios visitados por niño:
+
+```{r distribucion-espacios}
+tab_esp <- df_total %>%
+  count(TOTAL_ESPACIOS, name = "Niños") %>%
+  mutate(`Porcentaje (%)` = round(100 * Niños / sum(Niños), 2))
+
+kable(tab_esp, align = "ccc", caption = "Niños según número de espacios culturales visitados")
+
+n_cero   <- sum(df_total$TOTAL_ESPACIOS == 0)
+pct_cero <- round(100 * n_cero / nrow(df_total), 1)
+```
+
+Frecuencias de la variable cualitativa `SEXO`, junto con el promedio de espacios visitados por cada grupo:
+
+```{r estadisticas-sexo}
+tab_sexo <- df_total %>%
+  group_by(SEXO) %>%
+  summarise(Niños = n(),
+            `Media de espacios` = round(mean(TOTAL_ESPACIOS), 2),
+            .groups = "drop") %>%
+  mutate(`Porcentaje (%)` = round(100 * Niños / sum(Niños), 2)) %>%
+  select(SEXO, Niños, `Porcentaje (%)`, `Media de espacios`)
+
+kable(tab_sexo, align = "lccc", caption = "Distribución por sexo y media de espacios visitados")
+
+pct_hombres <- tab_sexo[["Porcentaje (%)"]][tab_sexo$SEXO == "Hombre"]
+pct_mujeres <- tab_sexo[["Porcentaje (%)"]][tab_sexo$SEXO == "Mujer"]
+media_h     <- tab_sexo[["Media de espacios"]][tab_sexo$SEXO == "Hombre"]
+media_m     <- tab_sexo[["Media de espacios"]][tab_sexo$SEXO == "Mujer"]
+
+# Prueba de suma de rangos de Wilcoxon: TOTAL_ESPACIOS según sexo
+p_sexo   <- wilcox.test(TOTAL_ESPACIOS ~ SEXO, data = df_total, exact = FALSE)$p.value
+p_txt    <- format.pval(p_sexo, digits = 3, eps = 0.001)
+txt_sexo <- if (p_sexo < 0.05) "estadísticamente significativa, aunque de magnitud pequeña" else "no estadísticamente significativa"
+```
+
+::: {.interpretacion}
+**Interpretación.** El `r pct_cero`% de los niños (`r n_cero` de `r nrow(df_total)`) no visitó ningún espacio cultural en los últimos 12 meses. La muestra está repartida entre hombres (`r pct_hombres`%) y mujeres (`r pct_mujeres`%), y el promedio de espacios visitados es similar en ambos grupos (`r media_h` y `r media_m`). Según la prueba de Wilcoxon, la diferencia entre sexos es `r txt_sexo` (p = `r p_txt`).
+:::
+
+## Visualización analítica de datos
+
+```{r tema-grafico}
+tema_informe <- theme_minimal(base_size = 13) +
+  theme(
+    plot.title       = element_text(face = "bold", color = "#1e3a8a"),
+    plot.subtitle    = element_text(color = "#64748b"),
+    panel.grid.minor = element_blank()
+  )
+```
+
+**Histograma de la edad.**
+
+```{r hist-edad, fig.cap="Figura 1: Histograma de la distribución de edad en la población infantil (5 a 11 años). La línea roja indica la media."}
+ggplot(df_total, aes(x = EDAD)) +
+  geom_histogram(binwidth = 1, fill = "#2563eb", color = "white", alpha = 0.85) +
+  geom_vline(aes(xintercept = mean(EDAD)), color = "#dc2626", linewidth = 1.2, linetype = "dashed") +
+  scale_x_continuous(breaks = 5:11) +
+  labs(
+    title    = "Distribución de edad de menores encuestados",
+    subtitle = "Niños de 5 a 11 años · ECC DANE",
+    x = "Edad (años)",
+    y = "Frecuencia",
+    caption = "Línea roja discontinua: media de edad"
+  ) +
+  tema_informe
+```
+
+```{r interp-edad, include=FALSE}
+pct_edad  <- round(100 * prop.table(table(df_total$EDAD)), 1)
+```
+
+::: {.interpretacion}
+**Interpretación.** Cada edad concentra entre `r min(pct_edad)`% y `r max(pct_edad)`% de los niños; la más frecuente es la de `r names(pct_edad)[which.max(pct_edad)]` años. La media (`r round(edad_mean, 2)` años) se ubica en la zona central del rango.
+:::
+
+**Diagrama de caja por sexo.**
+
+```{r boxplot-sexo, fig.cap="Figura 2: Diagrama de caja de la cantidad de espacios culturales visitados según sexo."}
+ggplot(df_total, aes(x = SEXO, y = TOTAL_ESPACIOS, fill = SEXO)) +
+  geom_boxplot(alpha = 0.75, outlier.color = "#dc2626", outlier.alpha = 0.5) +
+  scale_fill_manual(values = c("Hombre" = "#2563eb", "Mujer" = "#db2777")) +
+  labs(
+    title    = "Espacios culturales visitados por sexo",
+    subtitle = "Distribución de la variable TOTAL_ESPACIOS · ECC DANE",
+    x = "Sexo del menor",
+    y = "Total de espacios visitados"
+  ) +
+  tema_informe +
+  theme(legend.position = "none")
+```
+
+::: {.interpretacion}
+**Interpretación.** Dado que el `r pct_cero`% de los niños no visita ningún espacio, la forma de las cajas refleja esa concentración en valores bajos y las visitas más numerosas aparecen como atípicos (puntos rojos). Las distribuciones de ambos sexos son muy parecidas, con medias de `r media_h` (hombres) y `r media_m` (mujeres); la diferencia es `r txt_sexo` (prueba de Wilcoxon, p = `r p_txt`).
+:::
+
+**Asistencia por tipo de espacio.**
+
+```{r bar-tipo-espacio, fig.cap="Figura 3: Porcentaje de asistencia según tipo de espacio cultural."}
+df_tipos <- data.frame(
+  Espacio = unname(etiquetas_espacios[cols_espacios]),
+  Tasa    = sapply(cols_espacios, function(col) {
+    round(mean(df_total[[col]] == 1, na.rm = TRUE) * 100, 1)
+  }),
+  row.names = NULL
+)
+df_tipos <- df_tipos[order(df_tipos$Tasa, decreasing = TRUE), ]
+
+ggplot(df_tipos, aes(x = reorder(Espacio, Tasa), y = Tasa, fill = Tasa)) +
+  geom_col(alpha = 0.9, width = 0.65) +
+  geom_text(aes(label = paste0(Tasa, "%")), hjust = -0.2, size = 4, fontface = "bold") +
+  scale_fill_gradient(low = "#93c5fd", high = "#1e3a8a") +
+  coord_flip() +
+  ylim(0, max(df_tipos$Tasa) * 1.2) +
+  labs(
+    title    = "Tasa de asistencia por tipo de espacio cultural",
+    subtitle = "Porcentaje de menores que asistieron al menos una vez · ECC DANE",
+    x = NULL,
+    y = "Porcentaje (%)"
+  ) +
+  tema_informe +
+  theme(legend.position = "none")
+```
+
+::: {.interpretacion}
+**Interpretación.** El espacio con mayor asistencia es **`r df_tipos$Espacio[1]`** (`r df_tipos$Tasa[1]`%), seguido de **`r df_tipos$Espacio[2]`** (`r df_tipos$Tasa[2]`%) y **`r df_tipos$Espacio[3]`** (`r df_tipos$Tasa[3]`%). El de menor asistencia es **`r df_tipos$Espacio[nrow(df_tipos)]`** (`r df_tipos$Tasa[nrow(df_tipos)]`%).
+:::
+
+## Ranking regional de participación
+
+Se consolida el ranking de las 6 macro-regiones de Colombia según su tasa de participación cultural infantil (porcentaje de niños con al menos una visita):
+
+```{r ranking-regional, fig.cap="Figura 4: Ranking regional según la tasa de niños con al menos una visita cultural en los últimos 12 meses (%)."}
+ranking_regional <- df_total %>%
+  group_by(REGION_NOMBRE) %>%
+  summarise(
+    Tasa_Participacion = round(mean(TOTAL_ESPACIOS > 0, na.rm = TRUE) * 100, 2),
+    Media_Espacios     = round(mean(TOTAL_ESPACIOS, na.rm = TRUE), 2),
+    N                  = n(),
+    .groups = "drop"
+  ) %>%
+  arrange(desc(Tasa_Participacion)) %>%
+  mutate(Puesto = row_number())
+
+ggplot(ranking_regional,
+       aes(x = reorder(REGION_NOMBRE, Tasa_Participacion), y = Tasa_Participacion,
+           fill = Tasa_Participacion)) +
+  geom_col(alpha = 0.9, width = 0.65) +
+  geom_text(aes(label = paste0(Tasa_Participacion, "%")), hjust = -0.2, size = 4, fontface = "bold") +
+  scale_fill_gradient(low = "#93c5fd", high = "#1e3a8a") +
+  coord_flip() +
+  ylim(0, max(ranking_regional$Tasa_Participacion) * 1.2) +
+  labs(
+    title    = "Ranking regional de participación cultural infantil",
+    subtitle = "Tasa de menores con al menos una visita cultural · ECC DANE",
+    x = NULL,
+    y = "Tasa de participación (%)"
+  ) +
+  tema_informe +
+  theme(legend.position = "none")
+```
+
+```{r tabla-ranking}
+kable(
+  ranking_regional[, c("Puesto", "REGION_NOMBRE", "Tasa_Participacion", "Media_Espacios", "N")],
+  col.names = c("Puesto", "Región geográfica DANE", "Tasa de participación (%)",
+                "Media de espacios visitados", "Muestra (N)"),
+  align = c("c", "l", "c", "c", "c"),
+  caption = "Ranking de regiones colombianas según participación cultural infantil"
+)
+```
+
+::: {.interpretacion}
+**Interpretación.** La región con mayor participación es **`r ranking_regional$REGION_NOMBRE[1]`** (`r ranking_regional$Tasa_Participacion[1]`%) y la menor es **`r ranking_regional$REGION_NOMBRE[nrow(ranking_regional)]`** (`r ranking_regional$Tasa_Participacion[nrow(ranking_regional)]`%): una brecha de `r round(ranking_regional$Tasa_Participacion[1] - ranking_regional$Tasa_Participacion[nrow(ranking_regional)], 1)` puntos porcentuales entre regiones.
+:::
+
+## Top 10 territorial (departamentos)
+
+```{r top10-aviso, echo=FALSE, results="asis", eval=!tiene_dpto}
+cat("> **Nota:** los microdatos de la ECC no incluyen departamento ni municipio (solo la región DANE), como se verificó en la sección 2.3. Por eso el ranking territorial se presenta para las 6 regiones (sección 4.3): un Top 10 requiere al menos 10 unidades geográficas.\n")
+```
+
+```{r top10-dpto, eval=tiene_dpto, echo=tiene_dpto, fig.cap="Figura 5: Top 10 de departamentos según la tasa de niños con al menos una visita cultural (departamentos con al menos 30 niños en la muestra)."}
+n_min <- 30  # tamaño mínimo de muestra para que la tasa sea estable
+
+ranking_dpto_total <- df_total %>%
+  group_by(DEPARTAMENTO) %>%
+  summarise(
+    Tasa_Participacion = round(mean(TOTAL_ESPACIOS > 0) * 100, 1),
+    Media_Espacios     = round(mean(TOTAL_ESPACIOS), 2),
+    N                  = n(),
+    .groups = "drop"
+  ) %>%
+  filter(N >= n_min) %>%
+  arrange(desc(Tasa_Participacion))
+
+top10_dpto <- ranking_dpto_total %>%
+  slice_head(n = 10) %>%
+  mutate(Puesto = row_number())
+
+ggplot(top10_dpto,
+       aes(x = reorder(DEPARTAMENTO, Tasa_Participacion), y = Tasa_Participacion,
+           fill = Tasa_Participacion)) +
+  geom_col(alpha = 0.9, width = 0.65) +
+  geom_text(aes(label = paste0(Tasa_Participacion, "%")), hjust = -0.2, size = 4, fontface = "bold") +
+  scale_fill_gradient(low = "#93c5fd", high = "#1e3a8a") +
+  coord_flip() +
+  ylim(0, max(top10_dpto$Tasa_Participacion) * 1.2) +
+  labs(
+    title    = "Top 10 de departamentos por participación cultural infantil",
+    subtitle = paste0("Departamentos con al menos ", n_min, " niños en la muestra · ECC DANE"),
+    x = NULL,
+    y = "Tasa de participación (%)"
+  ) +
+  tema_informe +
+  theme(legend.position = "none")
+```
+
+```{r top10-tabla, eval=tiene_dpto, echo=tiene_dpto}
+kable(
+  top10_dpto[, c("Puesto", "DEPARTAMENTO", "Tasa_Participacion", "Media_Espacios", "N")],
+  col.names = c("Puesto", "Departamento", "Tasa de participación (%)",
+                "Media de espacios visitados", "Muestra (N)"),
+  align = c("c", "l", "c", "c", "c"),
+  caption = "Top 10 de departamentos según participación cultural infantil"
+)
+```
+
+```{r top10-interpretacion, echo=FALSE, results="asis", eval=tiene_dpto}
+cat(sprintf("::: {.interpretacion}\n**Interpretación.** De los %d departamentos con al menos %d niños en la muestra, los tres de mayor participación son %s (%s%%), %s (%s%%) y %s (%s%%). El décimo puesto, %s, alcanza %s%%. Las tasas se basan en tamaños de muestra departamentales moderados, por lo que deben leerse como descriptivas.\n:::\n",
+  nrow(ranking_dpto_total), n_min,
+  top10_dpto$DEPARTAMENTO[1], top10_dpto$Tasa_Participacion[1],
+  top10_dpto$DEPARTAMENTO[2], top10_dpto$Tasa_Participacion[2],
+  top10_dpto$DEPARTAMENTO[3], top10_dpto$Tasa_Participacion[3],
+  top10_dpto$DEPARTAMENTO[nrow(top10_dpto)], top10_dpto$Tasa_Participacion[nrow(top10_dpto)]))
+```
+
+# Resultados y discusión
+
+El análisis cuantitativo de los microdatos del DANE evidencia los siguientes aspectos del consumo cultural infantil:
+
+1. **Alta concentración en la no asistencia.** El `r pct_cero`% de los niños (`r n_cero` de `r nrow(df_total)`) no asistió a ningún espacio cultural en el último año, y la mediana de espacios visitados es `r esp_med`. Esto señala una barrera de acceso generalizada.
+
+2. **Espacios con mayor asistencia.** El espacio con mayor tasa de asistencia es **`r df_tipos$Espacio[1]`** (`r df_tipos$Tasa[1]`%), seguido de **`r df_tipos$Espacio[2]`** (`r df_tipos$Tasa[2]`%) y **`r df_tipos$Espacio[3]`** (`r df_tipos$Tasa[3]`%).
+
+3. **Diferencias por sexo.** La distribución por sexo es casi idéntica (hombres: `r pct_hombres`%, mujeres: `r pct_mujeres`%) y las medias de espacios visitados son muy cercanas (`r media_h` y `r media_m`). Según la prueba de Wilcoxon (p = `r p_txt`), la diferencia es `r txt_sexo`.
+
+4. **Disparidad territorial.** La región con mayor tasa de participación es **`r ranking_regional$REGION_NOMBRE[1]`** (`r ranking_regional$Tasa_Participacion[1]`%), seguida de **`r ranking_regional$REGION_NOMBRE[2]`** (`r ranking_regional$Tasa_Participacion[2]`%); la más baja es **`r ranking_regional$REGION_NOMBRE[nrow(ranking_regional)]`** (`r ranking_regional$Tasa_Participacion[nrow(ranking_regional)]`%). Estas diferencias podrían asociarse con la oferta cultural local y la asistencia escolar a espacios culturales, hipótesis que este análisis descriptivo no contrasta.
+
+```{r resultado-top10, echo=FALSE, results="asis"}
+if (tiene_dpto) {
+  cat(sprintf("**Top 10 departamental.** Los departamentos con mayor participación son %s, %s y %s, con tasas entre %s%% y %s%%; el décimo puesto (%s) alcanza %s%%.\n",
+    top10_dpto$DEPARTAMENTO[1], top10_dpto$DEPARTAMENTO[2], top10_dpto$DEPARTAMENTO[3],
+    top10_dpto$Tasa_Participacion[1], top10_dpto$Tasa_Participacion[3],
+    top10_dpto$DEPARTAMENTO[nrow(top10_dpto)], top10_dpto$Tasa_Participacion[nrow(top10_dpto)]))
+} else {
+  cat("**Nivel territorial.** Los microdatos disponibles solo permiten un análisis a nivel de regiones DANE; no incluyen departamento ni municipio.\n")
+}
+```
+
+# Conclusiones y recomendaciones
+
+::: {.callout}
+**Síntesis del análisis:** `r pct_cero`% de los niños de la muestra no visitó ningún espacio cultural en el último año, lo que revela un potencial desaprovechado en el acceso cultural presencial. Las políticas públicas deben priorizar la integración de las escuelas públicas con la red de bibliotecas y museos locales, eliminando barreras de costo y distancia.
+:::
+
+**Conclusiones basadas en el análisis**
+
+- **Participación:** el niño promedio visita `r round(esp_mean, 2)` espacios culturales al año; con `r pct_cero`% de los niños sin ninguna visita.
+- **Tipo de espacio:** `r df_tipos$Espacio[1]` es el espacio más visitado (`r df_tipos$Tasa[1]`%) y `r df_tipos$Espacio[nrow(df_tipos)]` el menos visitado (`r df_tipos$Tasa[nrow(df_tipos)]`%).
+- **Sexo:** la diferencia entre niños y niñas en la cantidad de espacios visitados es `r txt_sexo` (Wilcoxon, p = `r p_txt`).
+- **Territorio:** la participación varía `r round(ranking_regional$Tasa_Participacion[1] - ranking_regional$Tasa_Participacion[nrow(ranking_regional)], 1)` puntos porcentuales entre la región con mayor y la de menor participación.
+- **Calidad del dato:** tras la limpieza se conservaron `r n_final` de `r n_inicial` registros (`r round(100 * n_final / n_inicial, 1)`%), tras eliminar `r n_eliminados_dup` duplicados por clave primaria.
+
+**Recomendaciones**
+
+- **Fomento cultural:** diseñar circuitos culturales escolares que faciliten el transporte hacia museos y reservas naturales para menores en zonas periféricas.
+- **Siguientes etapas de modelado:** desarrollar modelos de clasificación supervisada (por ejemplo, regresión logística o Random Forest) para predecir la probabilidad de asistencia del menor en función de variables como el estrato socioeconómico, el nivel de escolaridad del jefe de hogar y la conectividad a internet.
+
+**Limitaciones:** (1) los microdatos no incluyen departamento ni municipio, por lo que el análisis territorial se limita a las 6 regiones DANE; (2) no se aplicaron factores de expansión, por lo que los porcentajes describen la muestra analizada y no son estimaciones de la población nacional.
+
+# Referencias {-}
+
+- DANE. *Encuesta de Consumo Cultural (ECC)*. Catálogo de microdatos. <https://microdatos.dane.gov.co/index.php/catalog/central/about>
+
+::: {.report-footer}
+© 2026 Universidad Pedagógica y Tecnológica de Colombia (UPTC) · Especialización en Inteligencia Artificial\
+Estudiante: José Daniel Rojas Verbel · Ciencia de Datos y Machine Learning
+:::
