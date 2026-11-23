@@ -151,7 +151,7 @@ knitr::opts_chunk$set(
 **Fuente de datos:** DANE — Encuesta de Consumo Cultural (ECC)\
 **Dataset analizado:** Niños de 5 a 11 años — Espacios culturales\
 **Repositorio GitHub:** [Repositorio Tarea 1](https://github.com/joserojas07-bit/IA-CienciaDatos2026-2/tree/main/TAREA_1_EDA)\
-**Reporte interactivo:** [Ver reporte HTML en línea](https://joserojas07-bit.github.io/IA-CienciaDatos2026-2/TAREA_2_EDA/PROTOCOLO/TAREA_1_EDA.html)
+**Reporte interactivo:** [Ver reporte HTML en línea](https://joserojas07-bit.github.io/IA-CienciaDatos2026-2/TAREA_1_EDA/PROTOCOLO/TAREA_1_EDA.html)
 :::
 
 # Introducción y contexto

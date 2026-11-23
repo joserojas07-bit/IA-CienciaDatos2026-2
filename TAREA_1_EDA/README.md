@@ -4,3 +4,4 @@ Ejercicio de exploracion de datos en codigo R sobre una base de datos extraida d
 
 ## 🌐 Ver reporte interactivo (HTML)
 * [TAREA_1](https://joserojas07-bit.github.io/IA-CienciaDatos2026-2/TAREA_1_EDA/PROTOCOLO/TAREA_1_EDA.html)
+
