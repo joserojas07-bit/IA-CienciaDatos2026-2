@@ -1,4 +1,3 @@
-Python en Colab: 3.13.18
 streamlit
 scikit-learn==1.6.1
 pandas
