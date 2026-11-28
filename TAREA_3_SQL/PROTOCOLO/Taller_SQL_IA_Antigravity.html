@@ -1,0 +1,1234 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taller SQL & Text-to-SQL - Especialización IA - UPTC</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+
+    <style>
+        :root {
+            --primary: #1e3a8a;
+            --primary-light: #2563eb;
+            --accent: #0284c7;
+            --accent-soft: #e0f2fe;
+            --bg-body: #f8fafc;
+            --bg-card: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 18px;
+            --sidebar-w: 310px;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.65;
+            font-size: 15px;
+            padding: 20px 24px 80px;
+        }
+        .wrapper { max-width: 96%; width: 100%; margin: 0 auto; }
+        header.hero-header {
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 60%, #0369a1 100%);
+            color: #ffffff;
+            padding: 38px 36px;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            margin-bottom: 28px;
+        }
+        header.hero-header .institution {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #93c5fd;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        header.hero-header h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+        header.hero-header .subtitle {
+            font-size: 1.05rem;
+            color: #e2e8f0;
+            margin-bottom: 20px;
+        }
+        .meta-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 12px;
+            background: rgba(255, 255, 255, 0.08);
+            padding: 14px 18px;
+            border-radius: var(--radius-md);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+        .meta-item { font-size: 0.88rem; color: #f1f5f9; }
+        .meta-item strong { color: #93c5fd; margin-right: 4px; }
+        .layout-grid {
+            display: grid;
+            grid-template-columns: var(--sidebar-w) minmax(0, 1fr);
+            gap: 28px;
+            align-items: start;
+        }
+        aside.sidebar-nav {
+            position: sticky;
+            top: 20px;
+            background-color: var(--bg-card);
+            border-radius: var(--radius-md);
+            padding: 22px 18px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+            max-height: calc(100vh - 40px);
+            overflow-y: auto;
+        }
+        aside.sidebar-nav h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.05rem;
+            color: var(--primary);
+            margin-bottom: 12px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        ul.toc-list { list-style: none; display: flex; flex-direction: column; gap: 3px; }
+        .toc-item a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-size: 0.86rem;
+            font-weight: 500;
+            padding: 6px 10px;
+            border-radius: var(--radius-sm);
+            display: block;
+            border-left: 3px solid transparent;
+        }
+        .toc-item a:hover { color: var(--primary-light); background-color: var(--accent-soft); border-left-color: var(--primary-light); }
+        .toc-h2 a { padding-left: 16px; font-size: 0.82rem; color: var(--text-muted); }
+        .toc-h3 a { padding-left: 26px; font-size: 0.78rem; color: #94a3b8; }
+        main.main-content {
+            background: var(--bg-card);
+            border-radius: var(--radius-md);
+            padding: 36px 40px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+            min-width: 0;
+        }
+        .cell { margin-bottom: 24px; }
+        .markdown-cell { color: #334155; line-height: 1.7; }
+        .markdown-cell h1, .markdown-cell h2, .markdown-cell h3, .markdown-cell h4 {
+            font-family: 'Outfit', sans-serif;
+            color: var(--primary);
+            margin: 28px 0 14px;
+            font-weight: 700;
+            scroll-margin-top: 30px;
+        }
+        .markdown-cell h1 { font-size: 1.6rem; border-bottom: 2px solid var(--accent-soft); padding-bottom: 8px; }
+        .markdown-cell h2 { font-size: 1.35rem; border-bottom: 1px solid var(--border-color); padding-bottom: 6px; }
+        .markdown-cell h3 { font-size: 1.15rem; color: #1e293b; }
+        .markdown-cell p { margin-bottom: 12px; }
+        .markdown-cell ul, .markdown-cell ol { margin: 10px 0 16px 24px; }
+        .markdown-cell li { margin-bottom: 6px; }
+        .markdown-cell code:not(pre code) {
+            background: #f1f5f9;
+            color: #0284c7;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.88em;
+            font-family: 'Fira Code', monospace;
+            font-weight: 500;
+        }
+        .callout-box {
+            background: #eff6ff;
+            border-left: 4px solid #2563eb;
+            padding: 12px 16px;
+            border-radius: 0 6px 6px 0;
+            margin: 14px 0;
+            color: #1e3a8a;
+            font-size: 0.93rem;
+        }
+        .code-cell {
+            border: 1px solid #e2e8f0;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            background: #ffffff;
+            box-shadow: var(--shadow-sm);
+            margin: 20px 0;
+        }
+        .input-area { display: flex; background: #1e1e1e; }
+        .prompt {
+            padding: 14px 10px 14px 14px;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.78rem;
+            color: #94a3b8;
+            user-select: none;
+            min-width: 65px;
+            text-align: right;
+        }
+        .code-container { flex-grow: 1; overflow-x: auto; }
+        .code-container pre {
+            margin: 0 !important;
+            padding: 14px 16px !important;
+            background: transparent !important;
+            font-family: 'Fira Code', monospace !important;
+            font-size: 0.86rem !important;
+        }
+        footer.report-footer {
+            text-align: center;
+            padding: 30px 0 10px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border-color);
+            margin-top: 40px;
+        }
+
+        /* Reglas de Impresión / PDF */
+        @media print {
+            @page { size: A4 portrait; margin: 10mm 10mm 12mm 10mm; }
+            body { padding: 0 !important; background: #ffffff !important; font-size: 9pt !important; line-height: 1.4 !important; }
+            .wrapper { max-width: 100% !important; margin: 0 !important; }
+            .layout-grid { display: block !important; }
+            aside.sidebar-nav { display: none !important; }
+            main.main-content { box-shadow: none !important; border: none !important; padding: 0 !important; }
+            header.hero-header { padding: 16px 20px !important; margin-bottom: 16px !important; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+            .cell, .code-cell { page-break-inside: avoid !important; break-inside: avoid !important; }
+            .code-container pre { white-space: pre-wrap !important; word-break: break-word !important; }
+            .code-container pre code { font-size: 7.8pt !important; color: #0f172a !important; }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <header class="hero-header">
+            <div class="institution">Universidad Pedagógica y Tecnológica de Colombia</div>
+            <h1>Taller Práctico: Analítica Académica con SQL, Extracción & Text-to-SQL</h1>
+            <p class="subtitle">Especialización en Inteligencia Artificial &bull; Ciencia de Datos y Machine Learning</p>
+            <div class="meta-grid">
+                <div class="meta-item"><strong>Estudiante:</strong> José Daniel Rojas Verbel</div>
+                <div class="meta-item"><strong>Código:</strong> 202624475</div>
+                <div class="meta-item"><strong>Base de datos:</strong> university.db (SQLite)</div>
+                <div class="meta-item"><strong>Entorno:</strong> Google Antigravity / Colab</div>
+            </div>
+        </header>
+
+        <div class="layout-grid">
+            <aside class="sidebar-nav">
+                <h2><span>📑</span> Índice del Taller</h2>
+<ul class="toc-list">
+  <li class="toc-item toc-h1"><a href="#heading-1">🎓 Universidad Pedag&#243;gica y Tecnol&#243;gica de Colombia (UPTC)</a></li>
+  <li class="toc-item toc-h2"><a href="#heading-2">Especializaci&#243;n en Inteligencia Artificial</a></li>
+  <li class="toc-item toc-h3"><a href="#heading-3">M&#243;dulo: Ciencia de Datos y Machine Learning</a></li>
+  <li class="toc-item toc-h3"><a href="#heading-4">Taller Pr&#225;ctico Integrado: Anal&#237;tica Acad&#233;mica con SQL, Extracci&#243;n de Datos y Flujos Text-to-SQL</a></li>
+  <li class="toc-item toc-h2"><a href="#heading-5">1. Contexto y Objetivos del Taller</a></li>
+  <li class="toc-item toc-h2"><a href="#heading-6">2. Configuraci&#243;n del Entorno de Ejecuci&#243;n (Google Colab / Local)</a></li>
+  <li class="toc-item toc-h2"><a href="#heading-7">3. Inspecci&#243;n del Esquema y Modelo Relacional</a></li>
+  <li class="toc-item toc-h1"><a href="#heading-8">Listar todas las tablas existentes en university.db y su conteo de registros</a></li>
+  <li class="toc-item toc-h1"><a href="#heading-9">PARTE I: BATER&#205;A PROGRESIVA DE CONSULTAS RELACIONALES</a></li>
+  <li class="toc-item toc-h2"><a href="#heading-10">Bloque A: Exploraci&#243;n, Ordenamiento y Filtros B&#225;sicos</a></li>
+  <li class="toc-item toc-h3"><a href="#heading-11">Consulta A.1: Mostrar todos los registros de la tabla USUARIOS</a></li>
+  <li class="toc-item toc-h3"><a href="#heading-12">Consulta A.2: Mostrar &#250;nicamente el NOMBRE y APELLIDO de todos los usuarios</a></li>
+  <li class="toc-item toc-h3"><a href="#heading-13">Consulta A.3: Mostrar todas las carreras ordenadas alfab&#233;ticamente de forma ascendente</a></li>
+  <li class="toc-item toc-h3"><a href="#heading-14">Consulta A.4: Mostrar los cursos ordenados alfab&#233;ticamente de forma descendente</a></li>
+  <li class="toc-item toc-h3"><a href="#heading-15">Consulta A.5: Mostrar los estudiantes que est&#233;n cursando el semestre 2</a></li>
+  <li class="toc-item toc-h3"><a href="#heading-16">Consulta A.6: Mostrar los usuarios cuyo apellido sea &#39;Gomez&#39;</a></li>
+  <li class="toc-item toc-h3"><a href="#heading-17">Consulta A.7: Mostrar los estudiantes que pertenezcan al semestre 1 o al semestre 2</a></li>
+  <li class="toc-item toc-h3"><a href="#heading-18">Consulta A.8: Asignaturas de Ingenier&#237;a y Ciencias relacionadas con Inteligencia o Datos</a></li>
+  <li class="toc-item toc-h2"><a href="#heading-19">Bloque B: Manipulaci&#243;n de Datos — DML (INSERT, UPDATE, DELETE)</a></li>
+  <li class="toc-item toc-h3"><a href="#heading-20">Consultas B.1 a B.3: Inserci&#243;n, Eliminaci&#243;n y Verificaci&#243;n de una Nueva Facultad</a></li>
+  <li class="toc-item toc-h3"><a href="#heading-21">Consultas B.4 a B.8: Inserci&#243;n, Actualizaci&#243;n y Eliminaci&#243;n de un Nuevo Estudiante</a></li>
+  <li class="toc-item toc-h2"><a href="#heading-22">Bloque C: Cruces Relacionales y Carteleras (INNER JOIN)</a></li>
+  <li class="toc-item toc-h3"><a href="#heading-23">Consulta C.1: Mostrar cada carrera junto con el nombre de su facultad</a></li>
+  <li class="toc-item toc-h3"><a href="#heading-24">Consulta C.2: Mostrar el nombre de solo los usuarios que tienen rol de estudiante</a></li>
+  <li class="toc-item toc-h3"><a href="#heading-25">Consulta C.3: Mostrar el nombre de solo los usuarios que tienen rol de profesor</a></li>
+  <li class="toc-item toc-h3"><a href="#heading-26">Consulta C.4: Cursos matriculados por cada estudiante</a></li>
+  <li class="toc-item toc-h3"><a href="#heading-27">Consulta C.5: Cursos programados con sal&#243;n y edificio donde se dictan</a></li>
+  <li class="toc-item toc-h3"><a href="#heading-28">Consulta C.6: Cartelera de programaci&#243;n para el d&#237;a Martes</a></li>
+  <li class="toc-item toc-h3"><a href="#heading-29">Consulta C.7: Horario completo de un estudiante espec&#237;fico (ID = 1)</a></li>
+  <li class="toc-item toc-h3"><a href="#heading-30">Consultas C.8 y C.9: Profesores y Cursos Ofertados que Orientan</a></li>
+  <li class="toc-item toc-h2"><a href="#heading-31">Bloque D: Auditor&#237;a de Registros Hu&#233;rfanos (LEFT JOIN / Subconsultas)</a></li>
+  <li class="toc-item toc-h3"><a href="#heading-32">Consulta D.1: Estudiantes registrados sin ning&#250;n curso matriculado</a></li>
+  <li class="toc-item toc-h3"><a href="#heading-33">Consulta D.2: Cursos del cat&#225;logo que no tienen horario programado en el calendario</a></li>
+  <li class="toc-item toc-h3"><a href="#heading-34">Consulta D.3: Cursos existentes en el sistema sin ning&#250;n estudiante matriculado</a></li>
+  <li class="toc-item toc-h3"><a href="#heading-35">Consulta D.4: Cursos ofertados en calendario pero sin estudiantes matriculados (Cursos desiertos)</a></li>
+  <li class="toc-item toc-h2"><a href="#heading-36">Bloque E: Agregaciones, Estad&#237;sticas y Cupos (GROUP BY / HAVING)</a></li>
+  <li class="toc-item toc-h3"><a href="#heading-37">Consultas E.1 a E.4: M&#233;tricas Globales de Estudiantes y Docentes</a></li>
+  <li class="toc-item toc-h3"><a href="#heading-38">Consultas E.5 a E.9: An&#225;lisis por Facultades, Carreras y Edificios</a></li>
+  <li class="toc-item toc-h3"><a href="#heading-39">Consultas E.10 a E.14: Carga Docente, Inscripciones y An&#225;lisis de Cupos</a></li>
+  <li class="toc-item toc-h1"><a href="#heading-40">PARTE II: RETOS INTEGRADORES E INTELIGENCIA ARTIFICIAL</a></li>
+  <li class="toc-item toc-h2"><a href="#heading-41">Reto Integrador 1: Carga Acad&#233;mica por Carrera (Agregaci&#243;n M&#250;ltiple)</a></li>
+  <li class="toc-item toc-h2"><a href="#heading-42">Reto Integrador 2: Auditor&#237;a Text-to-SQL con el Agente de Antigravity (IA / MCP)</a></li>
+  <li class="toc-item toc-h3"><a href="#heading-43">1. Solicitud en Lenguaje Natural al Agente de IA:</a></li>
+  <li class="toc-item toc-h3"><a href="#heading-44">2. Consulta SQL Generada por el Agente de IA y Optimizada:</a></li>
+  <li class="toc-item toc-h3"><a href="#heading-45">3. An&#225;lisis Cr&#237;tico y Auditor&#237;a de la Generaci&#243;n Text-to-SQL</a></li>
+  <li class="toc-item toc-h2"><a href="#heading-46">4. Conclusiones y Cierre del Taller</a></li>
+</ul>
+
+            </aside>
+
+            <main class="main-content">
+<div class="cell markdown-cell"><h1><span id="heading-1"></span>🎓 <strong>Universidad Pedagógica y Tecnológica de Colombia (UPTC)</strong></h1>
+<h2><span id="heading-2"></span><strong>Especialización en Inteligencia Artificial</strong></h2>
+<h3><span id="heading-3"></span><strong>Módulo: Ciencia de Datos y Machine Learning</strong></h3>
+<hr>
+<h3><span id="heading-4"></span><strong>Taller Práctico Integrado: Analítica Académica con SQL, Extracción de Datos y Flujos Text-to-SQL</strong></h3>
+<ul>
+<li><strong>Estudiante:</strong> José Daniel Rojas Verbel</li>
+<li><strong>Código:</strong> 202624475</li>
+<li><strong>Base de datos:</strong> university.db (SQLite relacional)</li>
+<li><strong>Herramientas:</strong> Python 3, SQLite3, Pandas, Google Antigravity / Google Colab</li>
+</ul>
+<hr></div>
+<div class="cell markdown-cell"><h2><span id="heading-5"></span>1. Contexto y Objetivos del Taller</h2>
+
+<p>La Universidad ha decidido fortalecer sus procesos de analítica institucional mediante un sistema de inteligencia académica conectado al módulo de registro. Los directivos requieren responder preguntas estratégicas sobre rendimiento estudiantil, ocupación de cursos, distribución docente, comportamiento de matrículas y uso de infraestructura física.</p>
+
+<p>En proyectos de Inteligencia Artificial, los datos operacionales residen habitualmente en bases de datos relacionales normalizadas. El objetivo de este taller es dominar la extracción, manipulación, cruce y agregación de información mediante SQL sobre la base de datos académica (university.db), integrando tanto el análisis manual como la auditoría crítica de agentes de IA (<strong>Text-to-SQL</strong>) dentro del entorno Google Antigravity.</p>
+<hr></div>
+<div class="cell markdown-cell"><h2><span id="heading-6"></span>2. Configuración del Entorno de Ejecución (Google Colab / Local)</h2>
+
+<p>En este bloque preparamos la conexión a la base de datos university.db utilizando sqlite3 y pandas. Si estás ejecutando en Google Colab, puedes clonar el repositorio o subir el archivo de base de datos directamente.</p>
+</div>
+<div class="cell code-cell">
+  <div class="input-area">
+    <div class="prompt input-prompt">In [ ]:</div>
+    <div class="code-container"><pre><code class="language-python"># 1. Importaci&#243;n de librer&#237;as para manejo de datos y conexi&#243;n SQL
+import sqlite3
+import pandas as pd
+import os
+
+# Configuraci&#243;n visual de Pandas para visualizar todas las columnas con claridad
+pd.set_option(&#39;display.max_columns&#39;, None)
+pd.set_option(&#39;display.width&#39;, 1000)
+pd.set_option(&#39;display.colheader_justify&#39;, &#39;left&#39;)
+
+# Rutas de b&#250;squeda de la base de datos (Colab o Entorno Local Antigravity)
+db_paths = [
+    &#39;../DATOS/university.db&#39;,
+    &#39;DATOS/university.db&#39;,
+    &#39;university.db&#39;,
+    &#39;/content/university.db&#39;
+]
+
+db_file = None
+for path in db_paths:
+    if os.path.exists(path):
+        db_file = path
+        break
+
+if db_file:
+    print(f&quot;✅ Conexi&#243;n establecida exitosamente con la base de datos en: {db_file}&quot;)
+    conn = sqlite3.connect(db_file)
+else:
+    print(&quot;⚠️ Base de datos no encontrada en rutas locales est&#225;ndar. Creando conexi&#243;n en memoria/local...&quot;)
+    conn = sqlite3.connect(&#39;university.db&#39;)
+
+# Funci&#243;n auxiliar para ejecutar consultas y retornar DataFrame formateado
+def run_query(query, description=&quot;&quot;):
+    if description:
+        print(f&quot;📌 {description}&quot;)
+    return pd.read_sql_query(query, conn)
+</code></pre></div>
+  </div>
+</div>
+<div class="cell markdown-cell"><h2><span id="heading-7"></span>3. Inspección del Esquema y Modelo Relacional</h2>
+
+<p>La base de datos cuenta con <strong>11 tablas principales</strong> que representan la gestión académica:</p>
+<ol>
+<li>FACULTADES</li>
+<li>CARRERAS</li>
+<li>CURSOS</li>
+<li>ROLES (1 = Estudiante, 2 = Profesor)</li>
+<li>USUARIOS</li>
+<li>EDIFICIOS</li>
+<li>SALONES</li>
+<li>CALENDARIO_CURSOS</li>
+<li>CARRERAS_ESTUDIANTES</li>
+<li>CURSOS_CARRERAS</li>
+<li>CURSOS_ESTUDIANTES</li>
+</ul>
+<p>"@</p>
+
+<p>Add-Code @"</p>
+<h1><span id="heading-8"></span>Listar todas las tablas existentes en university.db y su conteo de registros</h1>
+<p>query_tables = '''</p>
+<p>SELECT name AS Tabla </p>
+<p>FROM sqlite_master </p>
+<p>WHERE type = 'table' AND name NOT LIKE 'sqlite_%'</p>
+<p>ORDER BY name;</p>
+<p>'''</p>
+<p>tablas_df = run_query(query_tables, "Tablas de la base de datos universitaria:")</p>
+<p>conteos = []</p>
+<p>for tabla in tablas_df['Tabla']:</p>
+<p>    c = run_query(f"SELECT COUNT(*) as Conteo FROM {tabla}").iloc[0]['Conteo']</p>
+<p>    conteos.append(c)</p>
+
+<p>tablas_df['Total_Registros'] = conteos</p>
+<p>tablas_df</p>
+</div>
+<div class="cell markdown-cell"><hr>
+<h1><span id="heading-9"></span>PARTE I: BATERÍA PROGRESIVA DE CONSULTAS RELACIONALES</h1>
+<hr>
+<h2><span id="heading-10"></span>Bloque A: Exploración, Ordenamiento y Filtros Básicos</h2>
+
+<p>Consultas de selección, ordenamiento y filtros condicionales para auditoría preliminar de usuarios, carreras y catálogo de asignaturas.</p>
+</div>
+<div class="cell markdown-cell"><h3><span id="heading-11"></span>Consulta A.1: Mostrar todos los registros de la tabla USUARIOS</h3>
+<p>Permite verificar la totalidad del censo universitario cargado en el sistema (estudiantes y docentes).</p>
+</div>
+<div class="cell code-cell">
+  <div class="input-area">
+    <div class="prompt input-prompt">In [ ]:</div>
+    <div class="code-container"><pre><code class="language-python">q_a1 = &#39;&#39;&#39;
+SELECT * 
+FROM USUARIOS;
+&#39;&#39;&#39;
+run_query(q_a1, &quot;A.1. Todos los registros de la tabla USUARIOS&quot;)
+</code></pre></div>
+  </div>
+</div>
+<div class="cell markdown-cell"><h3><span id="heading-12"></span>Consulta A.2: Mostrar únicamente el NOMBRE y APELLIDO de todos los usuarios</h3>
+<p>Proyección acotada para listados de asistencia o directorios sin exponer datos de rol o semestre.</p>
+</div>
+<div class="cell code-cell">
+  <div class="input-area">
+    <div class="prompt input-prompt">In [ ]:</div>
+    <div class="code-container"><pre><code class="language-python">q_a2 = &#39;&#39;&#39;
+SELECT NOMBRE, APELLIDO 
+FROM USUARIOS;
+&#39;&#39;&#39;
+run_query(q_a2, &quot;A.2. Directorio b&#225;sico (Nombre y Apellido)&quot;)
+</code></pre></div>
+  </div>
+</div>
+<div class="cell markdown-cell"><h3><span id="heading-13"></span>Consulta A.3: Mostrar todas las carreras ordenadas alfabéticamente de forma ascendente</h3>
+<p>Catálogo ordenado alfabéticamente (ASC) para navegación institucional y menús de selección.</p>
+</div>
+<div class="cell code-cell">
+  <div class="input-area">
+    <div class="prompt input-prompt">In [ ]:</div>
+    <div class="code-container"><pre><code class="language-python">q_a3 = &#39;&#39;&#39;
+SELECT ID_CARRERA, NOMBRE, ID_FACULTAD 
+FROM CARRERAS 
+ORDER BY NOMBRE ASC;
+&#39;&#39;&#39;
+run_query(q_a3, &quot;A.3. Carreras ordenadas alfab&#233;ticamente (A-Z)&quot;)
+</code></pre></div>
+  </div>
+</div>
+<div class="cell markdown-cell"><h3><span id="heading-14"></span>Consulta A.4: Mostrar los cursos ordenados alfabéticamente de forma descendente</h3>
+<p>Inspección inversa (DESC) del catálogo global de asignaturas.</p>
+</div>
+<div class="cell code-cell">
+  <div class="input-area">
+    <div class="prompt input-prompt">In [ ]:</div>
+    <div class="code-container"><pre><code class="language-python">q_a4 = &#39;&#39;&#39;
+SELECT ID_CURSO, NOMBRE, ID_FACULTAD 
+FROM CURSOS 
+ORDER BY NOMBRE DESC;
+&#39;&#39;&#39;
+run_query(q_a4, &quot;A.4. Cursos ordenados alfab&#233;ticamente (Z-A)&quot;)
+</code></pre></div>
+  </div>
+</div>
+<div class="cell markdown-cell"><h3><span id="heading-15"></span>Consulta A.5: Mostrar los estudiantes que estén cursando el semestre 2</h3>
+<p>Filtrado por rol (ID_ROL = 1 Estudiante) y condición de semestre activo (SEMESTRE = 2).</p>
+</div>
+<div class="cell code-cell">
+  <div class="input-area">
+    <div class="prompt input-prompt">In [ ]:</div>
+    <div class="code-container"><pre><code class="language-python">q_a5 = &#39;&#39;&#39;
+SELECT ID_USUARIO, NOMBRE, APELLIDO, SEMESTRE 
+FROM USUARIOS 
+WHERE ID_ROL = 1 
+  AND SEMESTRE = 2;
+&#39;&#39;&#39;
+run_query(q_a5, &quot;A.5. Estudiantes en semestre 2&quot;)
+</code></pre></div>
+  </div>
+</div>
+<div class="cell markdown-cell"><h3><span id="heading-16"></span>Consulta A.6: Mostrar los usuarios cuyo apellido sea 'Gomez'</h3>
+<p>Búsqueda nominal exacta sobre el campo APELLIDO.</p>
+</div>
+<div class="cell code-cell">
+  <div class="input-area">
+    <div class="prompt input-prompt">In [ ]:</div>
+    <div class="code-container"><pre><code class="language-python">q_a6 = &#39;&#39;&#39;
+SELECT ID_USUARIO, NOMBRE, APELLIDO, SEMESTRE, ID_ROL 
+FROM USUARIOS 
+WHERE APELLIDO = &#39;Gomez&#39;;
+&#39;&#39;&#39;
+run_query(q_a6, &quot;A.6. Usuarios con apellido Gomez&quot;)
+</code></pre></div>
+  </div>
+</div>
+<div class="cell markdown-cell"><h3><span id="heading-17"></span>Consulta A.7: Mostrar los estudiantes que pertenezcan al semestre 1 o al semestre 2</h3>
+<p>Segmentación de cohorte inicial (ciclo básico universitario) mediante cláusula IN (1, 2).</p>
+</div>
+<div class="cell code-cell">
+  <div class="input-area">
+    <div class="prompt input-prompt">In [ ]:</div>
+    <div class="code-container"><pre><code class="language-python">q_a7 = &#39;&#39;&#39;
+SELECT ID_USUARIO, NOMBRE, APELLIDO, SEMESTRE 
+FROM USUARIOS 
+WHERE ID_ROL = 1 
+  AND SEMESTRE IN (1, 2);
+&#39;&#39;&#39;
+run_query(q_a7, &quot;A.7. Estudiantes de semestres 1 y 2&quot;)
+</code></pre></div>
+  </div>
+</div>
+<div class="cell markdown-cell"><h3><span id="heading-18"></span>Consulta A.8: Asignaturas de Ingeniería y Ciencias relacionadas con Inteligencia o Datos</h3>
+<p>Filtro de facultad (ID_FACULTAD = 1) con patrones de coincidencia parcial de texto (LIKE con %Inteligentes%, %Aprendizaje%, %Datos%).</p>
+</div>
+<div class="cell code-cell">
+  <div class="input-area">
+    <div class="prompt input-prompt">In [ ]:</div>
+    <div class="code-container"><pre><code class="language-python">q_a8 = &#39;&#39;&#39;
+SELECT ID_CURSO, NOMBRE 
+FROM CURSOS 
+WHERE ID_FACULTAD = 1 
+  AND (
+      NOMBRE LIKE &#39;%Inteligentes%&#39; 
+      OR NOMBRE LIKE &#39;%Aprendizaje%&#39; 
+      OR NOMBRE LIKE &#39;%Datos%&#39;
+  )
+ORDER BY NOMBRE ASC;
+&#39;&#39;&#39;
+run_query(q_a8, &quot;A.8. Cursos de IA y Ciencia de Datos en Facultad de Ingenier&#237;a&quot;)
+</code></pre></div>
+  </div>
+</div>
+<div class="cell markdown-cell"><hr>
+<h2><span id="heading-19"></span>Bloque B: Manipulación de Datos — DML (INSERT, UPDATE, DELETE)</h2>
+
+<p>Validación transaccional para altas, modificaciones y bajas de registros con verificación mediante SELECT.</p>
+</div>
+<div class="cell markdown-cell"><h3><span id="heading-20"></span>Consultas B.1 a B.3: Inserción, Eliminación y Verificación de una Nueva Facultad</h3>
+</div>
+<div class="cell code-cell">
+  <div class="input-area">
+    <div class="prompt input-prompt">In [ ]:</div>
+    <div class="code-container"><pre><code class="language-python">cursor = conn.cursor()
+
+# B.1: Inserci&#243;n de nueva facultad
+cursor.execute(\&quot;\&quot;\&quot;
+INSERT INTO FACULTADES (ID_FACULTAD, NOMBRE) 
+VALUES (99, &#39;Facultad de Inteligencia Artificial y Rob&#243;tica&#39;);
+\&quot;\&quot;\&quot;)
+conn.commit()
+print(&quot;B.1: Facultad 99 insertada con &#233;xito.&quot;)
+
+# Comprobaci&#243;n de inserci&#243;n
+df_inserted = pd.read_sql_query(&quot;SELECT * FROM FACULTADES WHERE ID_FACULTAD = 99;&quot;, conn)
+print(&quot;Registro actual:&quot;, df_inserted.to_dict(orient=&#39;records&#39;))
+
+# B.2: Eliminaci&#243;n de la facultad reci&#233;n insertada
+cursor.execute(&quot;DELETE FROM FACULTADES WHERE ID_FACULTAD = 99;&quot;)
+conn.commit()
+print(&quot;B.2: Facultad 99 eliminada.&quot;)
+
+# B.3: Verificaci&#243;n de eliminaci&#243;n
+q_b3 = &quot;SELECT * FROM FACULTADES WHERE ID_FACULTAD = 99;&quot;
+run_query(q_b3, &quot;B.3. Verificaci&#243;n de eliminaci&#243;n (debe retornar DataFrame vac&#237;o)&quot;)
+</code></pre></div>
+  </div>
+</div>
+<div class="cell markdown-cell"><h3><span id="heading-21"></span>Consultas B.4 a B.8: Inserción, Actualización y Eliminación de un Nuevo Estudiante</h3>
+</div>
+<div class="cell code-cell">
+  <div class="input-area">
+    <div class="prompt input-prompt">In [ ]:</div>
+    <div class="code-container"><pre><code class="language-python"># B.4: Insertar nuevo estudiante en USUARIOS (ID_ROL = 1)
+cursor.execute(\&quot;\&quot;\&quot;
+INSERT INTO USUARIOS (ID_USUARIO, NOMBRE, APELLIDO, SEMESTRE, ID_ROL) 
+VALUES (22, &#39;Daniel&#39;, &#39;Rojas&#39;, 1, 1);
+\&quot;\&quot;\&quot;)
+conn.commit()
+
+# B.5: Verificar que se haya guardado correctamente
+print(&quot;B.5. Verificaci&#243;n de inserci&#243;n del estudiante:&quot;)
+display(run_query(&quot;SELECT * FROM USUARIOS WHERE ID_USUARIO = 22;&quot;))
+
+# B.6: Actualizar el semestre del estudiante con ID_USUARIO = 22 a semestre 4
+cursor.execute(&quot;UPDATE USUARIOS SET SEMESTRE = 4 WHERE ID_USUARIO = 22;&quot;)
+conn.commit()
+print(&quot;B.6. Verificaci&#243;n de actualizaci&#243;n a semestre 4:&quot;)
+display(run_query(&quot;SELECT * FROM USUARIOS WHERE ID_USUARIO = 22;&quot;))
+
+# B.7: Eliminar el registro del estudiante
+cursor.execute(&quot;DELETE FROM USUARIOS WHERE ID_USUARIO = 22;&quot;)
+conn.commit()
+
+# B.8: Verificar que el registro haya sido eliminado
+print(&quot;B.8. Verificaci&#243;n final de eliminaci&#243;n:&quot;)
+display(run_query(&quot;SELECT * FROM USUARIOS WHERE ID_USUARIO = 22;&quot;))
+</code></pre></div>
+  </div>
+</div>
+<div class="cell markdown-cell"><hr>
+<h2><span id="heading-22"></span>Bloque C: Cruces Relacionales y Carteleras (INNER JOIN)</h2>
+
+<p>Extracción cruzada para vincular entidades: carreras con facultades, roles de usuarios, asignaturas matriculadas, programación de aulas y carteleras horarias.</p>
+</div>
+<div class="cell markdown-cell"><h3><span id="heading-23"></span>Consulta C.1: Mostrar cada carrera junto con el nombre de su facultad</h3>
+</div>
+<div class="cell code-cell">
+  <div class="input-area">
+    <div class="prompt input-prompt">In [ ]:</div>
+    <div class="code-container"><pre><code class="language-python">q_c1 = &#39;&#39;&#39;
+SELECT 
+    c.ID_CARRERA,
+    c.NOMBRE AS CARRERA,
+    f.NOMBRE AS FACULTAD
+FROM CARRERAS c
+INNER JOIN FACULTADES f ON c.ID_FACULTAD = f.ID_FACULTAD
+ORDER BY f.NOMBRE, c.NOMBRE;
+&#39;&#39;&#39;
+run_query(q_c1, &quot;C.1. Carreras con sus respectivas Facultades&quot;)
+</code></pre></div>
+  </div>
+</div>
+<div class="cell markdown-cell"><h3><span id="heading-24"></span>Consulta C.2: Mostrar el nombre de solo los usuarios que tienen rol de estudiante</h3>
+</div>
+<div class="cell code-cell">
+  <div class="input-area">
+    <div class="prompt input-prompt">In [ ]:</div>
+    <div class="code-container"><pre><code class="language-python">q_c2 = &#39;&#39;&#39;
+SELECT 
+    u.ID_USUARIO,
+    u.NOMBRE || &#39; &#39; || u.APELLIDO AS ESTUDIANTE,
+    u.SEMESTRE,
+    r.NOMBRE AS ROL
+FROM USUARIOS u
+INNER JOIN ROLES r ON u.ID_ROL = r.ID_ROL
+WHERE r.NOMBRE = &#39;Estudiante&#39;
+ORDER BY u.SEMESTRE, ESTUDIANTE;
+&#39;&#39;&#39;
+run_query(q_c2, &quot;C.2. Usuarios con rol de Estudiante&quot;)
+</code></pre></div>
+  </div>
+</div>
+<div class="cell markdown-cell"><h3><span id="heading-25"></span>Consulta C.3: Mostrar el nombre de solo los usuarios que tienen rol de profesor</h3>
+</div>
+<div class="cell code-cell">
+  <div class="input-area">
+    <div class="prompt input-prompt">In [ ]:</div>
+    <div class="code-container"><pre><code class="language-python">q_c3 = &#39;&#39;&#39;
+SELECT 
+    u.ID_USUARIO,
+    u.NOMBRE || &#39; &#39; || u.APELLIDO AS PROFESOR,
+    r.NOMBRE AS ROL
+FROM USUARIOS u
+INNER JOIN ROLES r ON u.ID_ROL = r.ID_ROL
+WHERE r.NOMBRE = &#39;Profesor&#39;
+ORDER BY PROFESOR;
+&#39;&#39;&#39;
+run_query(q_c3, &quot;C.3. Usuarios con rol de Profesor&quot;)
+</code></pre></div>
+  </div>
+</div>
+<div class="cell markdown-cell"><h3><span id="heading-26"></span>Consulta C.4: Cursos matriculados por cada estudiante</h3>
+<p>Cruce de 4 tablas: USUARIOS -> CURSOS_ESTUDIANTES -> CALENDARIO_CURSOS -> CURSOS.</p>
+</div>
+<div class="cell code-cell">
+  <div class="input-area">
+    <div class="prompt input-prompt">In [ ]:</div>
+    <div class="code-container"><pre><code class="language-python">q_c4 = &#39;&#39;&#39;
+SELECT 
+    u.NOMBRE || &#39; &#39; || u.APELLIDO AS ESTUDIANTE,
+    cur.NOMBRE AS CURSO
+FROM CURSOS_ESTUDIANTES ce
+INNER JOIN USUARIOS u ON ce.ID_USUARIO = u.ID_USUARIO
+INNER JOIN CALENDARIO_CURSOS cc ON ce.ID_CALENDARIO = cc.ID_CALENDARIO
+INNER JOIN CURSOS cur ON cc.ID_CURSO = cur.ID_CURSO
+ORDER BY ESTUDIANTE, CURSO;
+&#39;&#39;&#39;
+df_c4 = run_query(q_c4, &quot;C.4. Asignaturas inscritas por cada estudiante&quot;)
+print(f&quot;Total inscripciones registradas: {len(df_c4)}&quot;)
+df_c4.head(15)
+</code></pre></div>
+  </div>
+</div>
+<div class="cell markdown-cell"><h3><span id="heading-27"></span>Consulta C.5: Cursos programados con salón y edificio donde se dictan</h3>
+<p>Relaciona la programación académica con la infraestructura física institucional (SALONES y EDIFICIOS).</p>
+</div>
+<div class="cell code-cell">
+  <div class="input-area">
+    <div class="prompt input-prompt">In [ ]:</div>
+    <div class="code-container"><pre><code class="language-python">q_c5 = &#39;&#39;&#39;
+SELECT 
+    cc.ID_CALENDARIO,
+    cur.NOMBRE AS CURSO,
+    s.NOMBRE AS SALON,
+    e.NOMBRE AS EDIFICIO,
+    cc.DIA,
+    cc.HORA_INICIO || &#39; - &#39; || cc.HORA_FIN AS HORARIO
+FROM CALENDARIO_CURSOS cc
+INNER JOIN CURSOS cur ON cc.ID_CURSO = cur.ID_CURSO
+INNER JOIN SALONES s ON cc.ID_SALON = s.ID_SALON
+INNER JOIN EDIFICIOS e ON s.ID_EDIFICIO = e.ID_EDIFICIO
+ORDER BY cur.NOMBRE, cc.DIA;
+&#39;&#39;&#39;
+df_c5 = run_query(q_c5, &quot;C.5. Programaci&#243;n de cursos con sal&#243;n y edificio&quot;)
+df_c5.head(10)
+</code></pre></div>
+  </div>
+</div>
+<div class="cell markdown-cell"><h3><span id="heading-28"></span>Consulta C.6: Cartelera de programación para el día Martes</h3>
+<p>Incluye curso, horario, salón, edificio y nombre completo del docente a cargo.</p>
+</div>
+<div class="cell code-cell">
+  <div class="input-area">
+    <div class="prompt input-prompt">In [ ]:</div>
+    <div class="code-container"><pre><code class="language-python">q_c6 = &#39;&#39;&#39;
+SELECT 
+    cur.NOMBRE AS CURSO,
+    cc.HORA_INICIO,
+    cc.HORA_FIN,
+    s.NOMBRE AS SALON,
+    e.NOMBRE AS EDIFICIO,
+    prof.NOMBRE || &#39; &#39; || prof.APELLIDO AS PROFESOR
+FROM CALENDARIO_CURSOS cc
+INNER JOIN CURSOS cur ON cc.ID_CURSO = cur.ID_CURSO
+INNER JOIN SALONES s ON cc.ID_SALON = s.ID_SALON
+INNER JOIN EDIFICIOS e ON s.ID_EDIFICIO = e.ID_EDIFICIO
+INNER JOIN USUARIOS prof ON cc.ID_PROFESOR = prof.ID_USUARIO
+WHERE cc.DIA = &#39;Martes&#39;
+ORDER BY cc.HORA_INICIO, cur.NOMBRE;
+&#39;&#39;&#39;
+run_query(q_c6, &quot;C.6. Cartelera acad&#233;mica del d&#237;a Martes&quot;)
+</code></pre></div>
+  </div>
+</div>
+<div class="cell markdown-cell"><h3><span id="heading-29"></span>Consulta C.7: Horario completo de un estudiante específico (ID = 1)</h3>
+<p>Ordenado cronológicamente por día de la semana y hora de inicio.</p>
+</div>
+<div class="cell code-cell">
+  <div class="input-area">
+    <div class="prompt input-prompt">In [ ]:</div>
+    <div class="code-container"><pre><code class="language-python">q_c7 = &#39;&#39;&#39;
+SELECT 
+    u.NOMBRE || &#39; &#39; || u.APELLIDO AS ESTUDIANTE,
+    cc.DIA,
+    cc.HORA_INICIO,
+    cc.HORA_FIN,
+    cur.NOMBRE AS CURSO,
+    s.NOMBRE AS SALON,
+    e.NOMBRE AS EDIFICIO
+FROM CURSOS_ESTUDIANTES ce
+INNER JOIN USUARIOS u ON ce.ID_USUARIO = u.ID_USUARIO
+INNER JOIN CALENDARIO_CURSOS cc ON ce.ID_CALENDARIO = cc.ID_CALENDARIO
+INNER JOIN CURSOS cur ON cc.ID_CURSO = cur.ID_CURSO
+INNER JOIN SALONES s ON cc.ID_SALON = s.ID_SALON
+INNER JOIN EDIFICIOS e ON s.ID_EDIFICIO = e.ID_EDIFICIO
+WHERE u.ID_USUARIO = 1
+ORDER BY 
+    CASE cc.DIA
+        WHEN &#39;Lunes&#39; THEN 1
+        WHEN &#39;Martes&#39; THEN 2
+        WHEN &#39;Miercoles&#39; THEN 3
+        WHEN &#39;Jueves&#39; THEN 4
+        WHEN &#39;Viernes&#39; THEN 5
+        WHEN &#39;Sabado&#39; THEN 6
+        ELSE 7
+    END,
+    cc.HORA_INICIO;
+&#39;&#39;&#39;
+run_query(q_c7, &quot;C.7. Horario semanal consolidado del Estudiante ID = 1&quot;)
+</code></pre></div>
+  </div>
+</div>
+<div class="cell markdown-cell"><h3><span id="heading-30"></span>Consultas C.8 y C.9: Profesores y Cursos Ofertados que Orientan</h3>
+</div>
+<div class="cell code-cell">
+  <div class="input-area">
+    <div class="prompt input-prompt">In [ ]:</div>
+    <div class="code-container"><pre><code class="language-python"># C.8: Profesores que dictan cursos ofertados vs profesores registrados
+q_c8 = &#39;&#39;&#39;
+SELECT DISTINCT 
+    u.ID_USUARIO,
+    u.NOMBRE || &#39; &#39; || u.APELLIDO AS PROFESOR,
+    &#39;Con cursos ofertados en calendario&#39; AS ESTADO
+FROM USUARIOS u
+INNER JOIN CALENDARIO_CURSOS cc ON u.ID_USUARIO = cc.ID_PROFESOR
+WHERE u.ID_ROL = 2
+
+UNION
+
+SELECT 
+    u.ID_USUARIO,
+    u.NOMBRE || &#39; &#39; || u.APELLIDO AS PROFESOR,
+    &#39;Docente de planta registrado&#39; AS ESTADO
+FROM USUARIOS u
+WHERE u.ID_ROL = 2
+ORDER BY PROFESOR;
+&#39;&#39;&#39;
+display(run_query(q_c8, &quot;C.8. Auditor&#237;a docente: Estado de asignaci&#243;n en calendario&quot;))
+
+# C.9: Profesores con los nombres de cursos ofertados que orientan
+q_c9 = &#39;&#39;&#39;
+SELECT DISTINCT
+    prof.NOMBRE || &#39; &#39; || prof.APELLIDO AS PROFESOR,
+    cur.NOMBRE AS CURSO
+FROM CALENDARIO_CURSOS cc
+INNER JOIN USUARIOS prof ON cc.ID_PROFESOR = prof.ID_USUARIO
+INNER JOIN CURSOS cur ON cc.ID_CURSO = cur.ID_CURSO
+ORDER BY PROFESOR, CURSO;
+&#39;&#39;&#39;
+display(run_query(q_c9, &quot;C.9. Asignaci&#243;n acad&#233;mica de cursos por docente&quot;))
+</code></pre></div>
+  </div>
+</div>
+<div class="cell markdown-cell"><hr>
+<h2><span id="heading-31"></span>Bloque D: Auditoría de Registros Huérfanos (LEFT JOIN / Subconsultas)</h2>
+
+<p>Identificación de inconsistencias operacionales, estudiantes inactivos o cursos desiertos sin matrícula mediante LEFT JOIN ... WHERE ... IS NULL.</p>
+</div>
+<div class="cell markdown-cell"><h3><span id="heading-32"></span>Consulta D.1: Estudiantes registrados sin ningún curso matriculado</h3>
+<p>Auditoría para detectar deserción o alumnos no matriculados en el periodo.</p>
+</div>
+<div class="cell code-cell">
+  <div class="input-area">
+    <div class="prompt input-prompt">In [ ]:</div>
+    <div class="code-container"><pre><code class="language-python">q_d1 = &#39;&#39;&#39;
+SELECT 
+    u.ID_USUARIO,
+    u.NOMBRE || &#39; &#39; || u.APELLIDO AS ESTUDIANTE,
+    u.SEMESTRE
+FROM USUARIOS u
+LEFT JOIN CURSOS_ESTUDIANTES ce ON u.ID_USUARIO = ce.ID_USUARIO
+WHERE u.ID_ROL = 1 
+  AND ce.ID_USUARIO IS NULL;
+&#39;&#39;&#39;
+run_query(q_d1, &quot;D.1. Estudiantes sin asignaturas matriculadas&quot;)
+</code></pre></div>
+  </div>
+</div>
+<div class="cell markdown-cell"><h3><span id="heading-33"></span>Consulta D.2: Cursos del catálogo que no tienen horario programado en el calendario</h3>
+<p>Asignaturas existentes en la malla que no fueron ofertadas en el semestre analizado.</p>
+</div>
+<div class="cell code-cell">
+  <div class="input-area">
+    <div class="prompt input-prompt">In [ ]:</div>
+    <div class="code-container"><pre><code class="language-python">q_d2 = &#39;&#39;&#39;
+SELECT 
+    c.ID_CURSO,
+    c.NOMBRE AS CURSO
+FROM CURSOS c
+LEFT JOIN CALENDARIO_CURSOS cc ON c.ID_CURSO = cc.ID_CURSO
+WHERE cc.ID_CURSO IS NULL
+ORDER BY c.NOMBRE;
+&#39;&#39;&#39;
+df_d2 = run_query(q_d2, &quot;D.2. Cursos no ofertados en calendario&quot;)
+print(f&quot;Total de cursos en cat&#225;logo sin horario: {len(df_d2)}&quot;)
+df_d2.head(10)
+</code></pre></div>
+  </div>
+</div>
+<div class="cell markdown-cell"><h3><span id="heading-34"></span>Consulta D.3: Cursos existentes en el sistema sin ningún estudiante matriculado</h3>
+<p>Cursos que no cuentan con alumnos inscritos en ninguna sección.</p>
+</div>
+<div class="cell code-cell">
+  <div class="input-area">
+    <div class="prompt input-prompt">In [ ]:</div>
+    <div class="code-container"><pre><code class="language-python">q_d3 = &#39;&#39;&#39;
+SELECT 
+    c.ID_CURSO,
+    c.NOMBRE AS CURSO
+FROM CURSOS c
+LEFT JOIN CALENDARIO_CURSOS cc ON c.ID_CURSO = cc.ID_CURSO
+LEFT JOIN CURSOS_ESTUDIANTES ce ON cc.ID_CALENDARIO = ce.ID_CALENDARIO
+GROUP BY c.ID_CURSO, c.NOMBRE
+HAVING COUNT(ce.ID_USUARIO) = 0
+ORDER BY c.NOMBRE;
+&#39;&#39;&#39;
+df_d3 = run_query(q_d3, &quot;D.3. Cursos sin estudiantes matriculados&quot;)
+print(f&quot;Total cursos sin alumnos: {len(df_d3)}&quot;)
+df_d3.head(10)
+</code></pre></div>
+  </div>
+</div>
+<div class="cell markdown-cell"><h3><span id="heading-35"></span>Consulta D.4: Cursos ofertados en calendario pero sin estudiantes matriculados (Cursos desiertos)</h3>
+<p>Secciones abiertas en programación que tuvieron matrícula cero. Hallazgo crítico para optimización presupuestal y de salones.</p>
+</div>
+<div class="cell code-cell">
+  <div class="input-area">
+    <div class="prompt input-prompt">In [ ]:</div>
+    <div class="code-container"><pre><code class="language-python">q_d4 = &#39;&#39;&#39;
+SELECT DISTINCT
+    cc.ID_CALENDARIO,
+    c.ID_CURSO,
+    c.NOMBRE AS CURSO,
+    cc.DIA,
+    cc.HORA_INICIO || &#39; - &#39; || cc.HORA_FIN AS HORARIO
+FROM CALENDARIO_CURSOS cc
+INNER JOIN CURSOS c ON cc.ID_CURSO = c.ID_CURSO
+LEFT JOIN CURSOS_ESTUDIANTES ce ON cc.ID_CALENDARIO = ce.ID_CALENDARIO
+WHERE ce.ID_USUARIO IS NULL
+ORDER BY c.NOMBRE;
+&#39;&#39;&#39;
+run_query(q_d4, &quot;D.4. Secciones ofertadas con matr&#237;cula cero (Cursos desiertos)&quot;)
+</code></pre></div>
+  </div>
+</div>
+<div class="cell markdown-cell"><hr>
+<h2><span id="heading-36"></span>Bloque E: Agregaciones, Estadísticas y Cupos (GROUP BY / HAVING)</h2>
+
+<p>Métricas institucionales para toma de decisiones: conteos, promedios, demanda de cupos y análisis de capacidad física.</p>
+</div>
+<div class="cell markdown-cell"><h3><span id="heading-37"></span>Consultas E.1 a E.4: Métricas Globales de Estudiantes y Docentes</h3>
+</div>
+<div class="cell code-cell">
+  <div class="input-area">
+    <div class="prompt input-prompt">In [ ]:</div>
+    <div class="code-container"><pre><code class="language-python"># E.1: Total de estudiantes
+print(&quot;--- E.1: Total de estudiantes ---&quot;)
+display(run_query(&quot;SELECT COUNT(*) AS TOTAL_ESTUDIANTES FROM USUARIOS WHERE ID_ROL = 1;&quot;))
+
+# E.2: Total de profesores y total de estudiantes en una sola consulta
+print(&quot;--- E.2: Distribuci&#243;n de usuarios por rol ---&quot;)
+q_e2 = &#39;&#39;&#39;
+SELECT 
+    SUM(CASE WHEN ID_ROL = 1 THEN 1 ELSE 0 END) AS TOTAL_ESTUDIANTES,
+    SUM(CASE WHEN ID_ROL = 2 THEN 1 ELSE 0 END) AS TOTAL_PROFESORES,
+    COUNT(*) AS TOTAL_USUARIOS
+FROM USUARIOS;
+&#39;&#39;&#39;
+display(run_query(q_e2))
+
+# E.3: Promedio, m&#237;nimo y m&#225;ximo de semestre
+print(&quot;--- E.3: Estad&#237;sticas del semestre de los estudiantes ---&quot;)
+q_e3 = &#39;&#39;&#39;
+SELECT 
+    ROUND(AVG(SEMESTRE), 2) AS PROMEDIO_SEMESTRE,
+    MIN(SEMESTRE) AS SEMESTRE_MINIMO,
+    MAX(SEMESTRE) AS SEMESTRE_MAXIMO
+FROM USUARIOS
+WHERE ID_ROL = 1;
+&#39;&#39;&#39;
+display(run_query(q_e3))
+
+# E.4: Estudiantes que cursan el semestre m&#225;s alto
+print(&quot;--- E.4: Estudiantes en el semestre m&#225;s avanzado ---&quot;)
+q_e4 = &#39;&#39;&#39;
+SELECT 
+    ID_USUARIO,
+    NOMBRE || &#39; &#39; || APELLIDO AS ESTUDIANTE,
+    SEMESTRE
+FROM USUARIOS
+WHERE ID_ROL = 1 
+  AND SEMESTRE = (SELECT MAX(SEMESTRE) FROM USUARIOS WHERE ID_ROL = 1);
+&#39;&#39;&#39;
+display(run_query(q_e4))
+</code></pre></div>
+  </div>
+</div>
+<div class="cell markdown-cell"><h3><span id="heading-38"></span>Consultas E.5 a E.9: Análisis por Facultades, Carreras y Edificios</h3>
+</div>
+<div class="cell code-cell">
+  <div class="input-area">
+    <div class="prompt input-prompt">In [ ]:</div>
+    <div class="code-container"><pre><code class="language-python"># E.5: Cantidad de cursos ofertados por cada facultad
+q_e5 = &#39;&#39;&#39;
+SELECT 
+    f.ID_FACULTAD,
+    f.NOMBRE AS FACULTAD,
+    COUNT(DISTINCT cc.ID_CURSO) AS CURSOS_DISTINTOS,
+    COUNT(cc.ID_CALENDARIO) AS TOTAL_SECCIONES_OFERTADAS
+FROM FACULTADES f
+INNER JOIN CURSOS c ON f.ID_FACULTAD = c.ID_FACULTAD
+INNER JOIN CALENDARIO_CURSOS cc ON c.ID_CURSO = cc.ID_CURSO
+GROUP BY f.ID_FACULTAD, f.NOMBRE
+ORDER BY TOTAL_SECCIONES_OFERTADAS DESC;
+&#39;&#39;&#39;
+display(run_query(q_e5, &quot;E.5. Cursos ofertados por facultad&quot;))
+
+# E.6: Facultades con m&#225;s de 3 carreras asociadas
+q_e6 = &#39;&#39;&#39;
+SELECT 
+    f.ID_FACULTAD,
+    f.NOMBRE AS FACULTAD,
+    COUNT(c.ID_CARRERA) AS TOTAL_CARRERAS
+FROM FACULTADES f
+INNER JOIN CARRERAS c ON f.ID_FACULTAD = c.ID_FACULTAD
+GROUP BY f.ID_FACULTAD, f.NOMBRE
+HAVING COUNT(c.ID_CARRERA) &gt; 3
+ORDER BY TOTAL_CARRERAS DESC;
+&#39;&#39;&#39;
+display(run_query(q_e6, &quot;E.6. Facultades con m&#225;s de 3 programas acad&#233;micos&quot;))
+
+# E.7 y E.8: Cantidad de estudiantes matriculados por carrera
+q_e7 = &#39;&#39;&#39;
+SELECT 
+    car.ID_CARRERA,
+    car.NOMBRE AS CARRERA,
+    COUNT(ce.ID_USUARIO) AS TOTAL_ESTUDIANTES
+FROM CARRERAS car
+LEFT JOIN CARRERAS_ESTUDIANTES ce ON car.ID_CARRERA = ce.ID_CARRERA
+GROUP BY car.ID_CARRERA, car.NOMBRE
+ORDER BY TOTAL_ESTUDIANTES DESC;
+&#39;&#39;&#39;
+display(run_query(q_e7, &quot;E.7. Estudiantes matriculados por carrera&quot;))
+
+# E.9: Edificio con mayor cantidad de salones
+q_e9 = &#39;&#39;&#39;
+SELECT 
+    e.ID_EDIFICIO,
+    e.NOMBRE AS EDIFICIO,
+    COUNT(s.ID_SALON) AS TOTAL_SALONES
+FROM EDIFICIOS e
+INNER JOIN SALONES s ON e.ID_EDIFICIO = s.ID_EDIFICIO
+GROUP BY e.ID_EDIFICIO, e.NOMBRE
+ORDER BY TOTAL_SALONES DESC
+LIMIT 1;
+&#39;&#39;&#39;
+display(run_query(q_e9, &quot;E.9. Edificio con mayor capacidad de aulas&quot;))
+</code></pre></div>
+  </div>
+</div>
+<div class="cell markdown-cell"><h3><span id="heading-39"></span>Consultas E.10 a E.14: Carga Docente, Inscripciones y Análisis de Cupos</h3>
+</div>
+<div class="cell code-cell">
+  <div class="input-area">
+    <div class="prompt input-prompt">In [ ]:</div>
+    <div class="code-container"><pre><code class="language-python"># E.10: Total de cursos ofertados por docente
+q_e10 = &#39;&#39;&#39;
+SELECT 
+    u.ID_USUARIO,
+    u.NOMBRE || &#39; &#39; || u.APELLIDO AS PROFESOR,
+    COUNT(cc.ID_CALENDARIO) AS TOTAL_SECCIONES,
+    COUNT(DISTINCT cc.ID_CURSO) AS CURSOS_DISTINTOS
+FROM USUARIOS u
+INNER JOIN CALENDARIO_CURSOS cc ON u.ID_USUARIO = cc.ID_PROFESOR
+WHERE u.ID_ROL = 2
+GROUP BY u.ID_USUARIO, PROFESOR
+ORDER BY TOTAL_SECCIONES DESC;
+&#39;&#39;&#39;
+display(run_query(q_e10, &quot;E.10. Carga de cursos por profesor&quot;))
+
+# E.11 y E.12: Matr&#237;culas por estudiante y alumnos con menos de 10 asignaturas
+q_e12 = &#39;&#39;&#39;
+SELECT 
+    u.ID_USUARIO,
+    u.NOMBRE || &#39; &#39; || u.APELLIDO AS ESTUDIANTE,
+    u.SEMESTRE,
+    COUNT(ce.ID_CALENDARIO) AS TOTAL_CURSOS_INSCRITOS
+FROM USUARIOS u
+LEFT JOIN CURSOS_ESTUDIANTES ce ON u.ID_USUARIO = ce.ID_USUARIO
+WHERE u.ID_ROL = 1
+GROUP BY u.ID_USUARIO, ESTUDIANTE, u.SEMESTRE
+HAVING COUNT(ce.ID_CALENDARIO) &lt; 10
+ORDER BY TOTAL_CURSOS_INSCRITOS ASC;
+&#39;&#39;&#39;
+display(run_query(q_e12, &quot;E.12. Estudiantes con menos de 10 asignaturas inscritas&quot;))
+
+# E.13: Curso con mayor cantidad de matr&#237;culas
+q_e13 = &#39;&#39;&#39;
+SELECT 
+    c.ID_CURSO,
+    c.NOMBRE AS CURSO,
+    COUNT(ce.ID_USUARIO) AS TOTAL_INSCRIPCIONES,
+    COUNT(DISTINCT ce.ID_USUARIO) AS ESTUDIANTES_UNICOS
+FROM CURSOS c
+INNER JOIN CALENDARIO_CURSOS cc ON c.ID_CURSO = cc.ID_CURSO
+INNER JOIN CURSOS_ESTUDIANTES ce ON cc.ID_CALENDARIO = ce.ID_CALENDARIO
+GROUP BY c.ID_CURSO, c.NOMBRE
+ORDER BY TOTAL_INSCRIPCIONES DESC
+LIMIT 1;
+&#39;&#39;&#39;
+display(run_query(q_e13, &quot;E.13. Asignatura con mayor demanda estudiantil&quot;))
+
+# E.14: An&#225;lisis de Demanda y Cupos (secciones con 5 o m&#225;s inscritos)
+q_e14 = &#39;&#39;&#39;
+SELECT 
+    cc.ID_CALENDARIO,
+    c.NOMBRE AS CURSO,
+    cc.DIA,
+    cc.HORA_INICIO || &#39; - &#39; || cc.HORA_FIN AS HORARIO,
+    cc.CUPO AS CUPO_MAXIMO,
+    COUNT(ce.ID_USUARIO) AS ESTUDIANTES_INSCRITOS,
+    ROUND((COUNT(ce.ID_USUARIO) * 100.0 / cc.CUPO), 1) AS PORCENTAJE_OCUPACION
+FROM CALENDARIO_CURSOS cc
+INNER JOIN CURSOS c ON cc.ID_CURSO = c.ID_CURSO
+INNER JOIN CURSOS_ESTUDIANTES ce ON cc.ID_CALENDARIO = ce.ID_CALENDARIO
+GROUP BY cc.ID_CALENDARIO, c.NOMBRE, cc.DIA, cc.HORA_INICIO, cc.HORA_FIN, cc.CUPO
+HAVING COUNT(ce.ID_USUARIO) &gt;= 5
+ORDER BY ESTUDIANTES_INSCRITOS DESC;
+&#39;&#39;&#39;
+display(run_query(q_e14, &quot;E.14. Secciones con alta ocupaci&#243;n (&gt;= 5 inscritos)&quot;))
+</code></pre></div>
+  </div>
+</div>
+<div class="cell markdown-cell"><hr>
+<h1><span id="heading-40"></span>PARTE II: RETOS INTEGRADORES E INTELIGENCIA ARTIFICIAL</h1>
+<hr>
+<h2><span id="heading-41"></span>Reto Integrador 1: Carga Académica por Carrera (Agregación Múltiple)</h2>
+
+<p><strong>Problema:</strong> Obtener un resumen consolidado por cada carrera que muestre:</p>
+<ul>
+<li>Nombre de la carrera</li>
+<li>Nombre de su facultad</li>
+<li>Total de cursos que componen su malla curricular (CURSOS_CARRERAS)</li>
+<li>Número de estudiantes matriculados en dicha carrera (CARRERAS_ESTUDIANTES)</li>
+</ul>
+
+<blockquote class="callout-box">⚠️ <strong>Advertencia Técnica de Analítica:</strong> Si se unen ambas tablas de cardinalidad muchos-a-muchos simultáneamente (INNER JOIN CURSOS_CARRERAS y INNER JOIN CARRERAS_ESTUDIANTES), se genera un <strong>producto cartesiano</strong> que multiplica el conteo de cursos por el número de estudiantes, arrojando valores inflados y erróneos.</blockquote>
+<blockquote class="callout-box"></blockquote>
+<blockquote class="callout-box"><strong>Solución Robusta:</strong> Se utilizan Expresiones de Tabla Comunes (<strong>CTEs</strong> / WITH) para pre-agregar las métricas de forma aislada antes de vincularlas con la tabla principal CARRERAS.</blockquote>
+</div>
+<div class="cell code-cell">
+  <div class="input-area">
+    <div class="prompt input-prompt">In [ ]:</div>
+    <div class="code-container"><pre><code class="language-python">q_reto1 = &#39;&#39;&#39;
+WITH MallaCurricular AS (
+    SELECT 
+        ID_CARRERA,
+        COUNT(ID_CURSO) AS TOTAL_CURSOS_MALLA
+    FROM CURSOS_CARRERAS
+    GROUP BY ID_CARRERA
+),
+MatriculaEstudiantes AS (
+    SELECT 
+        ID_CARRERA,
+        COUNT(ID_USUARIO) AS TOTAL_ESTUDIANTES_MATRICULADOS
+    FROM CARRERAS_ESTUDIANTES
+    GROUP BY ID_CARRERA
+)
+SELECT 
+    car.ID_CARRERA,
+    car.NOMBRE AS CARRERA,
+    fac.NOMBRE AS FACULTAD,
+    COALESCE(mc.TOTAL_CURSOS_MALLA, 0) AS CURSOS_MALLA,
+    COALESCE(me.TOTAL_ESTUDIANTES_MATRICULADOS, 0) AS ESTUDIANTES_MATRICULADOS
+FROM CARRERAS car
+INNER JOIN FACULTADES fac ON car.ID_FACULTAD = fac.ID_FACULTAD
+LEFT JOIN MallaCurricular mc ON car.ID_CARRERA = mc.ID_CARRERA
+LEFT JOIN MatriculaEstudiantes me ON car.ID_CARRERA = me.ID_CARRERA
+ORDER BY ESTUDIANTES_MATRICULADOS DESC, CURSOS_MALLA DESC;
+&#39;&#39;&#39;
+run_query(q_reto1, &quot;Reto Integrador 1: Consolidado de Malla y Matr&#237;cula por Carrera (Soluci&#243;n Anti-Producto Cartesiano)&quot;)
+</code></pre></div>
+  </div>
+</div>
+<div class="cell markdown-cell"><hr>
+<h2><span id="heading-42"></span>Reto Integrador 2: Auditoría Text-to-SQL con el Agente de Antigravity (IA / MCP)</h2>
+
+<h3><span id="heading-43"></span>1. Solicitud en Lenguaje Natural al Agente de IA:</h3>
+<blockquote class="callout-box"><em>\"Identifica qué estudiantes tienen cruces de horario (dos clases el mismo día y a la misma hora) en university_db\".</em></blockquote>
+<hr>
+<h3><span id="heading-44"></span>2. Consulta SQL Generada por el Agente de IA y Optimizada:</h3>
+<p>Para detectar cruces reales sin generar duplicados reflejados ni comparar una clase consigo misma:</p>
+<ol>
+<li>Se auto-une la tabla CURSOS_ESTUDIANTES usando ce1.ID_USUARIO = ce2.ID_USUARIO y la condición de asimetría ce1.ID_CALENDARIO < ce2.ID_CALENDARIO.</li>
+<li>Se une con CALENDARIO_CURSOS para validar que coincida el día (c1.DIA = c2.DIA).</li>
+<li>Se aplica la condición formal de solapamiento de intervalos de tiempo: (c1.HORA_INICIO < c2.HORA_FIN AND c2.HORA_INICIO < c1.HORA_FIN).</li>
+</ul>
+</div>
+<div class="cell code-cell">
+  <div class="input-area">
+    <div class="prompt input-prompt">In [ ]:</div>
+    <div class="code-container"><pre><code class="language-python">q_reto2 = &#39;&#39;&#39;
+SELECT 
+    u.ID_USUARIO,
+    u.NOMBRE || &#39; &#39; || u.APELLIDO AS ESTUDIANTE,
+    c1.DIA,
+    cur1.NOMBRE AS CURSO_1,
+    c1.HORA_INICIO || &#39; - &#39; || c1.HORA_FIN AS HORARIO_1,
+    cur2.NOMBRE AS CURSO_2,
+    c2.HORA_INICIO || &#39; - &#39; || c2.HORA_FIN AS HORARIO_2
+FROM CURSOS_ESTUDIANTES ce1
+INNER JOIN CURSOS_ESTUDIANTES ce2 
+    ON ce1.ID_USUARIO = ce2.ID_USUARIO 
+   AND ce1.ID_CALENDARIO &lt; ce2.ID_CALENDARIO
+INNER JOIN CALENDARIO_CURSOS c1 ON ce1.ID_CALENDARIO = c1.ID_CALENDARIO
+INNER JOIN CALENDARIO_CURSOS c2 ON ce2.ID_CALENDARIO = c2.ID_CALENDARIO
+INNER JOIN CURSOS cur1 ON c1.ID_CURSO = cur1.ID_CURSO
+INNER JOIN CURSOS cur2 ON c2.ID_CURSO = cur2.ID_CURSO
+INNER JOIN USUARIOS u ON ce1.ID_USUARIO = u.ID_USUARIO
+WHERE c1.DIA = c2.DIA
+  AND (c1.HORA_INICIO &lt; c2.HORA_FIN AND c2.HORA_INICIO &lt; c1.HORA_FIN)
+ORDER BY u.ID_USUARIO, c1.DIA, c1.HORA_INICIO;
+&#39;&#39;&#39;
+cruces_df = run_query(q_reto2, &quot;Reto Integrador 2: Cruces de Horario Estudiantiles Auditados&quot;)
+print(f&quot;Total cruces de horario detectados: {len(cruces_df)}&quot;)
+cruces_df
+</code></pre></div>
+  </div>
+</div>
+<div class="cell markdown-cell"><h3><span id="heading-45"></span>3. Análisis Crítico y Auditoría de la Generación Text-to-SQL</h3>
+
+<ol>
+<li><strong>Riesgo de Coincidencia Trivial (Misma sección):</strong></li>
+</ul>
+<p>   <em> </em>Error potencial de agentes de IA:* Un agente básico suele escribir ce1.ID_CALENDARIO != ce2.ID_CALENDARIO. Si bien evita comparar una fila consigo misma, reporta el mismo conflicto dos veces: (Clase A vs Clase B) y (Clase B vs Clase A).</p>
+<p>   <em> </em>Corrección aplicada:* Utilizar el operador relacional de orden estricto ce1.ID_CALENDARIO < ce2.ID_CALENDARIO. Esto garantiza que cada par de conflicto aparezca exactamente una sola vez.</p>
+
+<ol>
+<li><strong>Riesgo en el Solapamiento Temporal Parcial:</strong></li>
+</ul>
+<p>   <em> </em>Error potencial de agentes de IA:* Comparar igualdad exacta de horas de inicio: c1.HORA_INICIO = c2.HORA_INICIO.</p>
+<p>   <em> </em>Fallo analítico:* Si una clase inicia a las 08:00 y termina a las 10:00, y otra inicia a las 09:00 y termina a las 11:00, hay un choque real de 1 hora que no se detectaría con simple igualdad.</p>
+<p>   <em> </em>Corrección aplicada:* Fórmula canónica de traslape de rangos continuos: c1.HORA_INICIO < c2.HORA_FIN AND c2.HORA_INICIO < c1.HORA_FIN. Al almacenar las horas en formato HH:MM:SS (ISO-24H), la comparación de cadenas léxicas en SQLite es matemáticamente equivalente a la comparación cronológica.</p>
+
+<ol>
+<li><strong>Relevancia para la Toma de Decisiones Institucional:</strong></li>
+</ul>
+<p>   <em> La detección automatizada de cruces permite al sistema de registro bloquear inscripciones simultáneas incompatibles en tiempo real (</em>Trigger* de base de datos) o notificar a los estudiantes afectados para reajuste de horario antes del cierre de adiciones.</p>
+</div>
+<div class="cell markdown-cell"><hr>
+<h2><span id="heading-46"></span>4. Conclusiones y Cierre del Taller</h2>
+
+<ol>
+<li><strong>Consistencia Relacional y Normalización:</strong></li>
+<li>La estructura de 11 tablas de university.db separa adecuadamente la infraestructura física (EDIFICIOS, SALONES), la oferta académica (CURSOS, FACULTADES, CARRERAS) y la dinámica operacional de eventos (CALENDARIO_CURSOS, CURSOS_ESTUDIANTES).</li>
+</ul>
+
+<ol>
+<li><strong>Auditoría de Registros Huérfanos:</strong></li>
+<li>El uso de LEFT JOIN ... WHERE IS NULL demostró ser indispensable para la gobernanza de datos, revelando asignaturas del catálogo que nunca fueron programadas y secciones abiertas con cupos asignados que no captaron matrícula.</li>
+</ul>
+
+<ol>
+<li><strong>Prevención de Errores de Agregación:</strong></li>
+<li>En analítica avanzada, cruzar mallas curriculares y matrículas exige aislar los niveles de granularidad mediante subconsultas o CTEs para evitar distorsiones por productos cartesianos.</li>
+</ul>
+
+<ol>
+<li><strong>Sinergia con Agentes Text-to-SQL:</strong></li>
+<li>La inteligencia artificial acelera la redacción de consultas complejas, pero el rol del científico de datos como auditor crítico es insustituible para validar asimetrías de llaves y comparaciones de rangos temporales.</li>
+</ul>
+</div>
+<div class="cell code-cell">
+  <div class="input-area">
+    <div class="prompt input-prompt">In [ ]:</div>
+    <div class="code-container"><pre><code class="language-python"># Cierre formal de la conexi&#243;n a la base de datos
+conn.close()
+print(&quot;🔒 Conexi&#243;n a university.db cerrada correctamente. Taller finalizado.&quot;)
+</code></pre></div>
+  </div>
+</div>
+
+                <footer class="report-footer">
+                    <p>&copy; 2026 Universidad Pedagógica y Tecnológica de Colombia (UPTC) &bull; Especialización en Inteligencia Artificial</p>
+                </footer>
+            </main>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-sql.min.js"></script>
+</body>
+</html>
