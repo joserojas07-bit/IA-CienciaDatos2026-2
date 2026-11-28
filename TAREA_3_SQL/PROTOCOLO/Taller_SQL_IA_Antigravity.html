@@ -207,6 +207,87 @@
             .code-container pre { white-space: pre-wrap !important; word-break: break-word !important; }
             .code-container pre code { font-size: 7.8pt !important; color: #0f172a !important; }
         }
+    
+    /* Estilos profesionales para salida de resultados y dataframes */
+    .output-area {
+        margin-top: 10px;
+        padding: 14px 18px;
+        background-color: #ffffff;
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-sm);
+        box-shadow: var(--shadow-sm);
+    }
+    .output-header {
+        font-size: 0.82rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        color: var(--primary-light);
+        margin-bottom: 8px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+    .output-dataframe-container {
+        overflow-x: auto;
+        margin: 6px 0;
+    }
+    .dataframe {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.88rem;
+        text-align: left;
+    }
+    .dataframe th {
+        background-color: #f1f5f9;
+        color: var(--primary);
+        font-weight: 600;
+        padding: 8px 12px;
+        border: 1px solid #cbd5e1;
+    }
+    .dataframe td {
+        padding: 7px 12px;
+        border: 1px solid #e2e8f0;
+    }
+    .dataframe tr:nth-child(even) {
+        background-color: #f8fafc;
+    }
+    .dataframe tr:hover {
+        background-color: #eff6ff;
+    }
+    .output-stream {
+        font-family: 'Fira Code', monospace;
+        font-size: 0.86rem;
+        background-color: #0f172a;
+        color: #38bdf8;
+        padding: 12px 14px;
+        border-radius: 6px;
+        overflow-x: auto;
+        margin: 6px 0;
+        line-height: 1.5;
+    }
+    .output-text {
+        font-family: 'Fira Code', monospace;
+        font-size: 0.85rem;
+        background-color: #f8fafc;
+        color: #334155;
+        padding: 10px;
+        border-radius: 4px;
+        overflow-x: auto;
+    }
+    .analysis-card {
+        background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
+        border-left: 4px solid #10b981;
+        padding: 14px 18px;
+        margin: 12px 0 20px;
+        border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+        font-size: 0.92rem;
+        color: #064e3b;
+    }
+    .analysis-card strong {
+        color: #047857;
+    }
+
     </style>
 </head>
 <body>
@@ -341,6 +422,13 @@ def run_query(query, description=&quot;&quot;):
     return pd.read_sql_query(query, conn)
 </code></pre></div>
   </div>
+  <div class="output-area">
+    <div class="output-header"><span>📊</span> Resultado de la Ejecución en university.db:</div>
+    <pre class="output-stream">⬇️ Descargando university.db desde GitHub...
+✅ Archivo descargado exitosamente en Colab.
+🔗 Conexión SQLite lista sobre: university.db
+</pre>
+  </div>
 </div>
 <div class="cell markdown-cell"><h2><span id="heading-7"></span>3. Inspección del Esquema y Modelo Relacional</h2>
 
@@ -397,6 +485,283 @@ FROM USUARIOS;
 run_query(q_a1, &quot;A.1. Todos los registros de la tabla USUARIOS&quot;)
 </code></pre></div>
   </div>
+  <div class="output-area">
+    <div class="output-header"><span>📊</span> Resultado de la Ejecución en university.db:</div>
+    <pre class="output-stream">📌 A.1. Todos los registros de la tabla USUARIOS
+</pre><div class="output-dataframe-container">
+  <div id="df-91be9f01-10ba-4d15-b366-4f598dd99fbf" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: left;">
+      <th></th>
+      <th>ID_USUARIO</th>
+      <th>NOMBRE</th>
+      <th>APELLIDO</th>
+      <th>SEMESTRE</th>
+      <th>ID_ROL</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>Ben</td>
+      <td>Stone</td>
+      <td>0</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>Grace</td>
+      <td>Stone</td>
+      <td>0</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>Mikaela</td>
+      <td>Stone</td>
+      <td>0</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>Jared</td>
+      <td>Vásquez</td>
+      <td>0</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>Zeke</td>
+      <td>Landon</td>
+      <td>0</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>6</td>
+      <td>Saanvi</td>
+      <td>Bahl</td>
+      <td>0</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>7</td>
+      <td>Ulrich</td>
+      <td>Nielsen</td>
+      <td>0</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>8</td>
+      <td>Charlotte</td>
+      <td>Doppler</td>
+      <td>0</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>9</td>
+      <td>Claudia</td>
+      <td>Tiedemann</td>
+      <td>0</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>10</td>
+      <td>Robert</td>
+      <td>Vance</td>
+      <td>0</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>11</td>
+      <td>Olive</td>
+      <td>Stone</td>
+      <td>5</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>12</td>
+      <td>Cal</td>
+      <td>Stone</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>13</td>
+      <td>Angelina</td>
+      <td>Meyer</td>
+      <td>5</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>14</td>
+      <td>Jonas</td>
+      <td>Kahnwald</td>
+      <td>5</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>15</td>
+      <td>Martha</td>
+      <td>Nielsen</td>
+      <td>5</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>16</td>
+      <td>Bartosz</td>
+      <td>Tiedemann</td>
+      <td>5</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>17</td>
+      <td>Franziska</td>
+      <td>Doppler</td>
+      <td>5</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>18</td>
+      <td>Elisabeth</td>
+      <td>Doppler</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>19</td>
+      <td>Magnus</td>
+      <td>Nielsen</td>
+      <td>6</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>20</td>
+      <td>Mads</td>
+      <td>Nielsen</td>
+      <td>2</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+      
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-91be9f01-10ba-4d15-b366-4f598dd99fbf')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+      
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+    
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-91be9f01-10ba-4d15-b366-4f598dd99fbf button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-91be9f01-10ba-4d15-b366-4f598dd99fbf');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+  
+    </div>
+  </div>
+  </div>
+  </div>
 </div>
 <div class="cell markdown-cell"><h3><span id="heading-12"></span>Consulta A.2: Mostrar únicamente el NOMBRE y APELLIDO de todos los usuarios</h3>
 <p>Proyección acotada para listados de asistencia o directorios sin exponer datos de rol o semestre.</p>
@@ -410,6 +775,220 @@ FROM USUARIOS;
 &#39;&#39;&#39;
 run_query(q_a2, &quot;A.2. Directorio b&#225;sico (Nombre y Apellido)&quot;)
 </code></pre></div>
+  </div>
+  <div class="output-area">
+    <div class="output-header"><span>📊</span> Resultado de la Ejecución en university.db:</div>
+    <pre class="output-stream">📌 A.2. Directorio básico (Nombre y Apellido)
+</pre><div class="output-dataframe-container">
+  <div id="df-4a0e586f-e0fe-419c-b992-58ca75f2952a" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: left;">
+      <th></th>
+      <th>NOMBRE</th>
+      <th>APELLIDO</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Ben</td>
+      <td>Stone</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Grace</td>
+      <td>Stone</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Mikaela</td>
+      <td>Stone</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Jared</td>
+      <td>Vásquez</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Zeke</td>
+      <td>Landon</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Saanvi</td>
+      <td>Bahl</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Ulrich</td>
+      <td>Nielsen</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Charlotte</td>
+      <td>Doppler</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Claudia</td>
+      <td>Tiedemann</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Robert</td>
+      <td>Vance</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Olive</td>
+      <td>Stone</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Cal</td>
+      <td>Stone</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>Angelina</td>
+      <td>Meyer</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>Jonas</td>
+      <td>Kahnwald</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>Martha</td>
+      <td>Nielsen</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>Bartosz</td>
+      <td>Tiedemann</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>Franziska</td>
+      <td>Doppler</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>Elisabeth</td>
+      <td>Doppler</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>Magnus</td>
+      <td>Nielsen</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>Mads</td>
+      <td>Nielsen</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+      
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-4a0e586f-e0fe-419c-b992-58ca75f2952a')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+      
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+    
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-4a0e586f-e0fe-419c-b992-58ca75f2952a button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-4a0e586f-e0fe-419c-b992-58ca75f2952a');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+  
+    </div>
+  </div>
+  </div>
   </div>
 </div>
 <div class="cell markdown-cell"><h3><span id="heading-13"></span>Consulta A.3: Mostrar todas las carreras ordenadas alfabéticamente de forma ascendente</h3>
@@ -426,6 +1005,145 @@ ORDER BY NOMBRE ASC;
 run_query(q_a3, &quot;A.3. Carreras ordenadas alfab&#233;ticamente (A-Z)&quot;)
 </code></pre></div>
   </div>
+  <div class="output-area">
+    <div class="output-header"><span>📊</span> Resultado de la Ejecución en university.db:</div>
+    <pre class="output-stream">📌 A.3. Carreras ordenadas alfabéticamente (A-Z)
+</pre><div class="output-dataframe-container">
+  <div id="df-75e0d2b4-838f-4ded-a839-392d73be48b3" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: left;">
+      <th></th>
+      <th>ID_CARRERA</th>
+      <th>NOMBRE</th>
+      <th>ID_FACULTAD</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>4</td>
+      <td>Filosofía</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>Ingeniería Mecánica</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1</td>
+      <td>Ingeniería de Sistemas</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3</td>
+      <td>Matemáticas Aplicadas</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+      
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-75e0d2b4-838f-4ded-a839-392d73be48b3')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+      
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+    
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-75e0d2b4-838f-4ded-a839-392d73be48b3 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-75e0d2b4-838f-4ded-a839-392d73be48b3');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+  
+    </div>
+  </div>
+  </div>
+  </div>
 </div>
 <div class="cell markdown-cell"><h3><span id="heading-14"></span>Consulta A.4: Mostrar los cursos ordenados alfabéticamente de forma descendente</h3>
 <p>Inspección inversa (DESC) del catálogo global de asignaturas.</p>
@@ -440,6 +1158,188 @@ ORDER BY NOMBRE DESC;
 &#39;&#39;&#39;
 run_query(q_a4, &quot;A.4. Cursos ordenados alfab&#233;ticamente (Z-A)&quot;)
 </code></pre></div>
+  </div>
+  <div class="output-area">
+    <div class="output-header"><span>📊</span> Resultado de la Ejecución en university.db:</div>
+    <pre class="output-stream">📌 A.4. Cursos ordenados alfabéticamente (Z-A)
+</pre><div class="output-dataframe-container">
+  <div id="df-b89eaab1-88cf-43ae-ad9c-10ea532861b7" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: left;">
+      <th></th>
+      <th>ID_CURSO</th>
+      <th>NOMBRE</th>
+      <th>ID_FACULTAD</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>67</td>
+      <td>Ética</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>9</td>
+      <td>Árboles y Grafos</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>49</td>
+      <td>Álgebra Moderna</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>45</td>
+      <td>Álgebra Lineal</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4</td>
+      <td>Técnicas y Prácticas de Programación</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>66</th>
+      <td>10</td>
+      <td>Arquitectura del Computador</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>67</th>
+      <td>20</td>
+      <td>Aprendizaje Automático</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>68</th>
+      <td>16</td>
+      <td>Análisis y Diseño de Algoritmos</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>69</th>
+      <td>65</td>
+      <td>Antropología Filosófica</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>70</th>
+      <td>21</td>
+      <td>Animación y Simulación</td>
+      <td>1.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>71 rows × 3 columns</p>
+</div>
+    <div class="colab-df-buttons">
+      
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-b89eaab1-88cf-43ae-ad9c-10ea532861b7')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+      
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+    
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-b89eaab1-88cf-43ae-ad9c-10ea532861b7 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-b89eaab1-88cf-43ae-ad9c-10ea532861b7');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+  
+    </div>
+  </div>
+  </div>
   </div>
 </div>
 <div class="cell markdown-cell"><h3><span id="heading-15"></span>Consulta A.5: Mostrar los estudiantes que estén cursando el semestre 2</h3>
@@ -457,6 +1357,129 @@ WHERE ID_ROL = 1
 run_query(q_a5, &quot;A.5. Estudiantes en semestre 2&quot;)
 </code></pre></div>
   </div>
+  <div class="output-area">
+    <div class="output-header"><span>📊</span> Resultado de la Ejecución en university.db:</div>
+    <pre class="output-stream">📌 A.5. Estudiantes en semestre 2
+</pre><div class="output-dataframe-container">
+  <div id="df-a3a4ab64-5a4d-4d25-b96f-67c95775f07f" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: left;">
+      <th></th>
+      <th>ID_USUARIO</th>
+      <th>NOMBRE</th>
+      <th>APELLIDO</th>
+      <th>SEMESTRE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>20</td>
+      <td>Mads</td>
+      <td>Nielsen</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+      
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-a3a4ab64-5a4d-4d25-b96f-67c95775f07f')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+      
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+    
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-a3a4ab64-5a4d-4d25-b96f-67c95775f07f button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-a3a4ab64-5a4d-4d25-b96f-67c95775f07f');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+  
+    </div>
+  </div>
+  </div>
+  </div>
 </div>
 <div class="cell markdown-cell"><h3><span id="heading-16"></span>Consulta A.6: Mostrar los usuarios cuyo apellido sea 'Gomez'</h3>
 <p>Búsqueda nominal exacta sobre el campo APELLIDO.</p>
@@ -471,6 +1494,123 @@ WHERE APELLIDO = &#39;Gomez&#39;;
 &#39;&#39;&#39;
 run_query(q_a6, &quot;A.6. Usuarios con apellido Gomez&quot;)
 </code></pre></div>
+  </div>
+  <div class="output-area">
+    <div class="output-header"><span>📊</span> Resultado de la Ejecución en university.db:</div>
+    <pre class="output-stream">📌 A.6. Usuarios con apellido Gomez
+</pre><div class="output-dataframe-container">
+  <div id="df-c347b81a-822e-4810-9eab-2de9a34b7d08" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: left;">
+      <th></th>
+      <th>ID_USUARIO</th>
+      <th>NOMBRE</th>
+      <th>APELLIDO</th>
+      <th>SEMESTRE</th>
+      <th>ID_ROL</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+      
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-c347b81a-822e-4810-9eab-2de9a34b7d08')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+      
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+    
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-c347b81a-822e-4810-9eab-2de9a34b7d08 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-c347b81a-822e-4810-9eab-2de9a34b7d08');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+  
+    </div>
+  </div>
+  </div>
   </div>
 </div>
 <div class="cell markdown-cell"><h3><span id="heading-17"></span>Consulta A.7: Mostrar los estudiantes que pertenezcan al semestre 1 o al semestre 2</h3>
@@ -487,6 +1627,143 @@ WHERE ID_ROL = 1
 &#39;&#39;&#39;
 run_query(q_a7, &quot;A.7. Estudiantes de semestres 1 y 2&quot;)
 </code></pre></div>
+  </div>
+  <div class="output-area">
+    <div class="output-header"><span>📊</span> Resultado de la Ejecución en university.db:</div>
+    <pre class="output-stream">📌 A.7. Estudiantes de semestres 1 y 2
+</pre><div class="output-dataframe-container">
+  <div id="df-f73b40c2-e2ae-4190-a973-1b196ade69ab" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: left;">
+      <th></th>
+      <th>ID_USUARIO</th>
+      <th>NOMBRE</th>
+      <th>APELLIDO</th>
+      <th>SEMESTRE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>12</td>
+      <td>Cal</td>
+      <td>Stone</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>18</td>
+      <td>Elisabeth</td>
+      <td>Doppler</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>20</td>
+      <td>Mads</td>
+      <td>Nielsen</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+      
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-f73b40c2-e2ae-4190-a973-1b196ade69ab')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+      
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+    
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-f73b40c2-e2ae-4190-a973-1b196ade69ab button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-f73b40c2-e2ae-4190-a973-1b196ade69ab');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+  
+    </div>
+  </div>
+  </div>
   </div>
 </div>
 <div class="cell markdown-cell"><h3><span id="heading-18"></span>Consulta A.8: Asignaturas de Ingeniería y Ciencias relacionadas con Inteligencia o Datos</h3>
@@ -508,6 +1785,145 @@ ORDER BY NOMBRE ASC;
 &#39;&#39;&#39;
 run_query(q_a8, &quot;A.8. Cursos de IA y Ciencia de Datos en Facultad de Ingenier&#237;a&quot;)
 </code></pre></div>
+  </div>
+  <div class="output-area">
+    <div class="output-header"><span>📊</span> Resultado de la Ejecución en university.db:</div>
+    <pre class="output-stream">📌 A.8. Cursos de IA y Ciencia de Datos en Facultad de Ingeniería
+</pre><div class="output-dataframe-container">
+  <div id="df-5a625c64-8800-40b6-a9b7-e72f67af0828" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: left;">
+      <th></th>
+      <th>ID_CURSO</th>
+      <th>NOMBRE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>20</td>
+      <td>Aprendizaje Automático</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>14</td>
+      <td>Comunicación de Datos</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>Estructuras de Datos</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>17</td>
+      <td>Gestión y Modelación de Datos</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>24</td>
+      <td>Sistemas Inteligentes</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+      
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-5a625c64-8800-40b6-a9b7-e72f67af0828')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+      
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+    
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-5a625c64-8800-40b6-a9b7-e72f67af0828 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-5a625c64-8800-40b6-a9b7-e72f67af0828');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+  
+    </div>
+  </div>
+  </div>
   </div>
 </div>
 <div class="cell markdown-cell"><hr>
@@ -543,6 +1959,123 @@ print(&quot;B.2: Facultad 99 eliminada.&quot;)
 q_b3 = &quot;SELECT * FROM FACULTADES WHERE ID_FACULTAD = 99;&quot;
 run_query(q_b3, &quot;B.3. Verificaci&#243;n de eliminaci&#243;n (debe retornar DataFrame vac&#237;o)&quot;)
 </code></pre></div>
+  </div>
+  <div class="output-area">
+    <div class="output-header"><span>📊</span> Resultado de la Ejecución en university.db:</div>
+    <pre class="output-stream">B.1: Facultad 99 insertada con éxito.
+Registro actual: [{&#039;ID_FACULTAD&#039;: 99, &#039;NOMBRE&#039;: &#039;Facultad de Inteligencia Artificial y Robótica&#039;}]
+B.2: Facultad 99 eliminada.
+📌 B.3. Verificación de eliminación (debe retornar DataFrame vacío)
+</pre><div class="output-dataframe-container">
+  <div id="df-81e045ef-1354-471d-bc88-8e0a48e252fc" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: left;">
+      <th></th>
+      <th>ID_FACULTAD</th>
+      <th>NOMBRE</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+      
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-81e045ef-1354-471d-bc88-8e0a48e252fc')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+      
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+    
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-81e045ef-1354-471d-bc88-8e0a48e252fc button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-81e045ef-1354-471d-bc88-8e0a48e252fc');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+  
+    </div>
+  </div>
+  </div>
   </div>
 </div>
 <div class="cell markdown-cell"><h3><span id="heading-21"></span>Consultas B.4 a B.8: Inserción, Actualización y Eliminación de un Nuevo Estudiante</h3>
@@ -599,6 +2132,145 @@ ORDER BY f.NOMBRE, c.NOMBRE;
 run_query(q_c1, &quot;C.1. Carreras con sus respectivas Facultades&quot;)
 </code></pre></div>
   </div>
+  <div class="output-area">
+    <div class="output-header"><span>📊</span> Resultado de la Ejecución en university.db:</div>
+    <pre class="output-stream">📌 C.1. Carreras con sus respectivas Facultades
+</pre><div class="output-dataframe-container">
+  <div id="df-4b89b1f9-d263-4365-abe1-7db0f6f41927" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: left;">
+      <th></th>
+      <th>ID_CARRERA</th>
+      <th>CARRERA</th>
+      <th>FACULTAD</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>4</td>
+      <td>Filosofía</td>
+      <td>Humanidades y Ciencias Sociales</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>Ingeniería Mecánica</td>
+      <td>Ingeniería y Ciencias</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1</td>
+      <td>Ingeniería de Sistemas</td>
+      <td>Ingeniería y Ciencias</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3</td>
+      <td>Matemáticas Aplicadas</td>
+      <td>Ingeniería y Ciencias</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+      
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-4b89b1f9-d263-4365-abe1-7db0f6f41927')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+      
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+    
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-4b89b1f9-d263-4365-abe1-7db0f6f41927 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-4b89b1f9-d263-4365-abe1-7db0f6f41927');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+  
+    </div>
+  </div>
+  </div>
+  </div>
 </div>
 <div class="cell markdown-cell"><h3><span id="heading-24"></span>Consulta C.2: Mostrar el nombre de solo los usuarios que tienen rol de estudiante</h3>
 </div>
@@ -619,6 +2291,192 @@ ORDER BY u.SEMESTRE, ESTUDIANTE;
 run_query(q_c2, &quot;C.2. Usuarios con rol de Estudiante&quot;)
 </code></pre></div>
   </div>
+  <div class="output-area">
+    <div class="output-header"><span>📊</span> Resultado de la Ejecución en university.db:</div>
+    <pre class="output-stream">📌 C.2. Usuarios con rol de Estudiante
+</pre><div class="output-dataframe-container">
+  <div id="df-b6c8519d-fc2e-4b0d-a6a8-19bde74dd2d2" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: left;">
+      <th></th>
+      <th>ID_USUARIO</th>
+      <th>ESTUDIANTE</th>
+      <th>SEMESTRE</th>
+      <th>ROL</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>12</td>
+      <td>Cal Stone</td>
+      <td>1</td>
+      <td>Estudiante</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>18</td>
+      <td>Elisabeth Doppler</td>
+      <td>1</td>
+      <td>Estudiante</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>20</td>
+      <td>Mads Nielsen</td>
+      <td>2</td>
+      <td>Estudiante</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>13</td>
+      <td>Angelina Meyer</td>
+      <td>5</td>
+      <td>Estudiante</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>16</td>
+      <td>Bartosz Tiedemann</td>
+      <td>5</td>
+      <td>Estudiante</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>17</td>
+      <td>Franziska Doppler</td>
+      <td>5</td>
+      <td>Estudiante</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>14</td>
+      <td>Jonas Kahnwald</td>
+      <td>5</td>
+      <td>Estudiante</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>15</td>
+      <td>Martha Nielsen</td>
+      <td>5</td>
+      <td>Estudiante</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>11</td>
+      <td>Olive Stone</td>
+      <td>5</td>
+      <td>Estudiante</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>19</td>
+      <td>Magnus Nielsen</td>
+      <td>6</td>
+      <td>Estudiante</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+      
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-b6c8519d-fc2e-4b0d-a6a8-19bde74dd2d2')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+      
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+    
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-b6c8519d-fc2e-4b0d-a6a8-19bde74dd2d2 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-b6c8519d-fc2e-4b0d-a6a8-19bde74dd2d2');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+  
+    </div>
+  </div>
+  </div>
+  </div>
 </div>
 <div class="cell markdown-cell"><h3><span id="heading-25"></span>Consulta C.3: Mostrar el nombre de solo los usuarios que tienen rol de profesor</h3>
 </div>
@@ -637,6 +2495,181 @@ ORDER BY PROFESOR;
 &#39;&#39;&#39;
 run_query(q_c3, &quot;C.3. Usuarios con rol de Profesor&quot;)
 </code></pre></div>
+  </div>
+  <div class="output-area">
+    <div class="output-header"><span>📊</span> Resultado de la Ejecución en university.db:</div>
+    <pre class="output-stream">📌 C.3. Usuarios con rol de Profesor
+</pre><div class="output-dataframe-container">
+  <div id="df-8a687ecd-8389-460a-b37a-b8e83897f16c" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: left;">
+      <th></th>
+      <th>ID_USUARIO</th>
+      <th>PROFESOR</th>
+      <th>ROL</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>Ben Stone</td>
+      <td>Profesor</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>8</td>
+      <td>Charlotte Doppler</td>
+      <td>Profesor</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>9</td>
+      <td>Claudia Tiedemann</td>
+      <td>Profesor</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2</td>
+      <td>Grace Stone</td>
+      <td>Profesor</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4</td>
+      <td>Jared Vásquez</td>
+      <td>Profesor</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>3</td>
+      <td>Mikaela Stone</td>
+      <td>Profesor</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>10</td>
+      <td>Robert Vance</td>
+      <td>Profesor</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>6</td>
+      <td>Saanvi Bahl</td>
+      <td>Profesor</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>7</td>
+      <td>Ulrich Nielsen</td>
+      <td>Profesor</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>5</td>
+      <td>Zeke Landon</td>
+      <td>Profesor</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+      
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-8a687ecd-8389-460a-b37a-b8e83897f16c')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+      
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+    
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-8a687ecd-8389-460a-b37a-b8e83897f16c button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-8a687ecd-8389-460a-b37a-b8e83897f16c');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+  
+    </div>
+  </div>
+  </div>
   </div>
 </div>
 <div class="cell markdown-cell"><h3><span id="heading-26"></span>Consulta C.4: Cursos matriculados por cada estudiante</h3>
@@ -659,6 +2692,196 @@ df_c4 = run_query(q_c4, &quot;C.4. Asignaturas inscritas por cada estudiante&quo
 print(f&quot;Total inscripciones registradas: {len(df_c4)}&quot;)
 df_c4.head(15)
 </code></pre></div>
+  </div>
+  <div class="output-area">
+    <div class="output-header"><span>📊</span> Resultado de la Ejecución en university.db:</div>
+    <pre class="output-stream">📌 C.4. Asignaturas inscritas por cada estudiante
+Total inscripciones registradas: 151
+</pre><div class="output-dataframe-container">
+  <div id="df-04fe88eb-132f-4560-a741-4d52e3cbd80e" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: left;">
+      <th></th>
+      <th>ESTUDIANTE</th>
+      <th>CURSO</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Angelina Meyer</td>
+      <td>Filosofía Antigua</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Angelina Meyer</td>
+      <td>Teología</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Bartosz Tiedemann</td>
+      <td>Cinemática y Dinámica</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Bartosz Tiedemann</td>
+      <td>Cinemática y Dinámica</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Bartosz Tiedemann</td>
+      <td>Cinemática y Dinámica</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Bartosz Tiedemann</td>
+      <td>Cálculo Diferencial</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Bartosz Tiedemann</td>
+      <td>Cálculo Diferencial</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Bartosz Tiedemann</td>
+      <td>Cálculo Integral</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Bartosz Tiedemann</td>
+      <td>Cálculo Integral</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Bartosz Tiedemann</td>
+      <td>Cálculo Multivariado</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Bartosz Tiedemann</td>
+      <td>Cálculo Multivariado</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Bartosz Tiedemann</td>
+      <td>Dibujo Mecánico</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>Bartosz Tiedemann</td>
+      <td>Dibujo Mecánico</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>Bartosz Tiedemann</td>
+      <td>Electricidad y Magnetismo</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>Bartosz Tiedemann</td>
+      <td>Electricidad y Magnetismo</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+      
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-04fe88eb-132f-4560-a741-4d52e3cbd80e')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+      
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+    
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-04fe88eb-132f-4560-a741-4d52e3cbd80e button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-04fe88eb-132f-4560-a741-4d52e3cbd80e');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+  
+    </div>
+  </div>
+  </div>
   </div>
 </div>
 <div class="cell markdown-cell"><h3><span id="heading-27"></span>Consulta C.5: Cursos programados con salón y edificio donde se dictan</h3>
@@ -685,6 +2908,214 @@ df_c5 = run_query(q_c5, &quot;C.5. Programaci&#243;n de cursos con sal&#243;n y 
 df_c5.head(10)
 </code></pre></div>
   </div>
+  <div class="output-area">
+    <div class="output-header"><span>📊</span> Resultado de la Ejecución en university.db:</div>
+    <pre class="output-stream">📌 C.5. Programación de cursos con salón y edificio
+</pre><div class="output-dataframe-container">
+  <div id="df-eb01d9b3-3d79-41ed-856c-ff81b4d9db53" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: left;">
+      <th></th>
+      <th>ID_CALENDARIO</th>
+      <th>CURSO</th>
+      <th>SALON</th>
+      <th>EDIFICIO</th>
+      <th>DIA</th>
+      <th>HORARIO</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>33</td>
+      <td>Antropología Filosófica</td>
+      <td>3.6</td>
+      <td>Almendros</td>
+      <td>Martes</td>
+      <td>08:00 AM - 10:00 AM</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>68</td>
+      <td>Aprendizaje Automático</td>
+      <td>1.1</td>
+      <td>El Samán</td>
+      <td>Jueves</td>
+      <td>04:00 PM - 06:00 PM</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>67</td>
+      <td>Aprendizaje Automático</td>
+      <td>1.1</td>
+      <td>El Samán</td>
+      <td>Martes</td>
+      <td>04:00 PM - 06:00 PM</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>11</td>
+      <td>Arquitectura del Computador</td>
+      <td>2.6</td>
+      <td>El Lago</td>
+      <td>Lunes</td>
+      <td>04:00 PM - 06:00 PM</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>12</td>
+      <td>Arquitectura del Computador</td>
+      <td>2.6</td>
+      <td>El Lago</td>
+      <td>Viernes</td>
+      <td>04:00 PM - 06:00 PM</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>35</td>
+      <td>Cinemática y Dinámica</td>
+      <td>2.2</td>
+      <td>El Lago</td>
+      <td>Lunes</td>
+      <td>02:00 PM - 04:00 PM</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>36</td>
+      <td>Cinemática y Dinámica</td>
+      <td>2.2</td>
+      <td>El Lago</td>
+      <td>Miércoles</td>
+      <td>02:00 PM - 04:00 PM</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>37</td>
+      <td>Cinemática y Dinámica</td>
+      <td>2.2</td>
+      <td>El Lago</td>
+      <td>Viernes</td>
+      <td>02:00 PM - 04:00 PM</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>14</td>
+      <td>Cálculo Diferencial</td>
+      <td>2.5</td>
+      <td>El Lago</td>
+      <td>Jueves</td>
+      <td>08:00 AM - 10:00 AM</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>13</td>
+      <td>Cálculo Diferencial</td>
+      <td>2.5</td>
+      <td>El Lago</td>
+      <td>Martes</td>
+      <td>08:00 AM - 10:00 AM</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+      
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-eb01d9b3-3d79-41ed-856c-ff81b4d9db53')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+      
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+    
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-eb01d9b3-3d79-41ed-856c-ff81b4d9db53 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-eb01d9b3-3d79-41ed-856c-ff81b4d9db53');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+  
+    </div>
+  </div>
+  </div>
+  </div>
 </div>
 <div class="cell markdown-cell"><h3><span id="heading-28"></span>Consulta C.6: Cartelera de programación para el día Martes</h3>
 <p>Incluye curso, horario, salón, edificio y nombre completo del docente a cargo.</p>
@@ -710,6 +3141,268 @@ ORDER BY cc.HORA_INICIO, cur.NOMBRE;
 &#39;&#39;&#39;
 run_query(q_c6, &quot;C.6. Cartelera acad&#233;mica del d&#237;a Martes&quot;)
 </code></pre></div>
+  </div>
+  <div class="output-area">
+    <div class="output-header"><span>📊</span> Resultado de la Ejecución en university.db:</div>
+    <pre class="output-stream">📌 C.6. Cartelera académica del día Martes
+</pre><div class="output-dataframe-container">
+  <div id="df-a3a26db1-511e-495c-99c2-27111bc7cba9" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: left;">
+      <th></th>
+      <th>CURSO</th>
+      <th>HORA_INICIO</th>
+      <th>HORA_FIN</th>
+      <th>SALON</th>
+      <th>EDIFICIO</th>
+      <th>PROFESOR</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Cálculo Multivariado</td>
+      <td>02:00 PM</td>
+      <td>04:00 PM</td>
+      <td>2.1</td>
+      <td>El Lago</td>
+      <td>Jared Vásquez</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Desarrollo de Videouegos</td>
+      <td>02:00 PM</td>
+      <td>05:00 PM</td>
+      <td>3.2</td>
+      <td>Palmas</td>
+      <td>Ben Stone</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Propiedades de los Materiales</td>
+      <td>02:00 PM</td>
+      <td>04:00 PM</td>
+      <td>3.5</td>
+      <td>El Lago</td>
+      <td>Claudia Tiedemann</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Transferencia de Calor</td>
+      <td>02:00 PM</td>
+      <td>04:00PM</td>
+      <td>1.5</td>
+      <td>El Samán</td>
+      <td>Saanvi Bahl</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Aprendizaje Automático</td>
+      <td>04:00 PM</td>
+      <td>06:00 PM</td>
+      <td>1.1</td>
+      <td>El Samán</td>
+      <td>Robert Vance</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Diseño Mecánico</td>
+      <td>04:00 PM</td>
+      <td>06:00 PM</td>
+      <td>3.4</td>
+      <td>El Lago</td>
+      <td>Claudia Tiedemann</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Máquinas Térmicas e Hidráulicas</td>
+      <td>04:00 PM</td>
+      <td>06:00 PM</td>
+      <td>1.5</td>
+      <td>El Samán</td>
+      <td>Saanvi Bahl</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Antropología Filosófica</td>
+      <td>08:00 AM</td>
+      <td>10:00 AM</td>
+      <td>3.6</td>
+      <td>Almendros</td>
+      <td>Zeke Landon</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Cálculo Diferencial</td>
+      <td>08:00 AM</td>
+      <td>10:00 AM</td>
+      <td>2.5</td>
+      <td>El Lago</td>
+      <td>Grace Stone</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Introducción a la Programación</td>
+      <td>08:00 AM</td>
+      <td>10:00 AM</td>
+      <td>1.4</td>
+      <td>El Lago</td>
+      <td>Ben Stone</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Programación Paralela</td>
+      <td>08:00 AM</td>
+      <td>10:00 AM</td>
+      <td>3.3</td>
+      <td>Palmas</td>
+      <td>Ulrich Nielsen</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Química y Ciencia de Materiales</td>
+      <td>08:00 AM</td>
+      <td>10:00 AM</td>
+      <td>3.6</td>
+      <td>El Lago</td>
+      <td>Claudia Tiedemann</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>Mecánica de Sólidos</td>
+      <td>09:00 AM</td>
+      <td>12:00 PM</td>
+      <td>2.3</td>
+      <td>El Lago</td>
+      <td>Saanvi Bahl</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>Cálculo Integral</td>
+      <td>10:00 AM</td>
+      <td>12:00 PM</td>
+      <td>3.3</td>
+      <td>El Lago</td>
+      <td>Jared Vásquez</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>Estructuras de Datos</td>
+      <td>10:00 AM</td>
+      <td>12:00 PM</td>
+      <td>3.4</td>
+      <td>Almendros</td>
+      <td>Ben Stone</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>Álgebra Lineal</td>
+      <td>10:00 AM</td>
+      <td>12:00 PM</td>
+      <td>3.1</td>
+      <td>El Lago</td>
+      <td>Grace Stone</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+      
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-a3a26db1-511e-495c-99c2-27111bc7cba9')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+      
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+    
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-a3a26db1-511e-495c-99c2-27111bc7cba9 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-a3a26db1-511e-495c-99c2-27111bc7cba9');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+  
+    </div>
+  </div>
+  </div>
   </div>
 </div>
 <div class="cell markdown-cell"><h3><span id="heading-29"></span>Consulta C.7: Horario completo de un estudiante específico (ID = 1)</h3>
@@ -748,6 +3441,125 @@ ORDER BY
 &#39;&#39;&#39;
 run_query(q_c7, &quot;C.7. Horario semanal consolidado del Estudiante ID = 1&quot;)
 </code></pre></div>
+  </div>
+  <div class="output-area">
+    <div class="output-header"><span>📊</span> Resultado de la Ejecución en university.db:</div>
+    <pre class="output-stream">📌 C.7. Horario semanal consolidado del Estudiante ID = 1
+</pre><div class="output-dataframe-container">
+  <div id="df-d6ce4740-bceb-46de-b075-a8947e1a5c0e" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: left;">
+      <th></th>
+      <th>ESTUDIANTE</th>
+      <th>DIA</th>
+      <th>HORA_INICIO</th>
+      <th>HORA_FIN</th>
+      <th>CURSO</th>
+      <th>SALON</th>
+      <th>EDIFICIO</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+      
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-d6ce4740-bceb-46de-b075-a8947e1a5c0e')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+      
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+    
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-d6ce4740-bceb-46de-b075-a8947e1a5c0e button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-d6ce4740-bceb-46de-b075-a8947e1a5c0e');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+  
+    </div>
+  </div>
+  </div>
   </div>
 </div>
 <div class="cell markdown-cell"><h3><span id="heading-30"></span>Consultas C.8 y C.9: Profesores y Cursos Ofertados que Orientan</h3>
@@ -790,6 +3602,551 @@ ORDER BY PROFESOR, CURSO;
 display(run_query(q_c9, &quot;C.9. Asignaci&#243;n acad&#233;mica de cursos por docente&quot;))
 </code></pre></div>
   </div>
+  <div class="output-area">
+    <div class="output-header"><span>📊</span> Resultado de la Ejecución en university.db:</div>
+    <pre class="output-stream">📌 C.8. Auditoría docente: Estado de asignación en calendario
+</pre><div class="output-dataframe-container">
+  <div id="df-fcc1556a-3843-4990-bf6c-c4d9090d6c60" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: left;">
+      <th></th>
+      <th>ID_USUARIO</th>
+      <th>PROFESOR</th>
+      <th>ESTADO</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>Ben Stone</td>
+      <td>Con cursos ofertados en calendario</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>Ben Stone</td>
+      <td>Docente de planta registrado</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>8</td>
+      <td>Charlotte Doppler</td>
+      <td>Con cursos ofertados en calendario</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>8</td>
+      <td>Charlotte Doppler</td>
+      <td>Docente de planta registrado</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>9</td>
+      <td>Claudia Tiedemann</td>
+      <td>Con cursos ofertados en calendario</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>9</td>
+      <td>Claudia Tiedemann</td>
+      <td>Docente de planta registrado</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>2</td>
+      <td>Grace Stone</td>
+      <td>Con cursos ofertados en calendario</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>2</td>
+      <td>Grace Stone</td>
+      <td>Docente de planta registrado</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>4</td>
+      <td>Jared Vásquez</td>
+      <td>Con cursos ofertados en calendario</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>4</td>
+      <td>Jared Vásquez</td>
+      <td>Docente de planta registrado</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>3</td>
+      <td>Mikaela Stone</td>
+      <td>Con cursos ofertados en calendario</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>3</td>
+      <td>Mikaela Stone</td>
+      <td>Docente de planta registrado</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>10</td>
+      <td>Robert Vance</td>
+      <td>Con cursos ofertados en calendario</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>10</td>
+      <td>Robert Vance</td>
+      <td>Docente de planta registrado</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>6</td>
+      <td>Saanvi Bahl</td>
+      <td>Con cursos ofertados en calendario</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>6</td>
+      <td>Saanvi Bahl</td>
+      <td>Docente de planta registrado</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>7</td>
+      <td>Ulrich Nielsen</td>
+      <td>Con cursos ofertados en calendario</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>7</td>
+      <td>Ulrich Nielsen</td>
+      <td>Docente de planta registrado</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>5</td>
+      <td>Zeke Landon</td>
+      <td>Con cursos ofertados en calendario</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>5</td>
+      <td>Zeke Landon</td>
+      <td>Docente de planta registrado</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+      
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-fcc1556a-3843-4990-bf6c-c4d9090d6c60')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+      
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+    
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-fcc1556a-3843-4990-bf6c-c4d9090d6c60 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-fcc1556a-3843-4990-bf6c-c4d9090d6c60');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+  
+    </div>
+  </div>
+  </div><pre class="output-stream">📌 C.9. Asignación académica de cursos por docente
+</pre><div class="output-dataframe-container">
+  <div id="df-6cd26660-3a72-4962-b149-0c4a1d80188d" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: left;">
+      <th></th>
+      <th>PROFESOR</th>
+      <th>CURSO</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Ben Stone</td>
+      <td>Desarrollo de Videouegos</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Ben Stone</td>
+      <td>Estructuras de Datos</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Ben Stone</td>
+      <td>Introducción a la Programación</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Ben Stone</td>
+      <td>Técnicas y Prácticas de Programación</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Charlotte Doppler</td>
+      <td>Dibujo Mecánico</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Claudia Tiedemann</td>
+      <td>Diseño Mecánico</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Claudia Tiedemann</td>
+      <td>Máquinas Térmicas e Hidráulicas</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Claudia Tiedemann</td>
+      <td>Propiedades de los Materiales</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Claudia Tiedemann</td>
+      <td>Química y Ciencia de Materiales</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Claudia Tiedemann</td>
+      <td>Álgebra Moderna</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Grace Stone</td>
+      <td>Arquitectura del Computador</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Grace Stone</td>
+      <td>Cálculo Diferencial</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>Grace Stone</td>
+      <td>Lógica Digital y Lenguaje de Máquina</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>Grace Stone</td>
+      <td>Álgebra Lineal</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>Jared Vásquez</td>
+      <td>Cálculo Integral</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>Jared Vásquez</td>
+      <td>Cálculo Multivariado</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>Jared Vásquez</td>
+      <td>Optimización Matemática</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>Jared Vásquez</td>
+      <td>Práctica Estudiantil</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>Jared Vásquez</td>
+      <td>Ética</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>Mikaela Stone</td>
+      <td>Estadítica Aplicada</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>Mikaela Stone</td>
+      <td>Teoría de Probabilidades</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>Mikaela Stone</td>
+      <td>Álgebra Moderna</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>Mikaela Stone</td>
+      <td>Ética</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>Robert Vance</td>
+      <td>Aprendizaje Automático</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>Robert Vance</td>
+      <td>Introducción a la Seguridad Informática</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>Robert Vance</td>
+      <td>Sistemas Inteligentes</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>Saanvi Bahl</td>
+      <td>Cinemática y Dinámica</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>Saanvi Bahl</td>
+      <td>Electricidad y Magnetismo</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>Saanvi Bahl</td>
+      <td>Física Térmica y Ondulatoria</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>Saanvi Bahl</td>
+      <td>Mecánica de Fluidos</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>Saanvi Bahl</td>
+      <td>Mecánica de Sólidos</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>Saanvi Bahl</td>
+      <td>Máquinas Térmicas e Hidráulicas</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>Saanvi Bahl</td>
+      <td>Termodinámica</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>Saanvi Bahl</td>
+      <td>Transferencia de Calor</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>Ulrich Nielsen</td>
+      <td>Optimización Matemática</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>Ulrich Nielsen</td>
+      <td>Programación Paralela</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>Zeke Landon</td>
+      <td>Antropología Filosófica</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>Zeke Landon</td>
+      <td>Filosofía Antigua</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>Zeke Landon</td>
+      <td>Filosofía de la Ciencia</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>Zeke Landon</td>
+      <td>Teología</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+      
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-6cd26660-3a72-4962-b149-0c4a1d80188d')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+      
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+    
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-6cd26660-3a72-4962-b149-0c4a1d80188d button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-6cd26660-3a72-4962-b149-0c4a1d80188d');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+  
+    </div>
+  </div>
+  </div>
+  </div>
 </div>
 <div class="cell markdown-cell"><hr>
 <h2><span id="heading-31"></span>Bloque D: Auditoría de Registros Huérfanos (LEFT JOIN / Subconsultas)</h2>
@@ -815,6 +4172,133 @@ WHERE u.ID_ROL = 1
 run_query(q_d1, &quot;D.1. Estudiantes sin asignaturas matriculadas&quot;)
 </code></pre></div>
   </div>
+  <div class="output-area">
+    <div class="output-header"><span>📊</span> Resultado de la Ejecución en university.db:</div>
+    <pre class="output-stream">📌 D.1. Estudiantes sin asignaturas matriculadas
+</pre><div class="output-dataframe-container">
+  <div id="df-d83a4f4d-8889-405b-9072-22cbe80fb1c4" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: left;">
+      <th></th>
+      <th>ID_USUARIO</th>
+      <th>ESTUDIANTE</th>
+      <th>SEMESTRE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>12</td>
+      <td>Cal Stone</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>18</td>
+      <td>Elisabeth Doppler</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+      
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-d83a4f4d-8889-405b-9072-22cbe80fb1c4')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+      
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+    
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-d83a4f4d-8889-405b-9072-22cbe80fb1c4 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-d83a4f4d-8889-405b-9072-22cbe80fb1c4');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+  
+    </div>
+  </div>
+  </div>
+  </div>
 </div>
 <div class="cell markdown-cell"><h3><span id="heading-33"></span>Consulta D.2: Cursos del catálogo que no tienen horario programado en el calendario</h3>
 <p>Asignaturas existentes en la malla que no fueron ofertadas en el semestre analizado.</p>
@@ -835,6 +4319,171 @@ df_d2 = run_query(q_d2, &quot;D.2. Cursos no ofertados en calendario&quot;)
 print(f&quot;Total de cursos en cat&#225;logo sin horario: {len(df_d2)}&quot;)
 df_d2.head(10)
 </code></pre></div>
+  </div>
+  <div class="output-area">
+    <div class="output-header"><span>📊</span> Resultado de la Ejecución en university.db:</div>
+    <pre class="output-stream">📌 D.2. Cursos no ofertados en calendario
+Total de cursos en catálogo sin horario: 35
+</pre><div class="output-dataframe-container">
+  <div id="df-05800eb7-efc3-43a0-b01f-4736ec3d0060" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: left;">
+      <th></th>
+      <th>ID_CURSO</th>
+      <th>CURSO</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>21</td>
+      <td>Animación y Simulación</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>16</td>
+      <td>Análisis y Diseño de Algoritmos</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>12</td>
+      <td>Computabilidad y Complejidad</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>13</td>
+      <td>Computación Gráfica</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>25</td>
+      <td>Computación en la Nube</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>14</td>
+      <td>Comunicación de Datos</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>23</td>
+      <td>Construcción de Software y Pruebas</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>15</td>
+      <td>Desarrollo Formal de Sistemas</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>11</td>
+      <td>Diseño de Interfaces Humano-Computador</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>51</td>
+      <td>Ecuaciones Diferenciales</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+      
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-05800eb7-efc3-43a0-b01f-4736ec3d0060')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+      
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+    
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-05800eb7-efc3-43a0-b01f-4736ec3d0060 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-05800eb7-efc3-43a0-b01f-4736ec3d0060');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+  
+    </div>
+  </div>
+  </div>
   </div>
 </div>
 <div class="cell markdown-cell"><h3><span id="heading-34"></span>Consulta D.3: Cursos existentes en el sistema sin ningún estudiante matriculado</h3>
@@ -859,6 +4508,171 @@ print(f&quot;Total cursos sin alumnos: {len(df_d3)}&quot;)
 df_d3.head(10)
 </code></pre></div>
   </div>
+  <div class="output-area">
+    <div class="output-header"><span>📊</span> Resultado de la Ejecución en university.db:</div>
+    <pre class="output-stream">📌 D.3. Cursos sin estudiantes matriculados
+Total cursos sin alumnos: 48
+</pre><div class="output-dataframe-container">
+  <div id="df-ddca2164-d145-40be-8ffa-a0263f200063" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: left;">
+      <th></th>
+      <th>ID_CURSO</th>
+      <th>CURSO</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>21</td>
+      <td>Animación y Simulación</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>65</td>
+      <td>Antropología Filosófica</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>16</td>
+      <td>Análisis y Diseño de Algoritmos</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>20</td>
+      <td>Aprendizaje Automático</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>12</td>
+      <td>Computabilidad y Complejidad</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>13</td>
+      <td>Computación Gráfica</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>25</td>
+      <td>Computación en la Nube</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>14</td>
+      <td>Comunicación de Datos</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>23</td>
+      <td>Construcción de Software y Pruebas</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>15</td>
+      <td>Desarrollo Formal de Sistemas</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+      
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-ddca2164-d145-40be-8ffa-a0263f200063')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+      
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+    
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-ddca2164-d145-40be-8ffa-a0263f200063 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-ddca2164-d145-40be-8ffa-a0263f200063');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+  
+    </div>
+  </div>
+  </div>
+  </div>
 </div>
 <div class="cell markdown-cell"><h3><span id="heading-35"></span>Consulta D.4: Cursos ofertados en calendario pero sin estudiantes matriculados (Cursos desiertos)</h3>
 <p>Secciones abiertas en programación que tuvieron matrícula cero. Hallazgo crítico para optimización presupuestal y de salones.</p>
@@ -881,6 +4695,331 @@ ORDER BY c.NOMBRE;
 &#39;&#39;&#39;
 run_query(q_d4, &quot;D.4. Secciones ofertadas con matr&#237;cula cero (Cursos desiertos)&quot;)
 </code></pre></div>
+  </div>
+  <div class="output-area">
+    <div class="output-header"><span>📊</span> Resultado de la Ejecución en university.db:</div>
+    <pre class="output-stream">📌 D.4. Secciones ofertadas con matrícula cero (Cursos desiertos)
+</pre><div class="output-dataframe-container">
+  <div id="df-1b050261-b637-4db5-969f-853f9d9e8bd1" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: left;">
+      <th></th>
+      <th>ID_CALENDARIO</th>
+      <th>ID_CURSO</th>
+      <th>CURSO</th>
+      <th>DIA</th>
+      <th>HORARIO</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>33</td>
+      <td>65</td>
+      <td>Antropología Filosófica</td>
+      <td>Martes</td>
+      <td>08:00 AM - 10:00 AM</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>67</td>
+      <td>20</td>
+      <td>Aprendizaje Automático</td>
+      <td>Martes</td>
+      <td>04:00 PM - 06:00 PM</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>68</td>
+      <td>20</td>
+      <td>Aprendizaje Automático</td>
+      <td>Jueves</td>
+      <td>04:00 PM - 06:00 PM</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>7</td>
+      <td>26</td>
+      <td>Desarrollo de Videouegos</td>
+      <td>Martes</td>
+      <td>02:00 PM - 05:00 PM</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>8</td>
+      <td>26</td>
+      <td>Desarrollo de Videouegos</td>
+      <td>Viernes</td>
+      <td>02:00 PM - 05:00 PM</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>63</td>
+      <td>39</td>
+      <td>Diseño Mecánico</td>
+      <td>Martes</td>
+      <td>04:00 PM - 06:00 PM</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>64</td>
+      <td>39</td>
+      <td>Diseño Mecánico</td>
+      <td>Jueves</td>
+      <td>04:00 PM - 06:00 PM</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>21</td>
+      <td>52</td>
+      <td>Estadítica Aplicada</td>
+      <td>Jueves</td>
+      <td>06:00 PM - 09:00 PM</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>34</td>
+      <td>66</td>
+      <td>Filosofía de la Ciencia</td>
+      <td>Viernes</td>
+      <td>06:00 PM - 09:00 PM</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>69</td>
+      <td>22</td>
+      <td>Introducción a la Seguridad Informática</td>
+      <td>Miércoles</td>
+      <td>04:00 PM - 06:00 PM</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>70</td>
+      <td>22</td>
+      <td>Introducción a la Seguridad Informática</td>
+      <td>Viernes</td>
+      <td>04:00 PM - 06:00 PM</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>51</td>
+      <td>40</td>
+      <td>Máquinas Térmicas e Hidráulicas</td>
+      <td>Martes</td>
+      <td>04:00 PM - 06:00 PM</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>52</td>
+      <td>40</td>
+      <td>Máquinas Térmicas e Hidráulicas</td>
+      <td>Jueves</td>
+      <td>04:00 PM - 06:00 PM</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>65</td>
+      <td>40</td>
+      <td>Máquinas Térmicas e Hidráulicas</td>
+      <td>Viernes</td>
+      <td>06:00 PM - 09:00 PM</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>27</td>
+      <td>53</td>
+      <td>Optimización Matemática</td>
+      <td>Lunes</td>
+      <td>02:00 PM - 04:00 PM</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>28</td>
+      <td>53</td>
+      <td>Optimización Matemática</td>
+      <td>Miércoles</td>
+      <td>02:00 PM - 04:00 PM</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>53</td>
+      <td>19</td>
+      <td>Programación Paralela</td>
+      <td>Martes</td>
+      <td>08:00 AM - 10:00 AM</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>54</td>
+      <td>19</td>
+      <td>Programación Paralela</td>
+      <td>Jueves</td>
+      <td>08:00 AM - 10:00 AM</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>30</td>
+      <td>71</td>
+      <td>Práctica Estudiantil</td>
+      <td>Viernes</td>
+      <td>02:00 PM - 04:00 PM</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>71</td>
+      <td>24</td>
+      <td>Sistemas Inteligentes</td>
+      <td>Lunes</td>
+      <td>10:00 AM - 12:00 PM</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>72</td>
+      <td>24</td>
+      <td>Sistemas Inteligentes</td>
+      <td>Miércoles</td>
+      <td>10:00 AM - 12:00 PM</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>49</td>
+      <td>38</td>
+      <td>Transferencia de Calor</td>
+      <td>Martes</td>
+      <td>02:00 PM - 04:00PM</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>50</td>
+      <td>38</td>
+      <td>Transferencia de Calor</td>
+      <td>Jueves</td>
+      <td>02:00 PM - 04:00 PM</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>66</td>
+      <td>49</td>
+      <td>Álgebra Moderna</td>
+      <td>Jueves</td>
+      <td>06:00 PM - 09:00 PM</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>22</td>
+      <td>67</td>
+      <td>Ética</td>
+      <td>Miércoles</td>
+      <td>08:00 AM - 10:00 AM</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>29</td>
+      <td>67</td>
+      <td>Ética</td>
+      <td>Viernes</td>
+      <td>08:00 AM - 10:00 AM</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+      
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-1b050261-b637-4db5-969f-853f9d9e8bd1')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+      
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+    
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-1b050261-b637-4db5-969f-853f9d9e8bd1 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-1b050261-b637-4db5-969f-853f9d9e8bd1');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+  
+    </div>
+  </div>
+  </div>
   </div>
 </div>
 <div class="cell markdown-cell"><hr>
@@ -933,6 +5072,474 @@ WHERE ID_ROL = 1
 &#39;&#39;&#39;
 display(run_query(q_e4))
 </code></pre></div>
+  </div>
+  <div class="output-area">
+    <div class="output-header"><span>📊</span> Resultado de la Ejecución en university.db:</div>
+    <pre class="output-stream">--- E.1: Total de estudiantes ---
+</pre><div class="output-dataframe-container">
+  <div id="df-da0367d2-a8fd-4004-8981-ff69bbd977ca" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: left;">
+      <th></th>
+      <th>TOTAL_ESTUDIANTES</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>10</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+      
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-da0367d2-a8fd-4004-8981-ff69bbd977ca')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+      
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+    
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-da0367d2-a8fd-4004-8981-ff69bbd977ca button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-da0367d2-a8fd-4004-8981-ff69bbd977ca');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+  
+    </div>
+  </div>
+  </div><pre class="output-stream">--- E.2: Distribución de usuarios por rol ---
+</pre><div class="output-dataframe-container">
+  <div id="df-a137058c-6b39-407c-871a-14d7fe08817a" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: left;">
+      <th></th>
+      <th>TOTAL_ESTUDIANTES</th>
+      <th>TOTAL_PROFESORES</th>
+      <th>TOTAL_USUARIOS</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>10</td>
+      <td>10</td>
+      <td>20</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+      
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-a137058c-6b39-407c-871a-14d7fe08817a')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+      
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+    
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-a137058c-6b39-407c-871a-14d7fe08817a button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-a137058c-6b39-407c-871a-14d7fe08817a');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+  
+    </div>
+  </div>
+  </div><pre class="output-stream">--- E.3: Estadísticas del semestre de los estudiantes ---
+</pre><div class="output-dataframe-container">
+  <div id="df-48b2355a-cde5-4370-8de1-c502e6cb3556" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: left;">
+      <th></th>
+      <th>PROMEDIO_SEMESTRE</th>
+      <th>SEMESTRE_MINIMO</th>
+      <th>SEMESTRE_MAXIMO</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>4.0</td>
+      <td>1</td>
+      <td>6</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+      
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-48b2355a-cde5-4370-8de1-c502e6cb3556')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+      
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+    
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-48b2355a-cde5-4370-8de1-c502e6cb3556 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-48b2355a-cde5-4370-8de1-c502e6cb3556');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+  
+    </div>
+  </div>
+  </div><pre class="output-stream">--- E.4: Estudiantes en el semestre más avanzado ---
+</pre><div class="output-dataframe-container">
+  <div id="df-42e4441a-bbdb-4a84-b984-1ad631a0a81e" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: left;">
+      <th></th>
+      <th>ID_USUARIO</th>
+      <th>ESTUDIANTE</th>
+      <th>SEMESTRE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>19</td>
+      <td>Magnus Nielsen</td>
+      <td>6</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+      
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-42e4441a-bbdb-4a84-b984-1ad631a0a81e')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+      
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+    
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-42e4441a-bbdb-4a84-b984-1ad631a0a81e button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-42e4441a-bbdb-4a84-b984-1ad631a0a81e');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+  
+    </div>
+  </div>
+  </div>
   </div>
 </div>
 <div class="cell markdown-cell"><h3><span id="heading-38"></span>Consultas E.5 a E.9: Análisis por Facultades, Carreras y Edificios</h3>
@@ -996,6 +5603,499 @@ LIMIT 1;
 &#39;&#39;&#39;
 display(run_query(q_e9, &quot;E.9. Edificio con mayor capacidad de aulas&quot;))
 </code></pre></div>
+  </div>
+  <div class="output-area">
+    <div class="output-header"><span>📊</span> Resultado de la Ejecución en university.db:</div>
+    <pre class="output-stream">📌 E.5. Cursos ofertados por facultad
+</pre><div class="output-dataframe-container">
+  <div id="df-4ec3b4f6-b3bb-402f-a08f-d551213c69b7" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: left;">
+      <th></th>
+      <th>ID_FACULTAD</th>
+      <th>FACULTAD</th>
+      <th>CURSOS_DISTINTOS</th>
+      <th>TOTAL_SECCIONES_OFERTADAS</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>Ingeniería y Ciencias</td>
+      <td>30</td>
+      <td>65</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>Humanidades y Ciencias Sociales</td>
+      <td>5</td>
+      <td>6</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+      
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-4ec3b4f6-b3bb-402f-a08f-d551213c69b7')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+      
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+    
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-4ec3b4f6-b3bb-402f-a08f-d551213c69b7 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-4ec3b4f6-b3bb-402f-a08f-d551213c69b7');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+  
+    </div>
+  </div>
+  </div><pre class="output-stream">📌 E.6. Facultades con más de 3 programas académicos
+</pre><div class="output-dataframe-container">
+  <div id="df-a1676780-1940-445d-b842-b89a0f0221cc" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: left;">
+      <th></th>
+      <th>ID_FACULTAD</th>
+      <th>FACULTAD</th>
+      <th>TOTAL_CARRERAS</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+      
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-a1676780-1940-445d-b842-b89a0f0221cc')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+      
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+    
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-a1676780-1940-445d-b842-b89a0f0221cc button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-a1676780-1940-445d-b842-b89a0f0221cc');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+  
+    </div>
+  </div>
+  </div><pre class="output-stream">📌 E.7. Estudiantes matriculados por carrera
+</pre><div class="output-dataframe-container">
+  <div id="df-84ff69be-57dd-4970-92c0-0a81d722bb2d" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: left;">
+      <th></th>
+      <th>ID_CARRERA</th>
+      <th>CARRERA</th>
+      <th>TOTAL_ESTUDIANTES</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2</td>
+      <td>Ingeniería Mecánica</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>Ingeniería de Sistemas</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>Matemáticas Aplicadas</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>Filosofía</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+      
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-84ff69be-57dd-4970-92c0-0a81d722bb2d')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+      
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+    
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-84ff69be-57dd-4970-92c0-0a81d722bb2d button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-84ff69be-57dd-4970-92c0-0a81d722bb2d');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+  
+    </div>
+  </div>
+  </div><pre class="output-stream">📌 E.9. Edificio con mayor capacidad de aulas
+</pre><div class="output-dataframe-container">
+  <div id="df-7a8e7020-41fe-4d7e-b804-1674b7d653a8" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: left;">
+      <th></th>
+      <th>ID_EDIFICIO</th>
+      <th>EDIFICIO</th>
+      <th>TOTAL_SALONES</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2</td>
+      <td>El Lago</td>
+      <td>18</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+      
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-7a8e7020-41fe-4d7e-b804-1674b7d653a8')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+      
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+    
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-7a8e7020-41fe-4d7e-b804-1674b7d653a8 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-7a8e7020-41fe-4d7e-b804-1674b7d653a8');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+  
+    </div>
+  </div>
+  </div>
   </div>
 </div>
 <div class="cell markdown-cell"><h3><span id="heading-39"></span>Consultas E.10 a E.14: Carga Docente, Inscripciones y Análisis de Cupos</h3>
@@ -1070,6 +6170,716 @@ ORDER BY ESTUDIANTES_INSCRITOS DESC;
 display(run_query(q_e14, &quot;E.14. Secciones con alta ocupaci&#243;n (&gt;= 5 inscritos)&quot;))
 </code></pre></div>
   </div>
+  <div class="output-area">
+    <div class="output-header"><span>📊</span> Resultado de la Ejecución en university.db:</div>
+    <pre class="output-stream">📌 E.10. Carga de cursos por profesor
+</pre><div class="output-dataframe-container">
+  <div id="df-7be4f283-d9a3-4eda-b13a-6c9a00bc1647" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: left;">
+      <th></th>
+      <th>ID_USUARIO</th>
+      <th>PROFESOR</th>
+      <th>TOTAL_SECCIONES</th>
+      <th>CURSOS_DISTINTOS</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>6</td>
+      <td>Saanvi Bahl</td>
+      <td>18</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>Ben Stone</td>
+      <td>8</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>Grace Stone</td>
+      <td>8</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>Jared Vásquez</td>
+      <td>8</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>9</td>
+      <td>Claudia Tiedemann</td>
+      <td>8</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>3</td>
+      <td>Mikaela Stone</td>
+      <td>6</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>10</td>
+      <td>Robert Vance</td>
+      <td>6</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>5</td>
+      <td>Zeke Landon</td>
+      <td>4</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>7</td>
+      <td>Ulrich Nielsen</td>
+      <td>4</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>8</td>
+      <td>Charlotte Doppler</td>
+      <td>2</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+      
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-7be4f283-d9a3-4eda-b13a-6c9a00bc1647')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+      
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+    
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-7be4f283-d9a3-4eda-b13a-6c9a00bc1647 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-7be4f283-d9a3-4eda-b13a-6c9a00bc1647');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+  
+    </div>
+  </div>
+  </div><pre class="output-stream">📌 E.12. Estudiantes con menos de 10 asignaturas inscritas
+</pre><div class="output-dataframe-container">
+  <div id="df-9045e799-b272-4f1d-8f19-442e8ef33e3e" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: left;">
+      <th></th>
+      <th>ID_USUARIO</th>
+      <th>ESTUDIANTE</th>
+      <th>SEMESTRE</th>
+      <th>TOTAL_CURSOS_INSCRITOS</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>12</td>
+      <td>Cal Stone</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>18</td>
+      <td>Elisabeth Doppler</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>13</td>
+      <td>Angelina Meyer</td>
+      <td>5</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>20</td>
+      <td>Mads Nielsen</td>
+      <td>2</td>
+      <td>5</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+      
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-9045e799-b272-4f1d-8f19-442e8ef33e3e')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+      
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+    
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-9045e799-b272-4f1d-8f19-442e8ef33e3e button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-9045e799-b272-4f1d-8f19-442e8ef33e3e');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+  
+    </div>
+  </div>
+  </div><pre class="output-stream">📌 E.13. Asignatura con mayor demanda estudiantil
+</pre><div class="output-dataframe-container">
+  <div id="df-45568d3e-1898-403e-bcba-fe4b11afcd14" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: left;">
+      <th></th>
+      <th>ID_CURSO</th>
+      <th>CURSO</th>
+      <th>TOTAL_INSCRIPCIONES</th>
+      <th>ESTUDIANTES_UNICOS</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>28</td>
+      <td>Cinemática y Dinámica</td>
+      <td>18</td>
+      <td>6</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+      
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-45568d3e-1898-403e-bcba-fe4b11afcd14')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+      
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+    
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-45568d3e-1898-403e-bcba-fe4b11afcd14 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-45568d3e-1898-403e-bcba-fe4b11afcd14');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+  
+    </div>
+  </div>
+  </div><pre class="output-stream">📌 E.14. Secciones con alta ocupación (&gt;= 5 inscritos)
+</pre><div class="output-dataframe-container">
+  <div id="df-34a39c91-2982-4201-846f-3e7e7f7fb5cb" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: left;">
+      <th></th>
+      <th>ID_CALENDARIO</th>
+      <th>CURSO</th>
+      <th>DIA</th>
+      <th>HORARIO</th>
+      <th>CUPO_MAXIMO</th>
+      <th>ESTUDIANTES_INSCRITOS</th>
+      <th>PORCENTAJE_OCUPACION</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>13</td>
+      <td>Cálculo Diferencial</td>
+      <td>Martes</td>
+      <td>08:00 AM - 10:00 AM</td>
+      <td>30</td>
+      <td>7</td>
+      <td>23.3</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>14</td>
+      <td>Cálculo Diferencial</td>
+      <td>Jueves</td>
+      <td>08:00 AM - 10:00 AM</td>
+      <td>30</td>
+      <td>7</td>
+      <td>23.3</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>15</td>
+      <td>Álgebra Lineal</td>
+      <td>Martes</td>
+      <td>10:00 AM - 12:00 PM</td>
+      <td>30</td>
+      <td>6</td>
+      <td>20.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>16</td>
+      <td>Álgebra Lineal</td>
+      <td>Jueves</td>
+      <td>10:00 AM - 12:00 PM</td>
+      <td>30</td>
+      <td>6</td>
+      <td>20.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>23</td>
+      <td>Cálculo Integral</td>
+      <td>Martes</td>
+      <td>10:00 AM - 12:00 PM</td>
+      <td>20</td>
+      <td>6</td>
+      <td>30.0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>24</td>
+      <td>Cálculo Integral</td>
+      <td>Jueves</td>
+      <td>10:00 AM - 12:00 PM</td>
+      <td>20</td>
+      <td>6</td>
+      <td>30.0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>25</td>
+      <td>Cálculo Multivariado</td>
+      <td>Martes</td>
+      <td>02:00 PM - 04:00 PM</td>
+      <td>20</td>
+      <td>6</td>
+      <td>30.0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>26</td>
+      <td>Cálculo Multivariado</td>
+      <td>Jueves</td>
+      <td>02:00 PM - 04:00 PM</td>
+      <td>20</td>
+      <td>6</td>
+      <td>30.0</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>31</td>
+      <td>Teología</td>
+      <td>Lunes</td>
+      <td>10:00 AM - 12:00 PM</td>
+      <td>30</td>
+      <td>6</td>
+      <td>20.0</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>35</td>
+      <td>Cinemática y Dinámica</td>
+      <td>Lunes</td>
+      <td>02:00 PM - 04:00 PM</td>
+      <td>30</td>
+      <td>6</td>
+      <td>20.0</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>36</td>
+      <td>Cinemática y Dinámica</td>
+      <td>Miércoles</td>
+      <td>02:00 PM - 04:00 PM</td>
+      <td>30</td>
+      <td>6</td>
+      <td>20.0</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>37</td>
+      <td>Cinemática y Dinámica</td>
+      <td>Viernes</td>
+      <td>02:00 PM - 04:00 PM</td>
+      <td>30</td>
+      <td>6</td>
+      <td>20.0</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>38</td>
+      <td>Física Térmica y Ondulatoria</td>
+      <td>Lunes</td>
+      <td>08:00 AM - 10:00 AM</td>
+      <td>30</td>
+      <td>5</td>
+      <td>16.7</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>39</td>
+      <td>Física Térmica y Ondulatoria</td>
+      <td>Miércoles</td>
+      <td>08:00 AM - 10:00 AM</td>
+      <td>30</td>
+      <td>5</td>
+      <td>16.7</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>40</td>
+      <td>Física Térmica y Ondulatoria</td>
+      <td>Viernes</td>
+      <td>08:00 AM - 10:00 AM</td>
+      <td>30</td>
+      <td>5</td>
+      <td>16.7</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+      
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-34a39c91-2982-4201-846f-3e7e7f7fb5cb')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+      
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+    
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-34a39c91-2982-4201-846f-3e7e7f7fb5cb button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-34a39c91-2982-4201-846f-3e7e7f7fb5cb');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+  
+    </div>
+  </div>
+  </div>
+  </div>
 </div>
 <div class="cell markdown-cell"><hr>
 <h1><span id="heading-40"></span>PARTE II: RETOS INTEGRADORES E INTELIGENCIA ARTIFICIAL</h1>
@@ -1121,6 +6931,155 @@ ORDER BY ESTUDIANTES_MATRICULADOS DESC, CURSOS_MALLA DESC;
 run_query(q_reto1, &quot;Reto Integrador 1: Consolidado de Malla y Matr&#237;cula por Carrera (Soluci&#243;n Anti-Producto Cartesiano)&quot;)
 </code></pre></div>
   </div>
+  <div class="output-area">
+    <div class="output-header"><span>📊</span> Resultado de la Ejecución en university.db:</div>
+    <pre class="output-stream">📌 Reto Integrador 1: Consolidado de Malla y Matrícula por Carrera (Solución Anti-Producto Cartesiano)
+</pre><div class="output-dataframe-container">
+  <div id="df-16f2b306-28e4-4a3f-aac2-47449f397870" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: left;">
+      <th></th>
+      <th>ID_CARRERA</th>
+      <th>CARRERA</th>
+      <th>FACULTAD</th>
+      <th>CURSOS_MALLA</th>
+      <th>ESTUDIANTES_MATRICULADOS</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2</td>
+      <td>Ingeniería Mecánica</td>
+      <td>Ingeniería y Ciencias</td>
+      <td>25</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>Ingeniería de Sistemas</td>
+      <td>Ingeniería y Ciencias</td>
+      <td>37</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>Matemáticas Aplicadas</td>
+      <td>Ingeniería y Ciencias</td>
+      <td>22</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>Filosofía</td>
+      <td>Humanidades y Ciencias Sociales</td>
+      <td>17</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+      
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-16f2b306-28e4-4a3f-aac2-47449f397870')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+      
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+    
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-16f2b306-28e4-4a3f-aac2-47449f397870 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-16f2b306-28e4-4a3f-aac2-47449f397870');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+  
+    </div>
+  </div>
+  </div>
+  </div>
 </div>
 <div class="cell markdown-cell"><hr>
 <h2><span id="heading-42"></span>Reto Integrador 2: Auditoría Text-to-SQL con el Agente de Antigravity (IA / MCP)</h2>
@@ -1165,6 +7124,237 @@ cruces_df = run_query(q_reto2, &quot;Reto Integrador 2: Cruces de Horario Estudi
 print(f&quot;Total cruces de horario detectados: {len(cruces_df)}&quot;)
 cruces_df
 </code></pre></div>
+  </div>
+  <div class="output-area">
+    <div class="output-header"><span>📊</span> Resultado de la Ejecución en university.db:</div>
+    <pre class="output-stream">📌 Reto Integrador 2: Cruces de Horario Estudiantiles Auditados
+Total cruces de horario detectados: 70
+</pre><div class="output-dataframe-container">
+  <div id="df-ca1e5b4e-d725-4ec0-844d-92a0d7ed6923" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: left;">
+      <th></th>
+      <th>ID_USUARIO</th>
+      <th>ESTUDIANTE</th>
+      <th>DIA</th>
+      <th>CURSO_1</th>
+      <th>HORARIO_1</th>
+      <th>CURSO_2</th>
+      <th>HORARIO_2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>11</td>
+      <td>Olive Stone</td>
+      <td>Jueves</td>
+      <td>Álgebra Lineal</td>
+      <td>10:00 AM - 12:00 PM</td>
+      <td>Cálculo Integral</td>
+      <td>10:00 AM - 12:00 PM</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>11</td>
+      <td>Olive Stone</td>
+      <td>Lunes</td>
+      <td>Teoría de Probabilidades</td>
+      <td>08:00 AM - 10:00 AM</td>
+      <td>Física Térmica y Ondulatoria</td>
+      <td>08:00 AM - 10:00 AM</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>11</td>
+      <td>Olive Stone</td>
+      <td>Martes</td>
+      <td>Álgebra Lineal</td>
+      <td>10:00 AM - 12:00 PM</td>
+      <td>Cálculo Integral</td>
+      <td>10:00 AM - 12:00 PM</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>11</td>
+      <td>Olive Stone</td>
+      <td>Miércoles</td>
+      <td>Teoría de Probabilidades</td>
+      <td>08:00 AM - 10:00 AM</td>
+      <td>Física Térmica y Ondulatoria</td>
+      <td>08:00 AM - 10:00 AM</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>14</td>
+      <td>Jonas Kahnwald</td>
+      <td>Jueves</td>
+      <td>Cálculo Multivariado</td>
+      <td>02:00 PM - 04:00 PM</td>
+      <td>Propiedades de los Materiales</td>
+      <td>02:00 PM - 04:00 PM</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>65</th>
+      <td>19</td>
+      <td>Magnus Nielsen</td>
+      <td>Martes</td>
+      <td>Mecánica de Sólidos</td>
+      <td>09:00 AM - 12:00 PM</td>
+      <td>Química y Ciencia de Materiales</td>
+      <td>08:00 AM - 10:00 AM</td>
+    </tr>
+    <tr>
+      <th>66</th>
+      <td>19</td>
+      <td>Magnus Nielsen</td>
+      <td>Martes</td>
+      <td>Álgebra Lineal</td>
+      <td>10:00 AM - 12:00 PM</td>
+      <td>Cálculo Integral</td>
+      <td>10:00 AM - 12:00 PM</td>
+    </tr>
+    <tr>
+      <th>67</th>
+      <td>19</td>
+      <td>Magnus Nielsen</td>
+      <td>Martes</td>
+      <td>Álgebra Lineal</td>
+      <td>10:00 AM - 12:00 PM</td>
+      <td>Mecánica de Sólidos</td>
+      <td>09:00 AM - 12:00 PM</td>
+    </tr>
+    <tr>
+      <th>68</th>
+      <td>19</td>
+      <td>Magnus Nielsen</td>
+      <td>Martes</td>
+      <td>Cálculo Integral</td>
+      <td>10:00 AM - 12:00 PM</td>
+      <td>Mecánica de Sólidos</td>
+      <td>09:00 AM - 12:00 PM</td>
+    </tr>
+    <tr>
+      <th>69</th>
+      <td>20</td>
+      <td>Mads Nielsen</td>
+      <td>Martes</td>
+      <td>Introducción a la Programación</td>
+      <td>08:00 AM - 10:00 AM</td>
+      <td>Cálculo Diferencial</td>
+      <td>08:00 AM - 10:00 AM</td>
+    </tr>
+  </tbody>
+</table>
+<p>70 rows × 7 columns</p>
+</div>
+    <div class="colab-df-buttons">
+      
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-ca1e5b4e-d725-4ec0-844d-92a0d7ed6923')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+      
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+    
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-ca1e5b4e-d725-4ec0-844d-92a0d7ed6923 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-ca1e5b4e-d725-4ec0-844d-92a0d7ed6923');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+  
+    </div>
+  </div>
+  </div>
   </div>
 </div>
 <div class="cell markdown-cell"><h3><span id="heading-45"></span>3. Análisis Crítico y Auditoría de la Generación Text-to-SQL</h3>
@@ -1217,6 +7407,11 @@ cruces_df
 conn.close()
 print(&quot;🔒 Conexi&#243;n a university.db cerrada correctamente. Taller finalizado.&quot;)
 </code></pre></div>
+  </div>
+  <div class="output-area">
+    <div class="output-header"><span>📊</span> Resultado de la Ejecución en university.db:</div>
+    <pre class="output-stream">🔒 Conexión a university.db cerrada correctamente. Taller finalizado.
+</pre>
   </div>
 </div>
 
