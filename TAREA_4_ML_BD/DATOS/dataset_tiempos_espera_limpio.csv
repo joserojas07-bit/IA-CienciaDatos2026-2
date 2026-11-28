@@ -1,0 +1,926 @@
+id_cita,fecha_hora,es_telemedicina,duracion_min,tiempo_espera_min,estado_cita,sede,piso,anios_experiencia,especialidad,hora,dia_semana
+1,2026-01-01 12:15:00,0,45,6.0,Cancelada,Sede Sur,3,4.6, ginecologia,12,3
+2,2026-01-01 17:30:00,0,50,7.0,completada,Sede Centro,4,7.5,Dermatología,17,3
+3,2026-01-01 22:45:00,1,30,8.0,Completada,Sede Occidente,5,4.7,Ortopedia y Traumatología,22,3
+4,2026-01-02 04:00:00,0,35,9.0,Canselada,Sede Norte,1,5.4,Oftalmología,4,4
+6,2026-01-02 14:30:00,1,30,11.0,,Sede Sur,3,8.2,Psiquiatría,14,4
+7,1940-02-10 09:00:00,0,50,12.0,Cancelada,Sede Centro,4,8.4,Endocrinología,9,5
+8,2026-01-03 01:00:00,0,15,13.0,PENDIENTE,Sede Occidente,5,9.7,Gastroenterología,1,5
+9,2026-01-03 06:15:00,1,20,14.0,Completada,Sede Norte,1,11.0,Urología,6,5
+11,2026-01-03 16:45:00,0,45,16.0,Cancelada,Sede Sur,3,13.1,Neumología,16,5
+12,2026-01-03 22:00:00,1,35,17.0,Completada,Sede Centro,4,13.2,Reumatología,22,5
+13,2026-01-04 03:15:00,0,30,18.0,Completada,Sede Occidente,5,13.7,Nutrición y Dietética,3,6
+14,2026-01-04 08:30:00,0,35,19.0,Cancelada,Sede Norte,1,11.5,Oncología,8,6
+16,2026-01-04 19:00:00,0,30,21.0,Completada,Sede Sur,3,13.4,Nefrología,19,6
+17,2026-01-05 00:15:00,0,50,22.0,Completada,Sede Centro,4,16.3,Geriatría,0,0
+18,2026-01-05 05:30:00,1,30,23.0,Completada,Sede Occidente,5,13.7,Cardiología,5,0
+19,2026-01-05 10:45:00,0,35,24.0,Cancelada,Sede Norte,1,17.2,PEDIATRÍA,10,0
+20,2026-01-06 03:00:00,0,25,25.0,Completada,Sede Norte,2,16.2,Medicina General,3,1
+21,2026-01-05 21:15:00,1,30,26.0,Completada,Sede Sur,3,16.5, ginecologia,21,0
+22,2026-01-06 02:30:00,0,35,27.0,completada,Sede Centro,4,17.5,Dermatología,2,1
+23,2026-01-06 07:45:00,0,15,28.0,Completada,Sede Occidente,5,18.3,Ortopedia y Traumatología,7,1
+24,2026-01-06 13:00:00,1,35,29.0,Canselada,Sede Norte,1,20.9,Oftalmología,13,1
+25,2026-01-07 05:15:00,0,40,30.0,Cancelada,Sede Norte,2,21.1,Neurología,5,2
+26,2026-01-06 23:30:00,0,45,31.0,,Sede Sur,3,22.0,Psiquiatría,23,1
+27,2026-01-07 04:45:00,1,50,32.0,Completada,Sede Centro,4,20.2,Endocrinología,4,2
+28,2026-01-07 10:00:00,0,15,33.0,PENDIENTE,Sede Occidente,5,21.4,Gastroenterología,10,2
+29,2026-01-07 15:15:00,0,20,34.0,Cancelada,Sede Norte,1,22.6,Urología,15,2
+30,2026-01-08 07:30:00,1,40,35.0,Cancelada,Sede Norte,2,21.4,Otorrinolaringología,7,3
+31,2026-01-08 01:45:00,0,30,36.0,Completada,Sede Sur,3,23.7,Neumología,1,3
+32,2026-01-08 07:00:00,0,35,37.0,Cancelada,Sede Centro,4,22.9,Reumatología,7,3
+33,2026-01-08 12:15:00,1,15,38.0,Completada,Sede Occidente,5,24.0,Nutrición y Dietética,12,3
+34,2026-01-08 17:30:00,0,20,39.0,Completada,Sede Norte,1,24.1,Oncología,17,3
+35,2026-01-09 09:45:00,0,40,5.0,Completada,Sede Norte,2,24.1,Infectología,9,4
+36,2026-01-09 04:00:00,1,30,6.0,Completada,Sede Sur,3,27.6,Nefrología,4,4
+37,2026-01-09 09:15:00,0,35,7.0,Completada,Sede Centro,4,28.6,Geriatría,9,4
+38,2026-01-09 14:30:00,0,15,8.0,Completada,Sede Occidente,5,28.5,Cardiología,14,4
+39,2026-01-09 19:45:00,1,35,9.0,Cancelada,Sede Norte,1,26.7,PEDIATRÍA,19,4
+40,2026-01-10 12:00:00,0,25,10.0,Cancelada,Sede Norte,2,29.9,Medicina General,12,5
+41,2026-01-10 06:15:00,0,45,11.0,Cancelada,Sede Sur,3,27.3, ginecologia,6,5
+42,1940-02-10 09:00:00,1,35,12.0,completada,Sede Centro,4,28.7,Dermatología,9,5
+43,2026-01-10 16:45:00,0,30,13.0,Cancelada,Sede Occidente,5,31.0,Ortopedia y Traumatología,16,5
+44,2026-01-10 22:00:00,0,20,14.0,Canselada,Sede Norte,1,32.7,Oftalmología,22,5
+46,2026-01-11 08:30:00,0,30,16.0,,Sede Sur,3,30.7,Psiquiatría,8,6
+47,2026-01-11 13:45:00,0,50,17.0,Cancelada,Sede Centro,4,31.2,Endocrinología,13,6
+48,2026-01-11 19:00:00,1,15,18.0,PENDIENTE,Sede Occidente,5,32.7,Gastroenterología,19,6
+49,2026-01-12 00:15:00,0,20,19.0,Completada,Sede Norte,1,32.8,Urología,0,0
+51,2026-01-12 10:45:00,1,30,21.0,Completada,Sede Sur,3,4.6, ginecologia,10,0
+52,2026-01-12 16:00:00,0,50,22.0,Cancelada,Sede Centro,4,7.5,Dermatología,16,0
+53,2026-01-12 21:15:00,0,30,23.0,Completada,Sede Occidente,5,4.7,Ortopedia y Traumatología,21,0
+54,2026-01-13 02:30:00,1,35,24.0,Cancelada,Sede Norte,1,5.4,Oftalmología,2,1
+56,2026-01-13 13:00:00,0,45,26.0,Cancelada,Sede Sur,3,8.2,Psiquiatría,13,1
+57,2026-01-13 18:15:00,1,35,27.0,Completada,Sede Centro,4,8.4,Endocrinología,18,1
+58,2026-01-13 23:30:00,0,30,28.0,Completada,Sede Occidente,5,9.7,Gastroenterología,23,1
+59,2026-01-14 04:45:00,0,35,29.0,Completada,Sede Norte,1,11.0,Urología,4,2
+60,2026-01-14 21:00:00,1,40,30.0,Completada,Sede Norte,2,10.9,Otorrinolaringología,21,2
+61,2026-01-14 15:15:00,0,45,31.0,Cancelada,Sede Sur,3,13.1,Neumología,15,2
+62,2026-01-14 20:30:00,0,50,32.0,completada,Sede Centro,4,13.2,Reumatología,20,2
+63,2026-01-15 01:45:00,1,30,33.0,Completada,Sede Occidente,5,13.7,Nutrición y Dietética,1,3
+64,2026-01-15 07:00:00,0,20,34.0,Canselada,Sede Norte,1,11.5,Oncología,7,3
+65,2026-01-15 23:15:00,0,25,35.0,Completada,Sede Norte,2,12.4,Infectología,23,3
+66,2026-01-15 17:30:00,1,30,36.0,,Sede Sur,3,13.4,Nefrología,17,3
+67,2026-01-15 22:45:00,0,50,37.0,Cancelada,Sede Centro,4,16.3,Geriatría,22,3
+68,2026-01-16 04:00:00,0,30,38.0,PENDIENTE,Sede Occidente,5,13.7,Cardiología,4,4
+69,2026-01-16 09:15:00,1,20,39.0,Cancelada,Sede Norte,1,17.2,PEDIATRÍA,9,4
+70,2026-01-17 01:30:00,0,25,5.0,Completada,Sede Norte,2,16.2,Medicina General,1,5
+71,2026-01-16 19:45:00,0,45,6.0,Completada,Sede Sur,3,16.5, ginecologia,19,4
+72,2026-01-17 01:00:00,1,35,7.0,Completada,Sede Centro,4,17.5,Dermatología,1,5
+73,2026-01-17 06:15:00,0,30,8.0,Cancelada,Sede Occidente,5,18.3,Ortopedia y Traumatología,6,5
+74,2026-01-17 11:30:00,0,20,9.0,Cancelada,Sede Norte,1,20.9,Oftalmología,11,5
+75,2026-01-18 03:45:00,1,40,10.0,Completada,Sede Norte,2,21.1,Neurología,3,6
+76,2026-01-17 22:00:00,0,45,11.0,Cancelada,Sede Sur,3,22.0,Psiquiatría,22,5
+77,1940-02-10 09:00:00,0,35,12.0,Completada,Sede Centro,4,20.2,Endocrinología,9,5
+78,2026-01-18 08:30:00,1,15,13.0,Cancelada,Sede Occidente,5,21.4,Gastroenterología,8,6
+79,2026-01-18 13:45:00,0,35,14.0,Cancelada,Sede Norte,1,22.6,Urología,13,6
+80,2026-01-19 06:00:00,0,40,15.0,Completada,Sede Norte,2,21.4,Otorrinolaringología,6,0
+81,2026-01-19 00:15:00,1,30,16.0,Completada,Sede Sur,3,23.7,Neumología,0,0
+82,2026-01-19 05:30:00,0,35,17.0,completada,Sede Centro,4,22.9,Reumatología,5,0
+83,2026-01-19 10:45:00,0,30,18.0,Cancelada,Sede Occidente,5,24.0,Nutrición y Dietética,10,0
+84,2026-01-19 16:00:00,1,20,19.0,Canselada,Sede Norte,1,24.1,Oncología,16,0
+86,2026-01-20 02:30:00,0,45,21.0,,Sede Sur,3,27.6,Nefrología,2,1
+87,2026-01-20 07:45:00,1,50,22.0,Cancelada,Sede Centro,4,28.6,Geriatría,7,1
+88,2026-01-20 13:00:00,0,15,23.0,PENDIENTE,Sede Occidente,5,28.5,Cardiología,13,1
+89,2026-01-20 18:15:00,0,20,24.0,Completada,Sede Norte,1,26.7,PEDIATRÍA,18,1
+91,2026-01-21 04:45:00,0,45,26.0,Completada,Sede Sur,3,27.3, ginecologia,4,2
+92,2026-01-21 10:00:00,0,35,27.0,Completada,Sede Centro,4,28.7,Dermatología,10,2
+93,2026-01-21 15:15:00,1,15,28.0,Cancelada,Sede Occidente,5,31.0,Ortopedia y Traumatología,15,2
+94,2026-01-21 20:30:00,0,20,29.0,Cancelada,Sede Norte,1,32.7,Oftalmología,20,2
+96,2026-01-22 07:00:00,1,30,31.0,Completada,Sede Sur,3,30.7,Psiquiatría,7,3
+97,2026-01-22 12:15:00,0,50,32.0,Cancelada,Sede Centro,4,31.2,Endocrinología,12,3
+98,2026-01-22 17:30:00,0,15,33.0,Completada,Sede Occidente,5,32.7,Gastroenterología,17,3
+99,2026-01-22 22:45:00,1,35,34.0,Completada,Sede Norte,1,32.8,Urología,22,3
+100,2026-01-23 15:00:00,0,40,35.0,Cancelada,Sede Norte,2,5.6,Medicina General,15,4
+101,2026-01-23 09:15:00,0,45,36.0,Completada,Sede Sur,3,4.6, ginecologia,9,4
+102,2026-01-23 14:30:00,1,35,37.0,completada,Sede Centro,4,7.5,Dermatología,14,4
+103,2026-01-23 19:45:00,0,30,38.0,Cancelada,Sede Occidente,5,4.7,Ortopedia y Traumatología,19,4
+104,2026-01-24 01:00:00,0,20,39.0,Canselada,Sede Norte,1,5.4,Oftalmología,1,5
+105,2026-01-24 17:15:00,1,25,5.0,Completada,Sede Norte,2,6.5,Neurología,17,5
+106,2026-01-24 11:30:00,0,30,6.0,,Sede Sur,3,8.2,Psiquiatría,11,5
+107,2026-01-24 16:45:00,0,50,7.0,Cancelada,Sede Centro,4,8.4,Endocrinología,16,5
+108,2026-01-24 22:00:00,1,15,8.0,PENDIENTE,Sede Occidente,5,9.7,Gastroenterología,22,5
+109,2026-01-25 03:15:00,0,20,9.0,Completada,Sede Norte,1,11.0,Urología,3,6
+110,2026-01-25 19:30:00,0,25,10.0,Completada,Sede Norte,2,10.9,Otorrinolaringología,19,6
+111,2026-01-25 13:45:00,1,45,11.0,Cancelada,Sede Sur,3,13.1,Neumología,13,6
+112,1940-02-10 09:00:00,0,35,12.0,Completada,Sede Centro,4,13.2,Reumatología,9,5
+113,2026-01-26 00:15:00,0,15,13.0,Cancelada,Sede Occidente,5,13.7,Nutrición y Dietética,0,0
+114,2026-01-26 05:30:00,1,20,14.0,Completada,Sede Norte,1,11.5,Oncología,5,0
+115,2026-01-26 21:45:00,0,40,15.0,Completada,Sede Norte,2,12.4,Infectología,21,0
+116,2026-01-26 16:00:00,0,45,16.0,Cancelada,Sede Sur,3,13.4,Nefrología,16,0
+117,2026-01-26 21:15:00,1,50,17.0,Completada,Sede Centro,4,16.3,Geriatría,21,0
+118,2026-01-27 02:30:00,0,15,18.0,Completada,Sede Occidente,5,13.7,Cardiología,2,1
+119,2026-01-27 07:45:00,0,35,19.0,Cancelada,Sede Norte,1,17.2,PEDIATRÍA,7,1
+120,2026-01-28 00:00:00,1,40,20.0,Completada,Sede Norte,2,16.2,Medicina General,0,2
+121,2026-01-27 18:15:00,0,30,21.0,Cancelada,Sede Sur,3,16.5, ginecologia,18,1
+122,2026-01-27 23:30:00,0,50,22.0,completada,Sede Centro,4,17.5,Dermatología,23,1
+123,2026-01-28 04:45:00,1,15,23.0,Completada,Sede Occidente,5,18.3,Ortopedia y Traumatología,4,2
+124,2026-01-28 10:00:00,0,35,24.0,Canselada,Sede Norte,1,20.9,Oftalmología,10,2
+126,2026-01-28 20:30:00,1,45,26.0,,Sede Sur,3,22.0,Psiquiatría,20,2
+127,2026-01-29 01:45:00,0,50,27.0,Completada,Sede Centro,4,20.2,Endocrinología,1,3
+128,2026-01-29 07:00:00,0,15,28.0,PENDIENTE,Sede Occidente,5,21.4,Gastroenterología,7,3
+129,2026-01-29 12:15:00,1,35,29.0,Completada,Sede Norte,1,22.6,Urología,12,3
+131,2026-01-29 22:45:00,0,45,31.0,Completada,Sede Sur,3,23.7,Neumología,22,3
+132,2026-01-30 04:00:00,1,35,32.0,Completada,Sede Centro,4,22.9,Reumatología,4,4
+133,2026-01-30 09:15:00,0,30,33.0,Cancelada,Sede Occidente,5,24.0,Nutrición y Dietética,9,4
+134,2026-01-30 14:30:00,0,20,34.0,Completada,Sede Norte,1,24.1,Oncología,14,4
+136,2026-01-31 01:00:00,0,30,36.0,Completada,Sede Sur,3,27.6,Nefrología,1,5
+137,2026-01-31 06:15:00,0,50,37.0,Completada,Sede Centro,4,28.6,Geriatría,6,5
+138,2026-01-31 11:30:00,1,15,38.0,Completada,Sede Occidente,5,28.5,Cardiología,11,5
+139,2026-01-31 16:45:00,0,35,39.0,Cancelada,Sede Norte,1,26.7,PEDIATRÍA,16,5
+140,2026-02-01 09:00:00,0,25,5.0,Completada,Sede Norte,2,29.9,Medicina General,9,6
+141,2026-02-01 03:15:00,1,45,6.0,Completada,Sede Sur,3,27.3, ginecologia,3,6
+142,2026-02-01 08:30:00,0,35,7.0,completada,Sede Centro,4,28.7,Dermatología,8,6
+143,2026-02-01 13:45:00,0,30,8.0,Completada,Sede Occidente,5,31.0,Ortopedia y Traumatología,13,6
+144,2026-02-01 19:00:00,1,35,9.0,Canselada,Sede Norte,1,32.7,Oftalmología,19,6
+145,2026-02-02 11:15:00,0,40,10.0,Completada,Sede Norte,2,29.7,Neurología,11,0
+146,2026-02-02 05:30:00,0,30,11.0,,Sede Sur,3,30.7,Psiquiatría,5,0
+147,1940-02-10 09:00:00,1,50,12.0,Cancelada,Sede Centro,4,31.2,Endocrinología,9,5
+148,2026-02-02 16:00:00,0,30,13.0,PENDIENTE,Sede Occidente,5,32.7,Gastroenterología,16,0
+149,2026-02-02 21:15:00,0,20,14.0,Cancelada,Sede Norte,1,32.8,Urología,21,0
+150,2026-02-03 13:30:00,1,40,15.0,Cancelada,Sede Norte,2,5.6,Medicina General,13,1
+151,2026-02-03 07:45:00,0,30,16.0,Completada,Sede Sur,3,4.6, ginecologia,7,1
+152,2026-02-03 13:00:00,0,35,17.0,Completada,Sede Centro,4,7.5,Dermatología,13,1
+153,2026-02-03 18:15:00,1,15,18.0,Completada,Sede Occidente,5,4.7,Ortopedia y Traumatología,18,1
+154,2026-02-03 23:30:00,0,20,19.0,Cancelada,Sede Norte,1,5.4,Oftalmología,23,1
+155,2026-02-04 15:45:00,0,40,20.0,Completada,Sede Norte,2,6.5,Neurología,15,2
+156,2026-02-04 10:00:00,1,45,21.0,Completada,Sede Sur,3,8.2,Psiquiatría,10,2
+157,2026-02-04 15:15:00,0,35,22.0,Completada,Sede Centro,4,8.4,Endocrinología,15,2
+158,2026-02-04 20:30:00,0,15,23.0,Cancelada,Sede Occidente,5,9.7,Gastroenterología,20,2
+159,2026-02-05 01:45:00,1,35,24.0,Completada,Sede Norte,1,11.0,Urología,1,3
+160,2026-02-05 18:00:00,0,25,25.0,Cancelada,Sede Norte,2,10.9,Otorrinolaringología,18,3
+161,2026-02-05 12:15:00,0,45,26.0,Cancelada,Sede Sur,3,13.1,Neumología,12,3
+162,2026-02-05 17:30:00,1,35,27.0,completada,Sede Centro,4,13.2,Reumatología,17,3
+163,2026-02-05 22:45:00,0,15,28.0,Completada,Sede Occidente,5,13.7,Nutrición y Dietética,22,3
+164,2026-02-06 04:00:00,0,20,29.0,Canselada,Sede Norte,1,11.5,Oncología,4,4
+166,2026-02-06 14:30:00,0,30,31.0,,Sede Sur,3,13.4,Nefrología,14,4
+167,2026-02-06 19:45:00,0,35,32.0,Completada,Sede Centro,4,16.3,Geriatría,19,4
+168,2026-02-07 01:00:00,1,30,33.0,PENDIENTE,Sede Occidente,5,13.7,Cardiología,1,5
+169,2026-02-07 06:15:00,0,20,34.0,Cancelada,Sede Norte,1,17.2,PEDIATRÍA,6,5
+171,2026-02-07 16:45:00,1,45,36.0,Cancelada,Sede Sur,3,16.5, ginecologia,16,5
+172,2026-02-07 22:00:00,0,35,37.0,Completada,Sede Centro,4,17.5,Dermatología,22,5
+173,2026-02-08 03:15:00,0,15,38.0,Completada,Sede Occidente,5,18.3,Ortopedia y Traumatología,3,6
+174,2026-02-08 08:30:00,1,35,39.0,Cancelada,Sede Norte,1,20.9,Oftalmología,8,6
+176,2026-02-08 19:00:00,0,30,6.0,Cancelada,Sede Sur,3,22.0,Psiquiatría,19,6
+177,2026-02-09 00:15:00,1,35,7.0,Completada,Sede Centro,4,20.2,Endocrinología,0,0
+178,2026-02-09 05:30:00,0,30,8.0,Completada,Sede Occidente,5,21.4,Gastroenterología,5,0
+179,2026-02-09 10:45:00,0,35,9.0,Completada,Sede Norte,1,22.6,Urología,10,0
+180,2026-02-10 03:00:00,1,25,10.0,Completada,Sede Norte,2,21.4,Otorrinolaringología,3,1
+181,2026-02-09 21:15:00,0,30,11.0,Completada,Sede Sur,3,23.7,Neumología,21,0
+182,1940-02-10 09:00:00,0,35,12.0,completada,Sede Centro,4,22.9,Reumatología,9,5
+183,2026-02-10 07:45:00,1,30,13.0,Cancelada,Sede Occidente,5,24.0,Nutrición y Dietética,7,1
+184,2026-02-10 13:00:00,0,20,14.0,Canselada,Sede Norte,1,24.1,Oncología,13,1
+185,2026-02-11 05:15:00,0,25,15.0,Completada,Sede Norte,2,24.1,Infectología,5,2
+186,2026-02-10 23:30:00,1,45,16.0,,Sede Sur,3,27.6,Nefrología,23,1
+187,2026-02-11 04:45:00,0,50,17.0,Cancelada,Sede Centro,4,28.6,Geriatría,4,2
+188,2026-02-11 10:00:00,0,15,18.0,PENDIENTE,Sede Occidente,5,28.5,Cardiología,10,2
+189,2026-02-11 15:15:00,1,20,19.0,Cancelada,Sede Norte,1,26.7,PEDIATRÍA,15,2
+190,2026-02-12 07:30:00,0,40,20.0,Completada,Sede Norte,2,29.9,Medicina General,7,3
+191,2026-02-12 01:45:00,0,30,21.0,Completada,Sede Sur,3,27.3, ginecologia,1,3
+192,2026-02-12 07:00:00,1,35,22.0,Completada,Sede Centro,4,28.7,Dermatología,7,3
+193,2026-02-12 12:15:00,0,15,23.0,Cancelada,Sede Occidente,5,31.0,Ortopedia y Traumatología,12,3
+194,2026-02-12 17:30:00,0,20,24.0,Cancelada,Sede Norte,1,32.7,Oftalmología,17,3
+195,2026-02-13 09:45:00,1,40,25.0,Cancelada,Sede Norte,2,29.7,Neurología,9,4
+196,2026-02-13 04:00:00,0,45,26.0,Completada,Sede Sur,3,30.7,Psiquiatría,4,4
+197,2026-02-13 09:15:00,0,50,27.0,Cancelada,Sede Centro,4,31.2,Endocrinología,9,4
+198,2026-02-13 14:30:00,1,15,28.0,Completada,Sede Occidente,5,32.7,Gastroenterología,14,4
+199,2026-02-13 19:45:00,0,35,29.0,Completada,Sede Norte,1,32.8,Urología,19,4
+200,2026-02-14 12:00:00,0,25,30.0,Completada,Sede Norte,2,5.6,Medicina General,12,5
+201,2026-02-14 06:15:00,1,45,31.0,Completada,Sede Sur,3,4.6, ginecologia,6,5
+202,2026-02-14 11:30:00,0,50,32.0,completada,Sede Centro,4,7.5,Dermatología,11,5
+203,2026-02-14 16:45:00,0,30,33.0,Cancelada,Sede Occidente,5,4.7,Ortopedia y Traumatología,16,5
+204,2026-02-14 22:00:00,1,20,34.0,Canselada,Sede Norte,1,5.4,Oftalmología,22,5
+206,2026-02-15 08:30:00,0,30,36.0,,Sede Sur,3,8.2,Psiquiatría,8,6
+207,2026-02-15 13:45:00,1,50,37.0,Cancelada,Sede Centro,4,8.4,Endocrinología,13,6
+208,2026-02-15 19:00:00,0,15,38.0,PENDIENTE,Sede Occidente,5,9.7,Gastroenterología,19,6
+209,2026-02-16 00:15:00,0,20,39.0,Cancelada,Sede Norte,1,11.0,Urología,0,0
+211,2026-02-16 10:45:00,0,45,6.0,Cancelada,Sede Sur,3,13.1,Neumología,10,0
+212,2026-02-16 16:00:00,0,50,7.0,Cancelada,Sede Centro,4,13.2,Reumatología,16,0
+213,2026-02-16 21:15:00,1,15,8.0,Completada,Sede Occidente,5,13.7,Nutrición y Dietética,21,0
+214,2026-02-17 02:30:00,0,20,9.0,Cancelada,Sede Norte,1,11.5,Oncología,2,1
+216,2026-02-17 13:00:00,1,30,11.0,Cancelada,Sede Sur,3,13.4,Nefrología,13,1
+217,1940-02-10 09:00:00,0,35,12.0,Completada,Sede Centro,4,16.3,Geriatría,9,5
+218,2026-02-17 23:30:00,0,15,13.0,Cancelada,Sede Occidente,5,13.7,Cardiología,23,1
+219,2026-02-18 04:45:00,1,35,14.0,Completada,Sede Norte,1,17.2,PEDIATRÍA,4,2
+220,2026-02-18 21:00:00,0,25,15.0,Cancelada,Sede Norte,2,16.2,Medicina General,21,2
+221,2026-02-18 15:15:00,0,30,16.0,Completada,Sede Sur,3,16.5, ginecologia,15,2
+222,2026-02-18 20:30:00,1,50,17.0,completada,Sede Centro,4,17.5,Dermatología,20,2
+223,2026-02-19 01:45:00,0,30,18.0,Completada,Sede Occidente,5,18.3,Ortopedia y Traumatología,1,3
+224,2026-02-19 07:00:00,0,35,19.0,Canselada,Sede Norte,1,20.9,Oftalmología,7,3
+225,2026-02-19 23:15:00,1,40,20.0,Cancelada,Sede Norte,2,21.1,Neurología,23,3
+226,2026-02-19 17:30:00,0,30,21.0,,Sede Sur,3,22.0,Psiquiatría,17,3
+227,2026-02-19 22:45:00,0,50,22.0,Completada,Sede Centro,4,20.2,Endocrinología,22,3
+228,2026-02-20 04:00:00,1,15,23.0,PENDIENTE,Sede Occidente,5,21.4,Gastroenterología,4,4
+229,2026-02-20 09:15:00,0,20,24.0,Completada,Sede Norte,1,22.6,Urología,9,4
+230,2026-02-21 01:30:00,0,25,25.0,Completada,Sede Norte,2,21.4,Otorrinolaringología,1,5
+231,2026-02-20 19:45:00,1,45,26.0,Completada,Sede Sur,3,23.7,Neumología,19,4
+232,2026-02-21 01:00:00,0,50,27.0,Cancelada,Sede Centro,4,22.9,Reumatología,1,5
+233,2026-02-21 06:15:00,0,15,28.0,Completada,Sede Occidente,5,24.0,Nutrición y Dietética,6,5
+234,2026-02-21 11:30:00,1,35,29.0,Completada,Sede Norte,1,24.1,Oncología,11,5
+235,2026-02-22 03:45:00,0,40,30.0,Completada,Sede Norte,2,24.1,Infectología,3,6
+236,2026-02-21 22:00:00,0,30,31.0,Completada,Sede Sur,3,27.6,Nefrología,22,5
+237,2026-02-22 03:15:00,1,50,32.0,Completada,Sede Centro,4,28.6,Geriatría,3,6
+238,2026-02-22 08:30:00,0,15,33.0,Completada,Sede Occidente,5,28.5,Cardiología,8,6
+239,2026-02-22 13:45:00,0,35,34.0,Cancelada,Sede Norte,1,26.7,PEDIATRÍA,13,6
+240,2026-02-23 06:00:00,1,40,35.0,Completada,Sede Norte,2,29.9,Medicina General,6,0
+241,2026-02-23 00:15:00,0,30,36.0,Completada,Sede Sur,3,27.3, ginecologia,0,0
+242,2026-02-23 05:30:00,0,35,37.0,completada,Sede Centro,4,28.7,Dermatología,5,0
+243,2026-02-23 10:45:00,1,30,38.0,Completada,Sede Occidente,5,31.0,Ortopedia y Traumatología,10,0
+244,2026-02-23 16:00:00,0,35,39.0,Canselada,Sede Norte,1,32.7,Oftalmología,16,0
+246,2026-02-24 02:30:00,1,30,6.0,,Sede Sur,3,30.7,Psiquiatría,2,1
+247,2026-02-24 07:45:00,0,50,7.0,Cancelada,Sede Centro,4,31.2,Endocrinología,7,1
+248,2026-02-24 13:00:00,0,15,8.0,PENDIENTE,Sede Occidente,5,32.7,Gastroenterología,13,1
+249,2026-02-24 18:15:00,1,20,9.0,Completada,Sede Norte,1,32.8,Urología,18,1
+251,2026-02-25 04:45:00,0,45,11.0,Cancelada,Sede Sur,3,4.6, ginecologia,4,2
+252,1940-02-10 09:00:00,1,35,12.0,Completada,Sede Centro,4,7.5,Dermatología,9,5
+253,2026-02-25 15:15:00,0,30,13.0,Completada,Sede Occidente,5,4.7,Ortopedia y Traumatología,15,2
+254,2026-02-25 20:30:00,0,35,14.0,Cancelada,Sede Norte,1,5.4,Oftalmología,20,2
+256,2026-02-26 07:00:00,0,45,16.0,Cancelada,Sede Sur,3,8.2,Psiquiatría,7,3
+257,2026-02-26 12:15:00,0,50,17.0,Cancelada,Sede Centro,4,8.4,Endocrinología,12,3
+258,2026-02-26 17:30:00,1,30,18.0,Cancelada,Sede Occidente,5,9.7,Gastroenterología,17,3
+259,2026-02-26 22:45:00,0,35,19.0,Cancelada,Sede Norte,1,11.0,Urología,22,3
+260,2026-02-27 15:00:00,0,25,20.0,Completada,Sede Norte,2,10.9,Otorrinolaringología,15,4
+261,2026-02-27 09:15:00,1,30,21.0,Completada,Sede Sur,3,13.1,Neumología,9,4
+262,2026-02-27 14:30:00,0,35,22.0,completada,Sede Centro,4,13.2,Reumatología,14,4
+263,2026-02-27 19:45:00,0,30,23.0,Cancelada,Sede Occidente,5,13.7,Nutrición y Dietética,19,4
+264,2026-02-28 01:00:00,1,20,24.0,Canselada,Sede Norte,1,11.5,Oncología,1,5
+265,2026-02-28 17:15:00,0,40,25.0,Completada,Sede Norte,2,12.4,Infectología,17,5
+266,2026-02-28 11:30:00,0,30,26.0,,Sede Sur,3,13.4,Nefrología,11,5
+267,2026-02-28 16:45:00,1,50,27.0,Completada,Sede Centro,4,16.3,Geriatría,16,5
+268,2026-02-28 22:00:00,0,15,28.0,PENDIENTE,Sede Occidente,5,13.7,Cardiología,22,5
+269,2026-03-01 03:15:00,0,20,29.0,Cancelada,Sede Norte,1,17.2,PEDIATRÍA,3,6
+270,2026-03-01 19:30:00,1,25,30.0,Completada,Sede Norte,2,16.2,Medicina General,19,6
+271,2026-03-01 13:45:00,0,45,31.0,Completada,Sede Sur,3,16.5, ginecologia,13,6
+272,2026-03-01 19:00:00,0,50,32.0,Cancelada,Sede Centro,4,17.5,Dermatología,19,6
+273,2026-03-02 00:15:00,1,15,33.0,Completada,Sede Occidente,5,18.3,Ortopedia y Traumatología,0,0
+274,2026-03-02 05:30:00,0,20,34.0,Cancelada,Sede Norte,1,20.9,Oftalmología,5,0
+275,2026-03-02 21:45:00,0,40,35.0,Cancelada,Sede Norte,2,21.1,Neurología,21,0
+276,2026-03-02 16:00:00,1,30,36.0,Cancelada,Sede Sur,3,22.0,Psiquiatría,16,0
+277,2026-03-02 21:15:00,0,35,37.0,Completada,Sede Centro,4,20.2,Endocrinología,21,0
+278,2026-03-03 02:30:00,0,15,38.0,Cancelada,Sede Occidente,5,21.4,Gastroenterología,2,1
+279,2026-03-03 07:45:00,1,20,39.0,Cancelada,Sede Norte,1,22.6,Urología,7,1
+280,2026-03-04 00:00:00,0,25,5.0,Cancelada,Sede Norte,2,21.4,Otorrinolaringología,0,2
+281,2026-03-03 18:15:00,0,30,6.0,Cancelada,Sede Sur,3,23.7,Neumología,18,1
+282,2026-03-03 23:30:00,1,35,7.0,completada,Sede Centro,4,22.9,Reumatología,23,1
+283,2026-03-04 04:45:00,0,30,8.0,Cancelada,Sede Occidente,5,24.0,Nutrición y Dietética,4,2
+284,2026-03-04 10:00:00,0,20,9.0,Canselada,Sede Norte,1,24.1,Oncología,10,2
+286,2026-03-04 20:30:00,0,45,11.0,,Sede Sur,3,27.6,Nefrología,20,2
+287,1940-02-10 09:00:00,0,50,12.0,Cancelada,Sede Centro,4,28.6,Geriatría,9,5
+288,2026-03-05 07:00:00,1,30,13.0,PENDIENTE,Sede Occidente,5,28.5,Cardiología,7,3
+289,2026-03-05 12:15:00,0,20,14.0,Cancelada,Sede Norte,1,26.7,PEDIATRÍA,12,3
+291,2026-03-05 22:45:00,1,45,16.0,Completada,Sede Sur,3,27.3, ginecologia,22,3
+292,2026-03-06 04:00:00,0,35,17.0,Completada,Sede Centro,4,28.7,Dermatología,4,4
+293,2026-03-06 09:15:00,0,15,18.0,Cancelada,Sede Occidente,5,31.0,Ortopedia y Traumatología,9,4
+294,2026-03-06 14:30:00,1,35,19.0,Completada,Sede Norte,1,32.7,Oftalmología,14,4
+296,2026-03-07 01:00:00,0,45,21.0,Completada,Sede Sur,3,30.7,Psiquiatría,1,5
+297,2026-03-07 06:15:00,1,35,22.0,Cancelada,Sede Centro,4,31.2,Endocrinología,6,5
+298,2026-03-07 11:30:00,0,15,23.0,Cancelada,Sede Occidente,5,32.7,Gastroenterología,11,5
+299,2026-03-07 16:45:00,0,35,24.0,Cancelada,Sede Norte,1,32.8,Urología,16,5
+300,2026-03-08 09:00:00,1,25,25.0,Cancelada,Sede Norte,2,5.6,Medicina General,9,6
+301,2026-03-08 03:15:00,0,30,26.0,Cancelada,Sede Sur,3,4.6, ginecologia,3,6
+302,2026-03-08 08:30:00,0,35,27.0,completada,Sede Centro,4,7.5,Dermatología,8,6
+303,2026-03-08 13:45:00,1,30,28.0,Cancelada,Sede Occidente,5,4.7,Ortopedia y Traumatología,13,6
+304,2026-03-08 19:00:00,0,20,29.0,Canselada,Sede Norte,1,5.4,Oftalmología,19,6
+305,2026-03-09 11:15:00,0,25,30.0,Cancelada,Sede Norte,2,6.5,Neurología,11,0
+306,2026-03-09 05:30:00,1,30,31.0,,Sede Sur,3,8.2,Psiquiatría,5,0
+307,2026-03-09 10:45:00,0,50,32.0,Completada,Sede Centro,4,8.4,Endocrinología,10,0
+308,2026-03-09 16:00:00,0,15,33.0,PENDIENTE,Sede Occidente,5,9.7,Gastroenterología,16,0
+309,2026-03-09 21:15:00,1,35,34.0,Completada,Sede Norte,1,11.0,Urología,21,0
+310,2026-03-10 13:30:00,0,25,35.0,Cancelada,Sede Norte,2,10.9,Otorrinolaringología,13,1
+311,2026-03-10 07:45:00,0,45,36.0,Completada,Sede Sur,3,13.1,Neumología,7,1
+312,2026-03-10 13:00:00,1,35,37.0,Completada,Sede Centro,4,13.2,Reumatología,13,1
+313,2026-03-10 18:15:00,0,15,38.0,Completada,Sede Occidente,5,13.7,Nutrición y Dietética,18,1
+314,2026-03-10 23:30:00,0,20,39.0,Cancelada,Sede Norte,1,11.5,Oncología,23,1
+315,2026-03-11 15:45:00,1,25,5.0,Cancelada,Sede Norte,2,12.4,Infectología,15,2
+316,2026-03-11 10:00:00,0,30,6.0,Completada,Sede Sur,3,13.4,Nefrología,10,2
+317,2026-03-11 15:15:00,0,35,7.0,Cancelada,Sede Centro,4,16.3,Geriatría,15,2
+318,2026-03-11 20:30:00,1,15,8.0,Completada,Sede Occidente,5,13.7,Cardiología,20,2
+319,2026-03-12 01:45:00,0,35,9.0,Completada,Sede Norte,1,17.2,PEDIATRÍA,1,3
+320,2026-03-12 18:00:00,0,40,10.0,Cancelada,Sede Norte,2,16.2,Medicina General,18,3
+321,2026-03-12 12:15:00,1,30,11.0,Completada,Sede Sur,3,16.5, ginecologia,12,3
+322,1940-02-10 09:00:00,0,35,12.0,completada,Sede Centro,4,17.5,Dermatología,9,5
+323,2026-03-12 22:45:00,0,30,13.0,Completada,Sede Occidente,5,18.3,Ortopedia y Traumatología,22,3
+324,2026-03-13 04:00:00,1,35,14.0,Canselada,Sede Norte,1,20.9,Oftalmología,4,4
+326,2026-03-13 14:30:00,0,30,16.0,,Sede Sur,3,22.0,Psiquiatría,14,4
+327,2026-03-13 19:45:00,1,50,17.0,Completada,Sede Centro,4,20.2,Endocrinología,19,4
+328,2026-03-14 01:00:00,0,30,18.0,PENDIENTE,Sede Occidente,5,21.4,Gastroenterología,1,5
+329,2026-03-14 06:15:00,0,20,19.0,Completada,Sede Norte,1,22.6,Urología,6,5
+331,2026-03-14 16:45:00,0,45,21.0,Cancelada,Sede Sur,3,23.7,Neumología,16,5
+332,2026-03-14 22:00:00,0,35,22.0,Cancelada,Sede Centro,4,22.9,Reumatología,22,5
+333,2026-03-15 03:15:00,1,15,23.0,Cancelada,Sede Occidente,5,24.0,Nutrición y Dietética,3,6
+334,2026-03-15 08:30:00,0,20,24.0,Cancelada,Sede Norte,1,24.1,Oncología,8,6
+336,2026-03-15 19:00:00,1,45,26.0,Completada,Sede Sur,3,27.6,Nefrología,19,6
+337,2026-03-16 00:15:00,0,35,27.0,Cancelada,Sede Centro,4,28.6,Geriatría,0,0
+338,2026-03-16 05:30:00,0,30,28.0,Cancelada,Sede Occidente,5,28.5,Cardiología,5,0
+339,2026-03-16 10:45:00,1,35,29.0,Cancelada,Sede Norte,1,26.7,PEDIATRÍA,10,0
+340,2026-03-17 03:00:00,0,40,30.0,Cancelada,Sede Norte,2,29.9,Medicina General,3,1
+341,2026-03-16 21:15:00,0,30,31.0,Completada,Sede Sur,3,27.3, ginecologia,21,0
+342,2026-03-17 02:30:00,1,35,32.0,completada,Sede Centro,4,28.7,Dermatología,2,1
+343,2026-03-17 07:45:00,0,30,33.0,Cancelada,Sede Occidente,5,31.0,Ortopedia y Traumatología,7,1
+344,2026-03-17 13:00:00,0,20,34.0,Canselada,Sede Norte,1,32.7,Oftalmología,13,1
+345,2026-03-18 05:15:00,1,40,35.0,Completada,Sede Norte,2,29.7,Neurología,5,2
+346,2026-03-17 23:30:00,0,30,36.0,,Sede Sur,3,30.7,Psiquiatría,23,1
+347,2026-03-18 04:45:00,0,50,37.0,Completada,Sede Centro,4,31.2,Endocrinología,4,2
+348,2026-03-18 10:00:00,1,15,38.0,PENDIENTE,Sede Occidente,5,32.7,Gastroenterología,10,2
+349,2026-03-18 15:15:00,0,35,39.0,Cancelada,Sede Norte,1,32.8,Urología,15,2
+350,2026-03-19 07:30:00,0,25,5.0,Completada,Sede Norte,2,5.6,Medicina General,7,3
+351,2026-03-19 01:45:00,1,30,6.0,Completada,Sede Sur,3,4.6, ginecologia,1,3
+352,2026-03-19 07:00:00,0,35,7.0,Cancelada,Sede Centro,4,7.5,Dermatología,7,3
+353,2026-03-19 12:15:00,0,15,8.0,Cancelada,Sede Occidente,5,4.7,Ortopedia y Traumatología,12,3
+354,2026-03-19 17:30:00,1,20,9.0,Completada,Sede Norte,1,5.4,Oftalmología,17,3
+355,2026-03-20 09:45:00,0,25,10.0,Completada,Sede Norte,2,6.5,Neurología,9,4
+356,2026-03-20 04:00:00,0,30,11.0,Cancelada,Sede Sur,3,8.2,Psiquiatría,4,4
+357,1940-02-10 09:00:00,1,35,12.0,Completada,Sede Centro,4,8.4,Endocrinología,9,5
+358,2026-03-20 14:30:00,0,15,13.0,Completada,Sede Occidente,5,9.7,Gastroenterología,14,4
+359,2026-03-20 19:45:00,0,35,14.0,Completada,Sede Norte,1,11.0,Urología,19,4
+360,2026-03-21 12:00:00,1,25,15.0,Completada,Sede Norte,2,10.9,Otorrinolaringología,12,5
+361,2026-03-21 06:15:00,0,30,16.0,Cancelada,Sede Sur,3,13.1,Neumología,6,5
+362,2026-03-21 11:30:00,0,50,17.0,completada,Sede Centro,4,13.2,Reumatología,11,5
+363,2026-03-21 16:45:00,1,30,18.0,Completada,Sede Occidente,5,13.7,Nutrición y Dietética,16,5
+364,2026-03-21 22:00:00,0,20,19.0,Canselada,Sede Norte,1,11.5,Oncología,22,5
+366,2026-03-22 08:30:00,1,45,21.0,,Sede Sur,3,13.4,Nefrología,8,6
+367,2026-03-22 13:45:00,0,35,22.0,Cancelada,Sede Centro,4,16.3,Geriatría,13,6
+368,2026-03-22 19:00:00,0,15,23.0,PENDIENTE,Sede Occidente,5,13.7,Cardiología,19,6
+369,2026-03-23 00:15:00,1,35,24.0,Completada,Sede Norte,1,17.2,PEDIATRÍA,0,0
+371,2026-03-23 10:45:00,0,45,26.0,Cancelada,Sede Sur,3,16.5, ginecologia,10,0
+372,2026-03-23 16:00:00,1,50,27.0,Cancelada,Sede Centro,4,17.5,Dermatología,16,0
+373,2026-03-23 21:15:00,0,15,28.0,Cancelada,Sede Occidente,5,18.3,Ortopedia y Traumatología,21,0
+374,2026-03-24 02:30:00,0,35,29.0,Cancelada,Sede Norte,1,20.9,Oftalmología,2,1
+376,2026-03-24 13:00:00,0,45,31.0,Cancelada,Sede Sur,3,22.0,Psiquiatría,13,1
+377,2026-03-24 18:15:00,0,35,32.0,Cancelada,Sede Centro,4,20.2,Endocrinología,18,1
+378,2026-03-24 23:30:00,1,15,33.0,Completada,Sede Occidente,5,21.4,Gastroenterología,23,1
+379,2026-03-25 04:45:00,0,35,34.0,Completada,Sede Norte,1,22.6,Urología,4,2
+380,2026-03-25 21:00:00,0,25,35.0,Cancelada,Sede Norte,2,21.4,Otorrinolaringología,21,2
+381,2026-03-25 15:15:00,1,30,36.0,Completada,Sede Sur,3,23.7,Neumología,15,2
+382,2026-03-25 20:30:00,0,35,37.0,completada,Sede Centro,4,22.9,Reumatología,20,2
+383,2026-03-26 01:45:00,0,30,38.0,Completada,Sede Occidente,5,24.0,Nutrición y Dietética,1,3
+384,2026-03-26 07:00:00,1,20,39.0,Canselada,Sede Norte,1,24.1,Oncología,7,3
+385,2026-03-26 23:15:00,0,25,5.0,Cancelada,Sede Norte,2,24.1,Infectología,23,3
+386,2026-03-26 17:30:00,0,45,6.0,,Sede Sur,3,27.6,Nefrología,17,3
+387,2026-03-26 22:45:00,1,35,7.0,Completada,Sede Centro,4,28.6,Geriatría,22,3
+388,2026-03-27 04:00:00,0,15,8.0,PENDIENTE,Sede Occidente,5,28.5,Cardiología,4,4
+389,2026-03-27 09:15:00,0,20,9.0,Cancelada,Sede Norte,1,26.7,PEDIATRÍA,9,4
+390,2026-03-28 01:30:00,1,25,10.0,Completada,Sede Norte,2,29.9,Medicina General,1,5
+391,2026-03-27 19:45:00,0,45,11.0,Completada,Sede Sur,3,27.3, ginecologia,19,4
+392,1940-02-10 09:00:00,0,35,12.0,Cancelada,Sede Centro,4,28.7,Dermatología,9,5
+393,2026-03-28 06:15:00,1,15,13.0,Cancelada,Sede Occidente,5,31.0,Ortopedia y Traumatología,6,5
+394,2026-03-28 11:30:00,0,35,14.0,Cancelada,Sede Norte,1,32.7,Oftalmología,11,5
+395,2026-03-29 03:45:00,0,40,15.0,Completada,Sede Norte,2,29.7,Neurología,3,6
+396,2026-03-28 22:00:00,1,30,16.0,Cancelada,Sede Sur,3,30.7,Psiquiatría,22,5
+397,2026-03-29 03:15:00,0,50,17.0,Completada,Sede Centro,4,31.2,Endocrinología,3,6
+398,2026-03-29 08:30:00,0,30,18.0,Cancelada,Sede Occidente,5,32.7,Gastroenterología,8,6
+399,2026-03-29 13:45:00,1,35,19.0,Completada,Sede Norte,1,32.8,Urología,13,6
+400,2026-03-30 06:00:00,0,40,20.0,Completada,Sede Norte,2,5.6,Medicina General,6,0
+401,2026-03-30 00:15:00,0,30,21.0,Cancelada,Sede Sur,3,4.6, ginecologia,0,0
+402,2026-03-30 05:30:00,1,50,22.0,completada,Sede Centro,4,7.5,Dermatología,5,0
+403,2026-03-30 10:45:00,0,30,23.0,Completada,Sede Occidente,5,4.7,Ortopedia y Traumatología,10,0
+404,2026-03-30 16:00:00,0,20,24.0,Canselada,Sede Norte,1,5.4,Oftalmología,16,0
+406,2026-03-31 02:30:00,0,30,26.0,,Sede Sur,3,8.2,Psiquiatría,2,1
+407,2026-03-31 07:45:00,0,50,27.0,Cancelada,Sede Centro,4,8.4,Endocrinología,7,1
+408,2026-03-31 13:00:00,1,15,28.0,PENDIENTE,Sede Occidente,5,9.7,Gastroenterología,13,1
+409,2026-03-31 18:15:00,0,35,29.0,Completada,Sede Norte,1,11.0,Urología,18,1
+411,2026-04-01 04:45:00,1,45,31.0,Cancelada,Sede Sur,3,13.1,Neumología,4,2
+412,2026-04-01 10:00:00,0,35,32.0,Cancelada,Sede Centro,4,13.2,Reumatología,10,2
+413,2026-04-01 15:15:00,0,30,33.0,Completada,Sede Occidente,5,13.7,Nutrición y Dietética,15,2
+414,2026-04-01 20:30:00,1,20,34.0,Cancelada,Sede Norte,1,11.5,Oncología,20,2
+416,2026-04-02 07:00:00,0,30,36.0,Cancelada,Sede Sur,3,13.4,Nefrología,7,3
+417,2026-04-02 12:15:00,1,35,37.0,Cancelada,Sede Centro,4,16.3,Geriatría,12,3
+418,2026-04-02 17:30:00,0,15,38.0,Completada,Sede Occidente,5,13.7,Cardiología,17,3
+419,2026-04-02 22:45:00,0,35,39.0,Completada,Sede Norte,1,17.2,PEDIATRÍA,22,3
+420,2026-04-03 15:00:00,1,40,5.0,Completada,Sede Norte,2,16.2,Medicina General,15,4
+421,2026-04-03 09:15:00,0,45,6.0,Cancelada,Sede Sur,3,16.5, ginecologia,9,4
+422,2026-04-03 14:30:00,0,50,7.0,completada,Sede Centro,4,17.5,Dermatología,14,4
+423,2026-04-03 19:45:00,1,30,8.0,Completada,Sede Occidente,5,18.3,Ortopedia y Traumatología,19,4
+424,2026-04-04 01:00:00,0,20,9.0,Canselada,Sede Norte,1,20.9,Oftalmología,1,5
+425,2026-04-04 17:15:00,0,25,10.0,Cancelada,Sede Norte,2,21.1,Neurología,17,5
+426,2026-04-04 11:30:00,1,45,11.0,,Sede Sur,3,22.0,Psiquiatría,11,5
+427,1940-02-10 09:00:00,0,50,12.0,Completada,Sede Centro,4,20.2,Endocrinología,9,5
+428,2026-04-04 22:00:00,0,30,13.0,PENDIENTE,Sede Occidente,5,21.4,Gastroenterología,22,5
+429,2026-04-05 03:15:00,1,35,14.0,Completada,Sede Norte,1,22.6,Urología,3,6
+430,2026-04-05 19:30:00,0,40,15.0,Cancelada,Sede Norte,2,21.4,Otorrinolaringología,19,6
+431,2026-04-05 13:45:00,0,45,16.0,Completada,Sede Sur,3,23.7,Neumología,13,6
+432,2026-04-05 19:00:00,1,35,17.0,Cancelada,Sede Centro,4,22.9,Reumatología,19,6
+433,2026-04-06 00:15:00,0,15,18.0,Cancelada,Sede Occidente,5,24.0,Nutrición y Dietética,0,0
+434,2026-04-06 05:30:00,0,20,19.0,Cancelada,Sede Norte,1,24.1,Oncología,5,0
+435,2026-04-06 21:45:00,1,25,20.0,Completada,Sede Norte,2,24.1,Infectología,21,0
+436,2026-04-06 16:00:00,0,30,21.0,Completada,Sede Sur,3,27.6,Nefrología,16,0
+437,2026-04-06 21:15:00,0,50,22.0,Cancelada,Sede Centro,4,28.6,Geriatría,21,0
+438,2026-04-07 02:30:00,1,15,23.0,Completada,Sede Occidente,5,28.5,Cardiología,2,1
+439,2026-04-07 07:45:00,0,35,24.0,Completada,Sede Norte,1,26.7,PEDIATRÍA,7,1
+440,2026-04-08 00:00:00,0,25,25.0,Completada,Sede Norte,2,29.9,Medicina General,0,2
+441,2026-04-07 18:15:00,1,30,26.0,Completada,Sede Sur,3,27.3, ginecologia,18,1
+442,2026-04-07 23:30:00,0,35,27.0,completada,Sede Centro,4,28.7,Dermatología,23,1
+443,2026-04-08 04:45:00,0,15,28.0,Completada,Sede Occidente,5,31.0,Ortopedia y Traumatología,4,2
+444,2026-04-08 10:00:00,1,35,29.0,Canselada,Sede Norte,1,32.7,Oftalmología,10,2
+446,2026-04-08 20:30:00,0,30,31.0,,Sede Sur,3,30.7,Psiquiatría,20,2
+447,2026-04-09 01:45:00,1,50,32.0,Completada,Sede Centro,4,31.2,Endocrinología,1,3
+448,2026-04-09 07:00:00,0,15,33.0,PENDIENTE,Sede Occidente,5,32.7,Gastroenterología,7,3
+449,2026-04-09 12:15:00,0,35,34.0,Cancelada,Sede Norte,1,32.8,Urología,12,3
+451,2026-04-09 22:45:00,0,45,36.0,Completada,Sede Sur,3,4.6, ginecologia,22,3
+452,2026-04-10 04:00:00,0,35,37.0,Completada,Sede Centro,4,7.5,Dermatología,4,4
+453,2026-04-10 09:15:00,1,15,38.0,Cancelada,Sede Occidente,5,4.7,Ortopedia y Traumatología,9,4
+454,2026-04-10 14:30:00,0,20,39.0,Cancelada,Sede Norte,1,5.4,Oftalmología,14,4
+456,2026-04-11 01:00:00,1,45,6.0,Completada,Sede Sur,3,8.2,Psiquiatría,1,5
+457,2026-04-11 06:15:00,0,35,7.0,Completada,Sede Centro,4,8.4,Endocrinología,6,5
+458,2026-04-11 11:30:00,0,15,8.0,Cancelada,Sede Occidente,5,9.7,Gastroenterología,11,5
+459,2026-04-11 16:45:00,1,35,9.0,Cancelada,Sede Norte,1,11.0,Urología,16,5
+460,2026-04-12 09:00:00,0,40,10.0,Completada,Sede Norte,2,10.9,Otorrinolaringología,9,6
+461,2026-04-12 03:15:00,0,45,11.0,Completada,Sede Sur,3,13.1,Neumología,3,6
+462,1940-02-10 09:00:00,1,50,12.0,completada,Sede Centro,4,13.2,Reumatología,9,5
+463,2026-04-12 13:45:00,0,30,13.0,Completada,Sede Occidente,5,13.7,Nutrición y Dietética,13,6
+464,2026-04-12 19:00:00,0,20,14.0,Canselada,Sede Norte,1,11.5,Oncología,19,6
+465,2026-04-13 11:15:00,1,25,15.0,Completada,Sede Norte,2,12.4,Infectología,11,0
+466,2026-04-13 05:30:00,0,30,16.0,,Sede Sur,3,13.4,Nefrología,5,0
+467,2026-04-13 10:45:00,0,35,17.0,Cancelada,Sede Centro,4,16.3,Geriatría,10,0
+468,2026-04-13 16:00:00,1,30,18.0,PENDIENTE,Sede Occidente,5,13.7,Cardiología,16,0
+469,2026-04-13 21:15:00,0,20,19.0,Cancelada,Sede Norte,1,17.2,PEDIATRÍA,21,0
+470,2026-04-14 13:30:00,0,40,20.0,Cancelada,Sede Norte,2,16.2,Medicina General,13,1
+471,2026-04-14 07:45:00,1,45,21.0,Completada,Sede Sur,3,16.5, ginecologia,7,1
+472,2026-04-14 13:00:00,0,50,22.0,Cancelada,Sede Centro,4,17.5,Dermatología,13,1
+473,2026-04-14 18:15:00,0,15,23.0,Cancelada,Sede Occidente,5,18.3,Ortopedia y Traumatología,18,1
+474,2026-04-14 23:30:00,1,20,24.0,Cancelada,Sede Norte,1,20.9,Oftalmología,23,1
+475,2026-04-15 15:45:00,0,25,25.0,Cancelada,Sede Norte,2,21.1,Neurología,15,2
+476,2026-04-15 10:00:00,0,30,26.0,Completada,Sede Sur,3,22.0,Psiquiatría,10,2
+477,2026-04-15 15:15:00,1,35,27.0,Completada,Sede Centro,4,20.2,Endocrinología,15,2
+478,2026-04-15 20:30:00,0,30,28.0,Completada,Sede Occidente,5,21.4,Gastroenterología,20,2
+479,2026-04-16 01:45:00,0,35,29.0,Completada,Sede Norte,1,22.6,Urología,1,3
+480,2026-04-16 18:00:00,1,40,30.0,Completada,Sede Norte,2,21.4,Otorrinolaringología,18,3
+481,2026-04-16 12:15:00,0,30,31.0,Completada,Sede Sur,3,23.7,Neumología,12,3
+482,2026-04-16 17:30:00,0,35,32.0,completada,Sede Centro,4,22.9,Reumatología,17,3
+483,2026-04-16 22:45:00,1,30,33.0,Completada,Sede Occidente,5,24.0,Nutrición y Dietética,22,3
+484,2026-04-17 04:00:00,0,20,34.0,Canselada,Sede Norte,1,24.1,Oncología,4,4
+486,2026-04-17 14:30:00,1,30,36.0,,Sede Sur,3,27.6,Nefrología,14,4
+487,2026-04-17 19:45:00,0,50,37.0,Cancelada,Sede Centro,4,28.6,Geriatría,19,4
+488,2026-04-18 01:00:00,0,15,38.0,PENDIENTE,Sede Occidente,5,28.5,Cardiología,1,5
+489,2026-04-18 06:15:00,1,20,39.0,Completada,Sede Norte,1,26.7,PEDIATRÍA,6,5
+491,2026-04-18 16:45:00,0,30,6.0,Cancelada,Sede Sur,3,27.3, ginecologia,16,5
+492,2026-04-18 22:00:00,1,35,7.0,Cancelada,Sede Centro,4,28.7,Dermatología,22,5
+493,2026-04-19 03:15:00,0,30,8.0,Completada,Sede Occidente,5,31.0,Ortopedia y Traumatología,3,6
+494,2026-04-19 08:30:00,0,20,9.0,Cancelada,Sede Norte,1,32.7,Oftalmología,8,6
+496,2026-04-19 19:00:00,0,45,11.0,Completada,Sede Sur,3,30.7,Psiquiatría,19,6
+497,1940-02-10 09:00:00,0,50,12.0,Completada,Sede Centro,4,31.2,Endocrinología,9,5
+498,2026-04-20 05:30:00,1,30,13.0,Completada,Sede Occidente,5,32.7,Gastroenterología,5,0
+499,2026-04-20 10:45:00,0,35,14.0,Cancelada,Sede Norte,1,32.8,Urología,10,0
+500,2026-04-21 03:00:00,0,40,15.0,Completada,Sede Norte,2,5.6,Medicina General,3,1
+501,2026-04-20 21:15:00,1,45,16.0,Completada,Sede Sur,3,4.6, ginecologia,21,0
+502,2026-04-21 02:30:00,0,50,17.0,completada,Sede Centro,4,7.5,Dermatología,2,1
+503,2026-04-21 07:45:00,0,30,18.0,Cancelada,Sede Occidente,5,4.7,Ortopedia y Traumatología,7,1
+504,2026-04-21 13:00:00,1,35,19.0,Canselada,Sede Norte,1,5.4,Oftalmología,13,1
+505,2026-04-22 05:15:00,0,25,20.0,Cancelada,Sede Norte,2,6.5,Neurología,5,2
+506,2026-04-21 23:30:00,0,30,21.0,,Sede Sur,3,8.2,Psiquiatría,23,1
+507,2026-04-22 04:45:00,1,50,22.0,Completada,Sede Centro,4,8.4,Endocrinología,4,2
+508,2026-04-22 10:00:00,0,15,23.0,PENDIENTE,Sede Occidente,5,9.7,Gastroenterología,10,2
+509,2026-04-22 15:15:00,0,20,24.0,Cancelada,Sede Norte,1,11.0,Urología,15,2
+510,2026-04-23 07:30:00,1,25,25.0,Completada,Sede Norte,2,10.9,Otorrinolaringología,7,3
+511,2026-04-23 01:45:00,0,45,26.0,Cancelada,Sede Sur,3,13.1,Neumología,1,3
+512,2026-04-23 07:00:00,0,35,27.0,Cancelada,Sede Centro,4,13.2,Reumatología,7,3
+513,2026-04-23 12:15:00,1,30,28.0,Completada,Sede Occidente,5,13.7,Nutrición y Dietética,12,3
+514,2026-04-23 17:30:00,0,35,29.0,Completada,Sede Norte,1,11.5,Oncología,17,3
+515,2026-04-24 09:45:00,0,25,30.0,Completada,Sede Norte,2,12.4,Infectología,9,4
+516,2026-04-24 04:00:00,1,30,31.0,Completada,Sede Sur,3,13.4,Nefrología,4,4
+517,2026-04-24 09:15:00,0,50,32.0,Cancelada,Sede Centro,4,16.3,Geriatría,9,4
+518,2026-04-24 14:30:00,0,30,33.0,Completada,Sede Occidente,5,13.7,Cardiología,14,4
+519,2026-04-24 19:45:00,1,35,34.0,Completada,Sede Norte,1,17.2,PEDIATRÍA,19,4
+520,2026-04-25 12:00:00,0,25,35.0,Cancelada,Sede Norte,2,16.2,Medicina General,12,5
+521,2026-04-25 06:15:00,0,30,36.0,Completada,Sede Sur,3,16.5, ginecologia,6,5
+522,2026-04-25 11:30:00,1,35,37.0,completada,Sede Centro,4,17.5,Dermatología,11,5
+523,2026-04-25 16:45:00,0,15,38.0,Cancelada,Sede Occidente,5,18.3,Ortopedia y Traumatología,16,5
+524,2026-04-25 22:00:00,0,35,39.0,Canselada,Sede Norte,1,20.9,Oftalmología,22,5
+526,2026-04-26 08:30:00,0,45,6.0,,Sede Sur,3,22.0,Psiquiatría,8,6
+527,2026-04-26 13:45:00,0,50,7.0,Completada,Sede Centro,4,20.2,Endocrinología,13,6
+528,2026-04-26 19:00:00,1,15,8.0,PENDIENTE,Sede Occidente,5,21.4,Gastroenterología,19,6
+529,2026-04-27 00:15:00,0,20,9.0,Cancelada,Sede Norte,1,22.6,Urología,0,0
+531,2026-04-27 10:45:00,1,30,11.0,Completada,Sede Sur,3,23.7,Neumología,10,0
+532,1940-02-10 09:00:00,0,35,12.0,Completada,Sede Centro,4,22.9,Reumatología,9,5
+533,2026-04-27 21:15:00,0,15,13.0,Completada,Sede Occidente,5,24.0,Nutrición y Dietética,21,0
+534,2026-04-28 02:30:00,1,20,14.0,Cancelada,Sede Norte,1,24.1,Oncología,2,1
+536,2026-04-28 13:00:00,0,30,16.0,Cancelada,Sede Sur,3,27.6,Nefrología,13,1
+537,2026-04-28 18:15:00,1,35,17.0,Completada,Sede Centro,4,28.6,Geriatría,18,1
+538,2026-04-28 23:30:00,0,15,18.0,Cancelada,Sede Occidente,5,28.5,Cardiología,23,1
+539,2026-04-29 04:45:00,0,35,19.0,Completada,Sede Norte,1,26.7,PEDIATRÍA,4,2
+540,2026-04-29 21:00:00,1,25,20.0,Completada,Sede Norte,2,29.9,Medicina General,21,2
+541,2026-04-29 15:15:00,0,45,21.0,Cancelada,Sede Sur,3,27.3, ginecologia,15,2
+542,2026-04-29 20:30:00,0,35,22.0,completada,Sede Centro,4,28.7,Dermatología,20,2
+543,2026-04-30 01:45:00,1,30,23.0,Cancelada,Sede Occidente,5,31.0,Ortopedia y Traumatología,1,3
+544,2026-04-30 07:00:00,0,20,24.0,Canselada,Sede Norte,1,32.7,Oftalmología,7,3
+545,2026-04-30 23:15:00,0,25,25.0,Completada,Sede Norte,2,29.7,Neurología,23,3
+546,2026-04-30 17:30:00,1,30,26.0,,Sede Sur,3,30.7,Psiquiatría,17,3
+547,2026-04-30 22:45:00,0,50,27.0,Completada,Sede Centro,4,31.2,Endocrinología,22,3
+548,2026-05-01 04:00:00,0,15,28.0,PENDIENTE,Sede Occidente,5,32.7,Gastroenterología,4,4
+549,2026-05-01 09:15:00,1,20,29.0,Completada,Sede Norte,1,32.8,Urología,9,4
+550,2026-05-02 01:30:00,0,40,30.0,Cancelada,Sede Norte,2,5.6,Medicina General,1,5
+551,2026-05-01 19:45:00,0,30,31.0,Cancelada,Sede Sur,3,4.6, ginecologia,19,4
+552,2026-05-02 01:00:00,1,50,32.0,Completada,Sede Centro,4,7.5,Dermatología,1,5
+553,2026-05-02 06:15:00,0,30,33.0,Completada,Sede Occidente,5,4.7,Ortopedia y Traumatología,6,5
+554,2026-05-02 11:30:00,0,35,34.0,Completada,Sede Norte,1,5.4,Oftalmología,11,5
+555,2026-05-03 03:45:00,1,40,35.0,Completada,Sede Norte,2,6.5,Neurología,3,6
+556,2026-05-02 22:00:00,0,45,36.0,Cancelada,Sede Sur,3,8.2,Psiquiatría,22,5
+557,2026-05-03 03:15:00,0,35,37.0,Cancelada,Sede Centro,4,8.4,Endocrinología,3,6
+558,2026-05-03 08:30:00,1,30,38.0,Completada,Sede Occidente,5,9.7,Gastroenterología,8,6
+559,2026-05-03 13:45:00,0,35,39.0,Completada,Sede Norte,1,11.0,Urología,13,6
+560,2026-05-04 06:00:00,0,40,5.0,Completada,Sede Norte,2,10.9,Otorrinolaringología,6,0
+561,2026-05-04 00:15:00,1,45,6.0,Completada,Sede Sur,3,13.1,Neumología,0,0
+562,2026-05-04 05:30:00,0,50,7.0,completada,Sede Centro,4,13.2,Reumatología,5,0
+563,2026-05-04 10:45:00,0,30,8.0,Completada,Sede Occidente,5,13.7,Nutrición y Dietética,10,0
+564,2026-05-04 16:00:00,1,20,9.0,Canselada,Sede Norte,1,11.5,Oncología,16,0
+566,2026-05-05 02:30:00,0,30,11.0,,Sede Sur,3,13.4,Nefrología,2,1
+567,1940-02-10 09:00:00,1,50,12.0,Completada,Sede Centro,4,16.3,Geriatría,9,5
+568,2026-05-05 13:00:00,0,30,13.0,PENDIENTE,Sede Occidente,5,13.7,Cardiología,13,1
+569,2026-05-05 18:15:00,0,20,14.0,Completada,Sede Norte,1,17.2,PEDIATRÍA,18,1
+571,2026-05-06 04:45:00,0,45,16.0,Completada,Sede Sur,3,16.5, ginecologia,4,2
+572,2026-05-06 10:00:00,0,35,17.0,Cancelada,Sede Centro,4,17.5,Dermatología,10,2
+573,2026-05-06 15:15:00,1,30,18.0,Cancelada,Sede Occidente,5,18.3,Ortopedia y Traumatología,15,2
+574,2026-05-06 20:30:00,0,20,19.0,Completada,Sede Norte,1,20.9,Oftalmología,20,2
+576,2026-05-07 07:00:00,1,45,21.0,Completada,Sede Sur,3,22.0,Psiquiatría,7,3
+577,2026-05-07 12:15:00,0,35,22.0,Completada,Sede Centro,4,20.2,Endocrinología,12,3
+578,2026-05-07 17:30:00,0,15,23.0,Cancelada,Sede Occidente,5,21.4,Gastroenterología,17,3
+579,2026-05-07 22:45:00,1,35,24.0,Completada,Sede Norte,1,22.6,Urología,22,3
+580,2026-05-08 15:00:00,0,40,25.0,Cancelada,Sede Norte,2,21.4,Otorrinolaringología,15,4
+581,2026-05-08 09:15:00,0,30,26.0,Cancelada,Sede Sur,3,23.7,Neumología,9,4
+582,2026-05-08 14:30:00,1,35,27.0,completada,Sede Centro,4,22.9,Reumatología,14,4
+583,2026-05-08 19:45:00,0,30,28.0,Cancelada,Sede Occidente,5,24.0,Nutrición y Dietética,19,4
+584,2026-05-09 01:00:00,0,20,29.0,Canselada,Sede Norte,1,24.1,Oncología,1,5
+585,2026-05-09 17:15:00,1,40,30.0,Completada,Sede Norte,2,24.1,Infectología,17,5
+586,2026-05-09 11:30:00,0,45,31.0,,Sede Sur,3,27.6,Nefrología,11,5
+587,2026-05-09 16:45:00,0,50,32.0,Completada,Sede Centro,4,28.6,Geriatría,16,5
+588,2026-05-09 22:00:00,1,15,33.0,PENDIENTE,Sede Occidente,5,28.5,Cardiología,22,5
+589,2026-05-10 03:15:00,0,20,34.0,Completada,Sede Norte,1,26.7,PEDIATRÍA,3,6
+590,2026-05-10 19:30:00,0,25,35.0,Completada,Sede Norte,2,29.9,Medicina General,19,6
+591,2026-05-10 13:45:00,1,45,36.0,Completada,Sede Sur,3,27.3, ginecologia,13,6
+592,2026-05-10 19:00:00,0,35,37.0,Cancelada,Sede Centro,4,28.7,Dermatología,19,6
+593,2026-05-11 00:15:00,0,15,38.0,Cancelada,Sede Occidente,5,31.0,Ortopedia y Traumatología,0,0
+594,2026-05-11 05:30:00,1,20,39.0,Completada,Sede Norte,1,32.7,Oftalmología,5,0
+595,2026-05-11 21:45:00,0,40,5.0,Completada,Sede Norte,2,29.7,Neurología,21,0
+596,2026-05-11 16:00:00,0,30,6.0,Completada,Sede Sur,3,30.7,Psiquiatría,16,0
+597,2026-05-11 21:15:00,1,50,7.0,Completada,Sede Centro,4,31.2,Endocrinología,21,0
+598,2026-05-12 02:30:00,0,15,8.0,Cancelada,Sede Occidente,5,32.7,Gastroenterología,2,1
+599,2026-05-12 07:45:00,0,35,9.0,Completada,Sede Norte,1,32.8,Urología,7,1
+600,2026-05-13 00:00:00,1,40,10.0,Cancelada,Sede Norte,2,5.6,Medicina General,0,2
+601,2026-05-12 18:15:00,0,45,11.0,Cancelada,Sede Sur,3,4.6, ginecologia,18,1
+602,1940-02-10 09:00:00,0,35,12.0,completada,Sede Centro,4,7.5,Dermatología,9,5
+603,2026-05-13 04:45:00,1,30,13.0,Completada,Sede Occidente,5,4.7,Ortopedia y Traumatología,4,2
+604,2026-05-13 10:00:00,0,20,14.0,Canselada,Sede Norte,1,5.4,Oftalmología,10,2
+606,2026-05-13 20:30:00,1,30,16.0,,Sede Sur,3,8.2,Psiquiatría,20,2
+607,2026-05-14 01:45:00,0,50,17.0,Completada,Sede Centro,4,8.4,Endocrinología,1,3
+608,2026-05-14 07:00:00,0,15,18.0,PENDIENTE,Sede Occidente,5,9.7,Gastroenterología,7,3
+609,2026-05-14 12:15:00,1,20,19.0,Completada,Sede Norte,1,11.0,Urología,12,3
+611,2026-05-14 22:45:00,0,45,21.0,Completada,Sede Sur,3,13.1,Neumología,22,3
+612,2026-05-15 04:00:00,1,35,22.0,Completada,Sede Centro,4,13.2,Reumatología,4,4
+613,2026-05-15 09:15:00,0,15,23.0,Completada,Sede Occidente,5,13.7,Nutrición y Dietética,9,4
+614,2026-05-15 14:30:00,0,20,24.0,Completada,Sede Norte,1,11.5,Oncología,14,4
+616,2026-05-16 01:00:00,0,45,26.0,Completada,Sede Sur,3,13.4,Nefrología,1,5
+617,2026-05-16 06:15:00,0,50,27.0,Cancelada,Sede Centro,4,16.3,Geriatría,6,5
+618,2026-05-16 11:30:00,1,15,28.0,Completada,Sede Occidente,5,13.7,Cardiología,11,5
+619,2026-05-16 16:45:00,0,35,29.0,Completada,Sede Norte,1,17.2,PEDIATRÍA,16,5
+620,2026-05-17 09:00:00,0,40,30.0,Completada,Sede Norte,2,16.2,Medicina General,9,6
+621,2026-05-17 03:15:00,1,30,31.0,Completada,Sede Sur,3,16.5, ginecologia,3,6
+622,2026-05-17 08:30:00,0,50,32.0,completada,Sede Centro,4,17.5,Dermatología,8,6
+623,2026-05-17 13:45:00,0,15,33.0,Cancelada,Sede Occidente,5,18.3,Ortopedia y Traumatología,13,6
+624,2026-05-17 19:00:00,1,35,34.0,Canselada,Sede Norte,1,20.9,Oftalmología,19,6
+625,2026-05-18 11:15:00,0,40,35.0,Completada,Sede Norte,2,21.1,Neurología,11,0
+626,2026-05-18 05:30:00,0,45,36.0,,Sede Sur,3,22.0,Psiquiatría,5,0
+627,2026-05-18 10:45:00,1,50,37.0,Completada,Sede Centro,4,20.2,Endocrinología,10,0
+628,2026-05-18 16:00:00,0,15,38.0,PENDIENTE,Sede Occidente,5,21.4,Gastroenterología,16,0
+629,2026-05-18 21:15:00,0,35,39.0,Cancelada,Sede Norte,1,22.6,Urología,21,0
+630,2026-05-19 13:30:00,1,25,5.0,Completada,Sede Norte,2,21.4,Otorrinolaringología,13,1
+631,2026-05-19 07:45:00,0,45,6.0,Completada,Sede Sur,3,23.7,Neumología,7,1
+632,2026-05-19 13:00:00,0,35,7.0,Cancelada,Sede Centro,4,22.9,Reumatología,13,1
+633,2026-05-19 18:15:00,1,30,8.0,Cancelada,Sede Occidente,5,24.0,Nutrición y Dietética,18,1
+634,2026-05-19 23:30:00,0,20,9.0,Cancelada,Sede Norte,1,24.1,Oncología,23,1
+635,2026-05-20 15:45:00,0,40,10.0,Completada,Sede Norte,2,24.1,Infectología,15,2
+636,2026-05-20 10:00:00,1,30,11.0,Completada,Sede Sur,3,27.6,Nefrología,10,2
+637,1940-02-10 09:00:00,0,50,12.0,Cancelada,Sede Centro,4,28.6,Geriatría,9,5
+638,2026-05-20 20:30:00,0,15,13.0,Cancelada,Sede Occidente,5,28.5,Cardiología,20,2
+639,2026-05-21 01:45:00,1,35,14.0,Cancelada,Sede Norte,1,26.7,PEDIATRÍA,1,3
+640,2026-05-21 18:00:00,0,25,15.0,Cancelada,Sede Norte,2,29.9,Medicina General,18,3
+641,2026-05-21 12:15:00,0,45,16.0,Cancelada,Sede Sur,3,27.3, ginecologia,12,3
+642,2026-05-21 17:30:00,1,35,17.0,completada,Sede Centro,4,28.7,Dermatología,17,3
+643,2026-05-21 22:45:00,0,30,18.0,Cancelada,Sede Occidente,5,31.0,Ortopedia y Traumatología,22,3
+644,2026-05-22 04:00:00,0,35,19.0,Canselada,Sede Norte,1,32.7,Oftalmología,4,4
+646,2026-05-22 14:30:00,0,30,21.0,,Sede Sur,3,30.7,Psiquiatría,14,4
+647,2026-05-22 19:45:00,0,50,22.0,Completada,Sede Centro,4,31.2,Endocrinología,19,4
+648,2026-05-23 01:00:00,1,30,23.0,PENDIENTE,Sede Occidente,5,32.7,Gastroenterología,1,5
+649,2026-05-23 06:15:00,0,20,24.0,Completada,Sede Norte,1,32.8,Urología,6,5
+651,2026-05-23 16:45:00,1,30,26.0,Completada,Sede Sur,3,4.6, ginecologia,16,5
+652,2026-05-23 22:00:00,0,35,27.0,Cancelada,Sede Centro,4,7.5,Dermatología,22,5
+653,2026-05-24 03:15:00,0,15,28.0,Cancelada,Sede Occidente,5,4.7,Ortopedia y Traumatología,3,6
+654,2026-05-24 08:30:00,1,20,29.0,Completada,Sede Norte,1,5.4,Oftalmología,8,6
+656,2026-05-24 19:00:00,0,45,31.0,Completada,Sede Sur,3,8.2,Psiquiatría,19,6
+657,2026-05-25 00:15:00,1,35,32.0,Cancelada,Sede Centro,4,8.4,Endocrinología,0,0
+658,2026-05-25 05:30:00,0,15,33.0,Cancelada,Sede Occidente,5,9.7,Gastroenterología,5,0
+659,2026-05-25 10:45:00,0,35,34.0,Cancelada,Sede Norte,1,11.0,Urología,10,0
+660,2026-05-26 03:00:00,1,25,35.0,Cancelada,Sede Norte,2,10.9,Otorrinolaringología,3,1
+661,2026-05-25 21:15:00,0,45,36.0,Completada,Sede Sur,3,13.1,Neumología,21,0
+662,2026-05-26 02:30:00,0,35,37.0,completada,Sede Centro,4,13.2,Reumatología,2,1
+663,2026-05-26 07:45:00,1,15,38.0,Completada,Sede Occidente,5,13.7,Nutrición y Dietética,7,1
+664,2026-05-26 13:00:00,0,20,39.0,Canselada,Sede Norte,1,11.5,Oncología,13,1
+665,2026-05-27 05:15:00,0,25,5.0,Cancelada,Sede Norte,2,12.4,Infectología,5,2
+666,2026-05-26 23:30:00,1,30,6.0,,Sede Sur,3,13.4,Nefrología,23,1
+667,2026-05-27 04:45:00,0,35,7.0,Completada,Sede Centro,4,16.3,Geriatría,4,2
+668,2026-05-27 10:00:00,0,30,8.0,PENDIENTE,Sede Occidente,5,13.7,Cardiología,10,2
+669,2026-05-27 15:15:00,1,20,9.0,Completada,Sede Norte,1,17.2,PEDIATRÍA,15,2
+670,2026-05-28 07:30:00,0,40,10.0,Cancelada,Sede Norte,2,16.2,Medicina General,7,3
+671,2026-05-28 01:45:00,0,45,11.0,Cancelada,Sede Sur,3,16.5, ginecologia,1,3
+672,1940-02-10 09:00:00,1,35,12.0,Completada,Sede Centro,4,17.5,Dermatología,9,5
+673,2026-05-28 12:15:00,0,15,13.0,Cancelada,Sede Occidente,5,18.3,Ortopedia y Traumatología,12,3
+674,2026-05-28 17:30:00,0,35,14.0,Cancelada,Sede Norte,1,20.9,Oftalmología,17,3
+675,2026-05-29 09:45:00,1,40,15.0,Cancelada,Sede Norte,2,21.1,Neurología,9,4
+676,2026-05-29 04:00:00,0,30,16.0,Cancelada,Sede Sur,3,22.0,Psiquiatría,4,4
+677,2026-05-29 09:15:00,0,35,17.0,Completada,Sede Centro,4,20.2,Endocrinología,9,4
+678,2026-05-29 14:30:00,1,30,18.0,Completada,Sede Occidente,5,21.4,Gastroenterología,14,4
+679,2026-05-29 19:45:00,0,35,19.0,Completada,Sede Norte,1,22.6,Urología,19,4
+680,2026-05-30 12:00:00,0,25,20.0,Completada,Sede Norte,2,21.4,Otorrinolaringología,12,5
+681,2026-05-30 06:15:00,1,30,21.0,Completada,Sede Sur,3,23.7,Neumología,6,5
+682,2026-05-30 11:30:00,0,35,22.0,completada,Sede Centro,4,22.9,Reumatología,11,5
+683,2026-05-30 16:45:00,0,30,23.0,Completada,Sede Occidente,5,24.0,Nutrición y Dietética,16,5
+684,2026-05-30 22:00:00,1,20,24.0,Canselada,Sede Norte,1,24.1,Oncología,22,5
+686,2026-05-31 08:30:00,0,45,26.0,,Sede Sur,3,27.6,Nefrología,8,6
+687,2026-05-31 13:45:00,1,50,27.0,Completada,Sede Centro,4,28.6,Geriatría,13,6
+688,2026-05-31 19:00:00,0,15,28.0,PENDIENTE,Sede Occidente,5,28.5,Cardiología,19,6
+689,2026-06-01 00:15:00,0,20,29.0,Cancelada,Sede Norte,1,26.7,PEDIATRÍA,0,0
+691,2026-06-01 10:45:00,0,30,31.0,Cancelada,Sede Sur,3,27.3, ginecologia,10,0
+692,2026-06-01 16:00:00,0,35,32.0,Cancelada,Sede Centro,4,28.7,Dermatología,16,0
+693,2026-06-01 21:15:00,1,15,33.0,Completada,Sede Occidente,5,31.0,Ortopedia y Traumatología,21,0
+694,2026-06-02 02:30:00,0,20,34.0,Cancelada,Sede Norte,1,32.7,Oftalmología,2,1
+696,2026-06-02 13:00:00,1,45,36.0,Completada,Sede Sur,3,30.7,Psiquiatría,13,1
+697,2026-06-02 18:15:00,0,50,37.0,Cancelada,Sede Centro,4,31.2,Endocrinología,18,1
+698,2026-06-02 23:30:00,0,15,38.0,Cancelada,Sede Occidente,5,32.7,Gastroenterología,23,1
+699,2026-06-03 04:45:00,1,35,39.0,Cancelada,Sede Norte,1,32.8,Urología,4,2
+700,2026-06-03 21:00:00,0,25,5.0,Cancelada,Sede Norte,2,5.6,Medicina General,21,2
+701,2026-06-03 15:15:00,0,45,6.0,Cancelada,Sede Sur,3,4.6, ginecologia,15,2
+702,2026-06-03 20:30:00,1,50,7.0,completada,Sede Centro,4,7.5,Dermatología,20,2
+703,2026-06-04 01:45:00,0,30,8.0,Completada,Sede Occidente,5,4.7,Ortopedia y Traumatología,1,3
+704,2026-06-04 07:00:00,0,20,9.0,Canselada,Sede Norte,1,5.4,Oftalmología,7,3
+705,2026-06-04 23:15:00,1,25,10.0,Cancelada,Sede Norte,2,6.5,Neurología,23,3
+706,2026-06-04 17:30:00,0,30,11.0,,Sede Sur,3,8.2,Psiquiatría,17,3
+707,1940-02-10 09:00:00,0,50,12.0,Completada,Sede Centro,4,8.4,Endocrinología,9,5
+708,2026-06-05 04:00:00,1,15,13.0,PENDIENTE,Sede Occidente,5,9.7,Gastroenterología,4,4
+709,2026-06-05 09:15:00,0,20,14.0,Cancelada,Sede Norte,1,11.0,Urología,9,4
+710,2026-06-06 01:30:00,0,25,15.0,Completada,Sede Norte,2,10.9,Otorrinolaringología,1,5
+711,2026-06-05 19:45:00,1,45,16.0,Completada,Sede Sur,3,13.1,Neumología,19,4
+712,2026-06-06 01:00:00,0,50,17.0,Completada,Sede Centro,4,13.2,Reumatología,1,5
+713,2026-06-06 06:15:00,0,15,18.0,Cancelada,Sede Occidente,5,13.7,Nutrición y Dietética,6,5
+714,2026-06-06 11:30:00,1,20,19.0,Completada,Sede Norte,1,11.5,Oncología,11,5
+715,2026-06-07 03:45:00,0,40,20.0,Completada,Sede Norte,2,12.4,Infectología,3,6
+716,2026-06-06 22:00:00,0,30,21.0,Completada,Sede Sur,3,13.4,Nefrología,22,5
+717,2026-06-07 03:15:00,1,35,22.0,Completada,Sede Centro,4,16.3,Geriatría,3,6
+718,2026-06-07 08:30:00,0,15,23.0,Completada,Sede Occidente,5,13.7,Cardiología,8,6
+719,2026-06-07 13:45:00,0,35,24.0,Cancelada,Sede Norte,1,17.2,PEDIATRÍA,13,6
+720,2026-06-08 06:00:00,1,25,25.0,Completada,Sede Norte,2,16.2,Medicina General,6,0
+721,2026-06-08 00:15:00,0,30,26.0,Cancelada,Sede Sur,3,16.5, ginecologia,0,0
+722,2026-06-08 05:30:00,0,50,27.0,completada,Sede Centro,4,17.5,Dermatología,5,0
+723,2026-06-08 10:45:00,1,30,28.0,Cancelada,Sede Occidente,5,18.3,Ortopedia y Traumatología,10,0
+724,2026-06-08 16:00:00,0,35,29.0,Canselada,Sede Norte,1,20.9,Oftalmología,16,0
+726,2026-06-09 02:30:00,1,30,31.0,,Sede Sur,3,22.0,Psiquiatría,2,1
+727,2026-06-09 07:45:00,0,50,32.0,Completada,Sede Centro,4,20.2,Endocrinología,7,1
+728,2026-06-09 13:00:00,0,15,33.0,PENDIENTE,Sede Occidente,5,21.4,Gastroenterología,13,1
+729,2026-06-09 18:15:00,1,20,34.0,Completada,Sede Norte,1,22.6,Urología,18,1
+731,2026-06-10 04:45:00,0,45,36.0,Cancelada,Sede Sur,3,23.7,Neumología,4,2
+732,2026-06-10 10:00:00,1,50,37.0,Completada,Sede Centro,4,22.9,Reumatología,10,2
+733,2026-06-10 15:15:00,0,15,38.0,Completada,Sede Occidente,5,24.0,Nutrición y Dietética,15,2
+734,2026-06-10 20:30:00,0,35,39.0,Completada,Sede Norte,1,24.1,Oncología,20,2
+736,2026-06-11 07:00:00,0,30,6.0,Cancelada,Sede Sur,3,27.6,Nefrología,7,3
+737,2026-06-11 12:15:00,0,50,7.0,Completada,Sede Centro,4,28.6,Geriatría,12,3
+738,2026-06-11 17:30:00,1,15,8.0,Cancelada,Sede Occidente,5,28.5,Cardiología,17,3
+739,2026-06-11 22:45:00,0,35,9.0,Completada,Sede Norte,1,26.7,PEDIATRÍA,22,3
+740,2026-06-12 15:00:00,0,40,10.0,Cancelada,Sede Norte,2,29.9,Medicina General,15,4
+741,2026-06-12 09:15:00,1,30,11.0,Completada,Sede Sur,3,27.3, ginecologia,9,4
+742,1940-02-10 09:00:00,0,35,12.0,completada,Sede Centro,4,28.7,Dermatología,9,5
+743,2026-06-12 19:45:00,0,30,13.0,Cancelada,Sede Occidente,5,31.0,Ortopedia y Traumatología,19,4
+744,2026-06-13 01:00:00,1,35,14.0,Canselada,Sede Norte,1,32.7,Oftalmología,1,5
+745,2026-06-13 17:15:00,0,40,15.0,Completada,Sede Norte,2,29.7,Neurología,17,5
+746,2026-06-13 11:30:00,0,30,16.0,,Sede Sur,3,30.7,Psiquiatría,11,5
+747,2026-06-13 16:45:00,1,50,17.0,Completada,Sede Centro,4,31.2,Endocrinología,16,5
+748,2026-06-13 22:00:00,0,15,18.0,PENDIENTE,Sede Occidente,5,32.7,Gastroenterología,22,5
+749,2026-06-14 03:15:00,0,20,19.0,Completada,Sede Norte,1,32.8,Urología,3,6
+750,2026-06-14 19:30:00,1,40,20.0,Completada,Sede Norte,2,5.6,Medicina General,19,6
+751,2026-06-14 13:45:00,0,45,21.0,Cancelada,Sede Sur,3,4.6, ginecologia,13,6
+752,2026-06-14 19:00:00,0,35,22.0,Completada,Sede Centro,4,7.5,Dermatología,19,6
+753,2026-06-15 00:15:00,1,30,23.0,Completada,Sede Occidente,5,4.7,Ortopedia y Traumatología,0,0
+754,2026-06-15 05:30:00,0,35,24.0,Completada,Sede Norte,1,5.4,Oftalmología,5,0
+755,2026-06-15 21:45:00,0,40,25.0,Completada,Sede Norte,2,6.5,Neurología,21,0
+756,2026-06-15 16:00:00,1,45,26.0,Cancelada,Sede Sur,3,8.2,Psiquiatría,16,0
+757,2026-06-15 21:15:00,0,50,27.0,Cancelada,Sede Centro,4,8.4,Endocrinología,21,0
+758,2026-06-16 02:30:00,0,30,28.0,Completada,Sede Occidente,5,9.7,Gastroenterología,2,1
+759,2026-06-16 07:45:00,1,35,29.0,Cancelada,Sede Norte,1,11.0,Urología,7,1
+760,2026-06-17 00:00:00,0,25,30.0,Completada,Sede Norte,2,10.9,Otorrinolaringología,0,2
+761,2026-06-16 18:15:00,0,30,31.0,Completada,Sede Sur,3,13.1,Neumología,18,1
+762,2026-06-16 23:30:00,1,35,32.0,completada,Sede Centro,4,13.2,Reumatología,23,1
+763,2026-06-17 04:45:00,0,30,33.0,Completada,Sede Occidente,5,13.7,Nutrición y Dietética,4,2
+764,2026-06-17 10:00:00,0,20,34.0,Canselada,Sede Norte,1,11.5,Oncología,10,2
+766,2026-06-17 20:30:00,0,30,36.0,,Sede Sur,3,13.4,Nefrología,20,2
+767,2026-06-18 01:45:00,0,50,37.0,Completada,Sede Centro,4,16.3,Geriatría,1,3
+768,2026-06-18 07:00:00,1,15,38.0,PENDIENTE,Sede Occidente,5,13.7,Cardiología,7,3
+769,2026-06-18 12:15:00,0,20,39.0,Completada,Sede Norte,1,17.2,PEDIATRÍA,12,3
+771,2026-06-18 22:45:00,1,45,6.0,Completada,Sede Sur,3,16.5, ginecologia,22,3
+772,2026-06-19 04:00:00,0,50,7.0,Completada,Sede Centro,4,17.5,Dermatología,4,4
+773,2026-06-19 09:15:00,0,15,8.0,Cancelada,Sede Occidente,5,18.3,Ortopedia y Traumatología,9,4
+774,2026-06-19 14:30:00,1,20,9.0,Completada,Sede Norte,1,20.9,Oftalmología,14,4
+776,2026-06-20 01:00:00,0,30,11.0,Cancelada,Sede Sur,3,22.0,Psiquiatría,1,5
+777,1940-02-10 09:00:00,1,35,12.0,Completada,Sede Centro,4,20.2,Endocrinología,9,5
+778,2026-06-20 11:30:00,0,15,13.0,Completada,Sede Occidente,5,21.4,Gastroenterología,11,5
+779,2026-06-20 16:45:00,0,20,14.0,Completada,Sede Norte,1,22.6,Urología,16,5
+780,2026-06-21 09:00:00,1,25,15.0,Completada,Sede Norte,2,21.4,Otorrinolaringología,9,6
+781,2026-06-21 03:15:00,0,30,16.0,Cancelada,Sede Sur,3,23.7,Neumología,3,6
+782,2026-06-21 08:30:00,0,35,17.0,completada,Sede Centro,4,22.9,Reumatología,8,6
+783,2026-06-21 13:45:00,1,30,18.0,Completada,Sede Occidente,5,24.0,Nutrición y Dietética,13,6
+784,2026-06-21 19:00:00,0,20,19.0,Canselada,Sede Norte,1,24.1,Oncología,19,6
+785,2026-06-22 11:15:00,0,25,20.0,Cancelada,Sede Norte,2,24.1,Infectología,11,0
+786,2026-06-22 05:30:00,1,45,21.0,,Sede Sur,3,27.6,Nefrología,5,0
+787,2026-06-22 10:45:00,0,50,22.0,Cancelada,Sede Centro,4,28.6,Geriatría,10,0
+788,2026-06-22 16:00:00,0,30,23.0,PENDIENTE,Sede Occidente,5,28.5,Cardiología,16,0
+789,2026-06-22 21:15:00,1,20,24.0,Completada,Sede Norte,1,26.7,PEDIATRÍA,21,0
+790,2026-06-23 13:30:00,0,25,25.0,Completada,Sede Norte,2,29.9,Medicina General,13,1
+791,2026-06-23 07:45:00,0,45,26.0,Cancelada,Sede Sur,3,27.3, ginecologia,7,1
+792,2026-06-23 13:00:00,1,35,27.0,Completada,Sede Centro,4,28.7,Dermatología,13,1
+793,2026-06-23 18:15:00,0,15,28.0,Completada,Sede Occidente,5,31.0,Ortopedia y Traumatología,18,1
+794,2026-06-23 23:30:00,0,35,29.0,Completada,Sede Norte,1,32.7,Oftalmología,23,1
+795,2026-06-24 15:45:00,1,40,30.0,Cancelada,Sede Norte,2,29.7,Neurología,15,2
+796,2026-06-24 10:00:00,0,45,31.0,Cancelada,Sede Sur,3,30.7,Psiquiatría,10,2
+797,2026-06-24 15:15:00,0,35,32.0,Cancelada,Sede Centro,4,31.2,Endocrinología,15,2
+798,2026-06-24 20:30:00,1,15,33.0,Completada,Sede Occidente,5,32.7,Gastroenterología,20,2
+799,2026-06-25 01:45:00,0,35,34.0,Cancelada,Sede Norte,1,32.8,Urología,1,3
+800,2026-06-25 18:00:00,0,25,35.0,Completada,Sede Norte,2,5.6,Medicina General,18,3
+801,2026-06-25 12:15:00,1,30,36.0,Cancelada,Sede Sur,3,4.6, ginecologia,12,3
+802,2026-06-25 17:30:00,0,35,37.0,completada,Sede Centro,4,7.5,Dermatología,17,3
+803,2026-06-25 22:45:00,0,30,38.0,Cancelada,Sede Occidente,5,4.7,Ortopedia y Traumatología,22,3
+804,2026-06-26 04:00:00,1,20,39.0,Canselada,Sede Norte,1,5.4,Oftalmología,4,4
+806,2026-06-26 14:30:00,0,30,6.0,,Sede Sur,3,8.2,Psiquiatría,14,4
+807,2026-06-26 19:45:00,1,50,7.0,Completada,Sede Centro,4,8.4,Endocrinología,19,4
+808,2026-06-27 01:00:00,0,15,8.0,PENDIENTE,Sede Occidente,5,9.7,Gastroenterología,1,5
+809,2026-06-27 06:15:00,0,35,9.0,Completada,Sede Norte,1,11.0,Urología,6,5
+811,2026-06-27 16:45:00,0,45,11.0,Completada,Sede Sur,3,13.1,Neumología,16,5
+812,1940-02-10 09:00:00,0,35,12.0,Completada,Sede Centro,4,13.2,Reumatología,9,5
+813,2026-06-28 03:15:00,1,15,13.0,Completada,Sede Occidente,5,13.7,Nutrición y Dietética,3,6
+814,2026-06-28 08:30:00,0,20,14.0,Completada,Sede Norte,1,11.5,Oncología,8,6
+816,2026-06-28 19:00:00,1,30,16.0,Completada,Sede Sur,3,13.4,Nefrología,19,6
+817,2026-06-29 00:15:00,0,35,17.0,Completada,Sede Centro,4,16.3,Geriatría,0,0
+818,2026-06-29 05:30:00,0,15,18.0,Completada,Sede Occidente,5,13.7,Cardiología,5,0
+819,2026-06-29 10:45:00,1,35,19.0,Completada,Sede Norte,1,17.2,PEDIATRÍA,10,0
+820,2026-06-30 03:00:00,0,40,20.0,Completada,Sede Norte,2,16.2,Medicina General,3,1
+821,2026-06-29 21:15:00,0,30,21.0,Completada,Sede Sur,3,16.5, ginecologia,21,0
+822,2026-06-30 02:30:00,1,35,22.0,completada,Sede Centro,4,17.5,Dermatología,2,1
+823,2026-06-30 07:45:00,0,30,23.0,Cancelada,Sede Occidente,5,18.3,Ortopedia y Traumatología,7,1
+824,2026-06-30 13:00:00,0,35,24.0,Canselada,Sede Norte,1,20.9,Oftalmología,13,1
+825,2026-07-01 05:15:00,1,40,25.0,Completada,Sede Norte,2,21.1,Neurología,5,2
+826,2026-06-30 23:30:00,0,30,26.0,,Sede Sur,3,22.0,Psiquiatría,23,1
+827,2026-07-01 04:45:00,0,50,27.0,Completada,Sede Centro,4,20.2,Endocrinología,4,2
+828,2026-07-01 10:00:00,1,30,28.0,PENDIENTE,Sede Occidente,5,21.4,Gastroenterología,10,2
+829,2026-07-01 15:15:00,0,20,29.0,Completada,Sede Norte,1,22.6,Urología,15,2
+830,2026-07-02 07:30:00,0,40,30.0,Completada,Sede Norte,2,21.4,Otorrinolaringología,7,3
+831,2026-07-02 01:45:00,1,45,31.0,Cancelada,Sede Sur,3,23.7,Neumología,1,3
+832,2026-07-02 07:00:00,0,35,32.0,Completada,Sede Centro,4,22.9,Reumatología,7,3
+833,2026-07-02 12:15:00,0,15,33.0,Cancelada,Sede Occidente,5,24.0,Nutrición y Dietética,12,3
+834,2026-07-02 17:30:00,1,20,34.0,Cancelada,Sede Norte,1,24.1,Oncología,17,3
+835,2026-07-03 09:45:00,0,40,35.0,Completada,Sede Norte,2,24.1,Infectología,9,4
+836,2026-07-03 04:00:00,0,45,36.0,Completada,Sede Sur,3,27.6,Nefrología,4,4
+837,2026-07-03 09:15:00,1,35,37.0,Completada,Sede Centro,4,28.6,Geriatría,9,4
+838,2026-07-03 14:30:00,0,30,38.0,Cancelada,Sede Occidente,5,28.5,Cardiología,14,4
+839,2026-07-03 19:45:00,0,35,39.0,Completada,Sede Norte,1,26.7,PEDIATRÍA,19,4
+840,2026-07-04 12:00:00,1,40,5.0,Completada,Sede Norte,2,29.9,Medicina General,12,5
+841,2026-07-04 06:15:00,0,30,6.0,Cancelada,Sede Sur,3,27.3, ginecologia,6,5
+842,2026-07-04 11:30:00,0,35,7.0,completada,Sede Centro,4,28.7,Dermatología,11,5
+843,2026-07-04 16:45:00,1,30,8.0,Completada,Sede Occidente,5,31.0,Ortopedia y Traumatología,16,5
+844,2026-07-04 22:00:00,0,20,9.0,Canselada,Sede Norte,1,32.7,Oftalmología,22,5
+846,2026-07-05 08:30:00,1,30,11.0,,Sede Sur,3,30.7,Psiquiatría,8,6
+847,1940-02-10 09:00:00,0,50,12.0,Cancelada,Sede Centro,4,31.2,Endocrinología,9,5
+848,2026-07-05 19:00:00,0,15,13.0,PENDIENTE,Sede Occidente,5,32.7,Gastroenterología,19,6
+849,2026-07-06 00:15:00,1,35,14.0,Cancelada,Sede Norte,1,32.8,Urología,0,0
+851,2026-07-06 10:45:00,0,30,16.0,Cancelada,Sede Sur,3,4.6, ginecologia,10,0
+852,2026-07-06 16:00:00,1,35,17.0,Completada,Sede Centro,4,7.5,Dermatología,16,0
+853,2026-07-06 21:15:00,0,15,18.0,Cancelada,Sede Occidente,5,4.7,Ortopedia y Traumatología,21,0
+854,2026-07-07 02:30:00,0,20,19.0,Cancelada,Sede Norte,1,5.4,Oftalmología,2,1
+856,2026-07-07 13:00:00,0,30,21.0,Completada,Sede Sur,3,8.2,Psiquiatría,13,1
+857,2026-07-07 18:15:00,0,35,22.0,Completada,Sede Centro,4,8.4,Endocrinología,18,1
+858,2026-07-07 23:30:00,1,15,23.0,Completada,Sede Occidente,5,9.7,Gastroenterología,23,1
+859,2026-07-08 04:45:00,0,35,24.0,Completada,Sede Norte,1,11.0,Urología,4,2
+860,2026-07-08 21:00:00,0,25,25.0,Completada,Sede Norte,2,10.9,Otorrinolaringología,21,2
+861,2026-07-08 15:15:00,1,30,26.0,Completada,Sede Sur,3,13.1,Neumología,15,2
+862,2026-07-08 20:30:00,0,50,27.0,completada,Sede Centro,4,13.2,Reumatología,20,2
+863,2026-07-09 01:45:00,0,30,28.0,Cancelada,Sede Occidente,5,13.7,Nutrición y Dietética,1,3
+864,2026-07-09 07:00:00,1,20,29.0,Canselada,Sede Norte,1,11.5,Oncología,7,3
+865,2026-07-09 23:15:00,0,25,30.0,Completada,Sede Norte,2,12.4,Infectología,23,3
+866,2026-07-09 17:30:00,0,45,31.0,,Sede Sur,3,13.4,Nefrología,17,3
+867,2026-07-09 22:45:00,1,35,32.0,Cancelada,Sede Centro,4,16.3,Geriatría,22,3
+868,2026-07-10 04:00:00,0,15,33.0,PENDIENTE,Sede Occidente,5,13.7,Cardiología,4,4
+869,2026-07-10 09:15:00,0,35,34.0,Completada,Sede Norte,1,17.2,PEDIATRÍA,9,4
+870,2026-07-11 01:30:00,1,25,35.0,Completada,Sede Norte,2,16.2,Medicina General,1,5
+871,2026-07-10 19:45:00,0,45,36.0,Cancelada,Sede Sur,3,16.5, ginecologia,19,4
+872,2026-07-11 01:00:00,0,50,37.0,Cancelada,Sede Centro,4,17.5,Dermatología,1,5
+873,2026-07-11 06:15:00,1,15,38.0,Completada,Sede Occidente,5,18.3,Ortopedia y Traumatología,6,5
+874,2026-07-11 11:30:00,0,35,39.0,Cancelada,Sede Norte,1,20.9,Oftalmología,11,5
+875,2026-07-12 03:45:00,0,40,5.0,Completada,Sede Norte,2,21.1,Neurología,3,6
+876,2026-07-11 22:00:00,1,45,6.0,Cancelada,Sede Sur,3,22.0,Psiquiatría,22,5
+877,2026-07-12 03:15:00,0,35,7.0,Cancelada,Sede Centro,4,20.2,Endocrinología,3,6
+878,2026-07-12 08:30:00,0,15,8.0,Completada,Sede Occidente,5,21.4,Gastroenterología,8,6
+879,2026-07-12 13:45:00,1,35,9.0,Completada,Sede Norte,1,22.6,Urología,13,6
+880,2026-07-13 06:00:00,0,25,10.0,Completada,Sede Norte,2,21.4,Otorrinolaringología,6,0
+881,2026-07-13 00:15:00,0,30,11.0,Completada,Sede Sur,3,23.7,Neumología,0,0
+882,1940-02-10 09:00:00,1,35,12.0,completada,Sede Centro,4,22.9,Reumatología,9,5
+883,2026-07-13 10:45:00,0,30,13.0,Cancelada,Sede Occidente,5,24.0,Nutrición y Dietética,10,0
+884,2026-07-13 16:00:00,0,20,14.0,Canselada,Sede Norte,1,24.1,Oncología,16,0
+886,2026-07-14 02:30:00,0,45,16.0,,Sede Sur,3,27.6,Nefrología,2,1
+887,2026-07-14 07:45:00,0,35,17.0,Cancelada,Sede Centro,4,28.6,Geriatría,7,1
+888,2026-07-14 13:00:00,1,15,18.0,PENDIENTE,Sede Occidente,5,28.5,Cardiología,13,1
+889,2026-07-14 18:15:00,0,20,19.0,Cancelada,Sede Norte,1,26.7,PEDIATRÍA,18,1
+891,2026-07-15 04:45:00,1,45,21.0,Completada,Sede Sur,3,27.3, ginecologia,4,2
+892,2026-07-15 10:00:00,0,35,22.0,Completada,Sede Centro,4,28.7,Dermatología,10,2
+893,2026-07-15 15:15:00,0,15,23.0,Completada,Sede Occidente,5,31.0,Ortopedia y Traumatología,15,2
+894,2026-07-15 20:30:00,1,35,24.0,Completada,Sede Norte,1,32.7,Oftalmología,20,2
+896,2026-07-16 07:00:00,0,30,26.0,Completada,Sede Sur,3,30.7,Psiquiatría,7,3
+897,2026-07-16 12:15:00,1,50,27.0,Completada,Sede Centro,4,31.2,Endocrinología,12,3
+898,2026-07-16 17:30:00,0,30,28.0,Completada,Sede Occidente,5,32.7,Gastroenterología,17,3
+899,2026-07-16 22:45:00,0,35,29.0,Completada,Sede Norte,1,32.8,Urología,22,3
+900,2026-07-17 15:00:00,1,40,30.0,Completada,Sede Norte,2,5.6,Medicina General,15,4
+901,2026-07-17 09:15:00,0,30,31.0,Cancelada,Sede Sur,3,4.6, ginecologia,9,4
+902,2026-07-17 14:30:00,0,50,32.0,completada,Sede Centro,4,7.5,Dermatología,14,4
+903,2026-07-17 19:45:00,1,30,33.0,Completada,Sede Occidente,5,4.7,Ortopedia y Traumatología,19,4
+904,2026-07-18 01:00:00,0,20,34.0,Canselada,Sede Norte,1,5.4,Oftalmología,1,5
+905,2026-07-18 17:15:00,0,25,35.0,Cancelada,Sede Norte,2,6.5,Neurología,17,5
+906,2026-07-18 11:30:00,1,30,36.0,,Sede Sur,3,8.2,Psiquiatría,11,5
+907,2026-07-18 16:45:00,0,50,37.0,Completada,Sede Centro,4,8.4,Endocrinología,16,5
+908,2026-07-18 22:00:00,0,15,38.0,PENDIENTE,Sede Occidente,5,9.7,Gastroenterología,22,5
+909,2026-07-19 03:15:00,1,35,39.0,Cancelada,Sede Norte,1,11.0,Urología,3,6
+910,2026-07-19 19:30:00,0,40,5.0,Cancelada,Sede Norte,2,10.9,Otorrinolaringología,19,6
+911,2026-07-19 13:45:00,0,45,6.0,Cancelada,Sede Sur,3,13.1,Neumología,13,6
+912,2026-07-19 19:00:00,1,35,7.0,Cancelada,Sede Centro,4,13.2,Reumatología,19,6
+913,2026-07-20 00:15:00,0,30,8.0,Completada,Sede Occidente,5,13.7,Nutrición y Dietética,0,0
+914,2026-07-20 05:30:00,0,20,9.0,Completada,Sede Norte,1,11.5,Oncología,5,0
+915,2026-07-20 21:45:00,1,40,10.0,Completada,Sede Norte,2,12.4,Infectología,21,0
+916,2026-07-20 16:00:00,0,30,11.0,Completada,Sede Sur,3,13.4,Nefrología,16,0
+917,1940-02-10 09:00:00,0,35,12.0,Completada,Sede Centro,4,16.3,Geriatría,9,5
+918,2026-07-21 02:30:00,1,15,13.0,Completada,Sede Occidente,5,13.7,Cardiología,2,1
+919,2026-07-21 07:45:00,0,35,14.0,Cancelada,Sede Norte,1,17.2,PEDIATRÍA,7,1
+920,2026-07-22 00:00:00,0,40,15.0,Cancelada,Sede Norte,2,16.2,Medicina General,0,2
+921,2026-07-21 18:15:00,1,45,16.0,Completada,Sede Sur,3,16.5, ginecologia,18,1
+922,2026-07-21 23:30:00,0,50,17.0,completada,Sede Centro,4,17.5,Dermatología,23,1
+923,2026-07-22 04:45:00,0,30,18.0,Completada,Sede Occidente,5,18.3,Ortopedia y Traumatología,4,2
+924,2026-07-22 10:00:00,1,20,19.0,Canselada,Sede Norte,1,20.9,Oftalmología,10,2
+926,2026-07-22 20:30:00,0,45,21.0,,Sede Sur,3,22.0,Psiquiatría,20,2
+927,2026-07-23 01:45:00,1,50,22.0,Cancelada,Sede Centro,4,20.2,Endocrinología,1,3
+928,2026-07-23 07:00:00,0,30,23.0,PENDIENTE,Sede Occidente,5,21.4,Gastroenterología,7,3
+929,2026-07-23 12:15:00,0,35,24.0,Completada,Sede Norte,1,22.6,Urología,12,3
+931,2026-07-23 22:45:00,0,45,26.0,Cancelada,Sede Sur,3,23.7,Neumología,22,3
+932,2026-07-24 04:00:00,0,35,27.0,Cancelada,Sede Centro,4,22.9,Reumatología,4,4
+933,2026-07-24 09:15:00,1,15,28.0,Completada,Sede Occidente,5,24.0,Nutrición y Dietética,9,4
+934,2026-07-24 14:30:00,0,20,29.0,Cancelada,Sede Norte,1,24.1,Oncología,14,4
+936,2026-07-25 01:00:00,1,30,31.0,Completada,Sede Sur,3,27.6,Nefrología,1,5
+937,2026-07-25 06:15:00,0,50,32.0,Completada,Sede Centro,4,28.6,Geriatría,6,5
+938,2026-07-25 11:30:00,0,15,33.0,Cancelada,Sede Occidente,5,28.5,Cardiología,11,5
+939,2026-07-25 16:45:00,1,35,34.0,Completada,Sede Norte,1,26.7,PEDIATRÍA,16,5
+940,2026-07-26 09:00:00,0,25,35.0,Completada,Sede Norte,2,29.9,Medicina General,9,6
+941,2026-07-26 03:15:00,0,30,36.0,Cancelada,Sede Sur,3,27.3, ginecologia,3,6
+942,2026-07-26 08:30:00,1,35,37.0,completada,Sede Centro,4,28.7,Dermatología,8,6
+943,2026-07-26 13:45:00,0,15,38.0,Completada,Sede Occidente,5,31.0,Ortopedia y Traumatología,13,6
+944,2026-07-26 19:00:00,0,35,39.0,Canselada,Sede Norte,1,32.7,Oftalmología,19,6
+945,2026-07-27 11:15:00,1,25,5.0,Completada,Sede Norte,2,29.7,Neurología,11,0
+946,2026-07-27 05:30:00,0,30,6.0,,Sede Sur,3,30.7,Psiquiatría,5,0
+947,2026-07-27 10:45:00,0,50,7.0,Completada,Sede Centro,4,31.2,Endocrinología,10,0
+948,2026-07-27 16:00:00,1,15,8.0,PENDIENTE,Sede Occidente,5,32.7,Gastroenterología,16,0
+949,2026-07-27 21:15:00,0,35,9.0,Cancelada,Sede Norte,1,32.8,Urología,21,0
+950,2026-07-28 13:30:00,0,25,10.0,Cancelada,Sede Norte,2,5.6,Medicina General,13,1
+951,2026-07-28 07:45:00,1,45,11.0,Completada,Sede Sur,3,4.6, ginecologia,7,1
+952,1940-02-10 09:00:00,0,35,12.0,Completada,Sede Centro,4,7.5,Dermatología,9,5
+953,2026-07-28 18:15:00,0,15,13.0,Completada,Sede Occidente,5,4.7,Ortopedia y Traumatología,18,1
+954,2026-07-28 23:30:00,1,20,14.0,Completada,Sede Norte,1,5.4,Oftalmología,23,1
+955,2026-07-29 15:45:00,0,40,15.0,Cancelada,Sede Norte,2,6.5,Neurología,15,2
+956,2026-07-29 10:00:00,0,45,16.0,Cancelada,Sede Sur,3,8.2,Psiquiatría,10,2
+957,2026-07-29 15:15:00,1,35,17.0,Completada,Sede Centro,4,8.4,Endocrinología,15,2
+958,2026-07-29 20:30:00,0,15,18.0,Cancelada,Sede Occidente,5,9.7,Gastroenterología,20,2
+959,2026-07-30 01:45:00,0,35,19.0,Completada,Sede Norte,1,11.0,Urología,1,3
+960,2026-07-30 18:00:00,1,40,20.0,Cancelada,Sede Norte,2,10.9,Otorrinolaringología,18,3
+961,2026-07-30 12:15:00,0,45,21.0,Completada,Sede Sur,3,13.1,Neumología,12,3
+962,2026-07-30 17:30:00,0,50,22.0,completada,Sede Centro,4,13.2,Reumatología,17,3
+963,2026-07-30 22:45:00,1,30,23.0,Completada,Sede Occidente,5,13.7,Nutrición y Dietética,22,3
+964,2026-07-31 04:00:00,0,20,24.0,Canselada,Sede Norte,1,11.5,Oncología,4,4
+966,2026-07-31 14:30:00,1,30,26.0,,Sede Sur,3,13.4,Nefrología,14,4
+967,2026-07-31 19:45:00,0,35,27.0,Cancelada,Sede Centro,4,16.3,Geriatría,19,4
+968,2026-08-01 01:00:00,0,30,28.0,PENDIENTE,Sede Occidente,5,13.7,Cardiología,1,5
+969,2026-08-01 06:15:00,1,20,29.0,Completada,Sede Norte,1,17.2,PEDIATRÍA,6,5
+971,2026-08-01 16:45:00,0,45,31.0,Completada,Sede Sur,3,16.5, ginecologia,16,5
+972,2026-08-01 22:00:00,1,50,32.0,Completada,Sede Centro,4,17.5,Dermatología,22,5
+973,2026-08-02 03:15:00,0,15,33.0,Cancelada,Sede Occidente,5,18.3,Ortopedia y Traumatología,3,6
+974,2026-08-02 08:30:00,0,20,34.0,Cancelada,Sede Norte,1,20.9,Oftalmología,8,6
+976,2026-08-02 19:00:00,0,30,36.0,Cancelada,Sede Sur,3,22.0,Psiquiatría,19,6
+977,2026-08-03 00:15:00,0,35,37.0,Completada,Sede Centro,4,20.2,Endocrinología,0,0
+978,2026-08-03 05:30:00,1,30,38.0,Completada,Sede Occidente,5,21.4,Gastroenterología,5,0
+979,2026-08-03 10:45:00,0,35,39.0,Completada,Sede Norte,1,22.6,Urología,10,0
+980,2026-08-04 03:00:00,0,40,5.0,Cancelada,Sede Norte,2,21.4,Otorrinolaringología,3,1
+981,2026-08-03 21:15:00,1,30,6.0,Cancelada,Sede Sur,3,23.7,Neumología,21,0
+982,2026-08-04 02:30:00,0,35,7.0,completada,Sede Centro,4,22.9,Reumatología,2,1
+983,2026-08-04 07:45:00,0,30,8.0,Completada,Sede Occidente,5,24.0,Nutrición y Dietética,7,1
+984,2026-08-04 13:00:00,1,20,9.0,Canselada,Sede Norte,1,24.1,Oncología,13,1
+985,2026-08-05 05:15:00,0,25,10.0,Completada,Sede Norte,2,24.1,Infectología,5,2
+986,2026-08-04 23:30:00,0,30,11.0,,Sede Sur,3,27.6,Nefrología,23,1
+987,1940-02-10 09:00:00,1,50,12.0,Completada,Sede Centro,4,28.6,Geriatría,9,5
+988,2026-08-05 10:00:00,0,15,13.0,PENDIENTE,Sede Occidente,5,28.5,Cardiología,10,2
+989,2026-08-05 15:15:00,0,20,14.0,Cancelada,Sede Norte,1,26.7,PEDIATRÍA,15,2
+990,2026-08-06 07:30:00,1,25,15.0,Cancelada,Sede Norte,2,29.9,Medicina General,7,3
+991,2026-08-06 01:45:00,0,30,16.0,Completada,Sede Sur,3,27.3, ginecologia,1,3
+992,2026-08-06 07:00:00,0,35,17.0,Completada,Sede Centro,4,28.7,Dermatología,7,3
+993,2026-08-06 12:15:00,1,30,18.0,Cancelada,Sede Occidente,5,31.0,Ortopedia y Traumatología,12,3
+994,2026-08-06 17:30:00,0,20,19.0,Completada,Sede Norte,1,32.7,Oftalmología,17,3
+995,2026-08-07 09:45:00,0,40,20.0,Completada,Sede Norte,2,29.7,Neurología,9,4
+996,2026-08-07 04:00:00,1,45,21.0,Completada,Sede Sur,3,30.7,Psiquiatría,4,4
+997,2026-08-07 09:15:00,0,50,22.0,Completada,Sede Centro,4,31.2,Endocrinología,9,4
+998,2026-08-07 14:30:00,0,30,23.0,Cancelada,Sede Occidente,5,32.7,Gastroenterología,14,4
+999,2026-08-07 19:45:00,1,35,24.0,Completada,Sede Norte,1,32.8,Urología,19,4
+1000,2026-08-08 12:00:00,0,40,25.0,Completada,Sede Norte,2,5.6,Medicina General,12,5
