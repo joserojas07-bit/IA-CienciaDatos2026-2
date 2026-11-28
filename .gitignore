@@ -3,4 +3,13 @@
 .RData
 .Ruserdata
 *.Rproj.user
-
+# Carpetas a ignorar
+venv/
+.venv/
+env/
+__pycache__/
+*.ipynb_checkpoints
+Proyecto-1
+Proyecto-II
+taller-analitica-salud
+Analitica-Salud
