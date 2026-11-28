@@ -40,7 +40,11 @@ def cargar_artefactos():
 
 @st.cache_data(ttl=600)
 def cargar_historico(url_bd):
-    url = url_bd
+    url = url_bd.strip()
+    if url.lower().startswith("psql"):
+        url = url[4:].strip()
+    url = url.strip("'\"").strip()
+    
     if url.startswith("postgres://"):
         url = url.replace("postgres://", "postgresql://", 1)
     if url.startswith("postgresql://"):
